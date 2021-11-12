@@ -75,8 +75,15 @@ LRESULT EngineLoop::ProcessWindowsEvent(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 
         case WM_PAINT:
         {
+            PAINTSTRUCT ps;
+			BeginPaint(hwnd, &ps);
+
             GetInst()->app->Render();
+
+            EndPaint(hwnd, &ps);
         }
+
+        GetInst()->app->Update();
 
     return 0;
     }

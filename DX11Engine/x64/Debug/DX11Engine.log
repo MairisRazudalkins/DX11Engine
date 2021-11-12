@@ -1,0 +1,4 @@
+﻿  Application.cpp
+C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.h(68,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.h(68,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  DX11Engine.vcxproj -> C:\Users\r013858k\Documents\GitHub\DX11Engine\x64\Debug\DX11Engine.exe

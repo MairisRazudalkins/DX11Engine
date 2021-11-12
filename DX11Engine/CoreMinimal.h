@@ -20,5 +20,8 @@
 
 // Math
 #include "Vector2.h"
+#include "Vector3.h"
 
-#define Check(x) if(!x) { Logger::LOG_FATAL_ERROR("Necessary variable was a nullptr (", #x, ")"); PostQuitMessage(0); }
+#include "Object.h"
+
+#define Check(x) if(!x) { Logger::ENGINE_LOG(Logger::LogType::Fatal, "Necessary variable was a nullptr (", #x, ")"); PostQuitMessage(0); }

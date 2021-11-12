@@ -12,15 +12,11 @@ Application::Application(HINSTANCE hInstance, int nCmdShow) : hInstance(hInstanc
 
 	CreateAppWindow(className, L"Engine");
     CreateSwapChain();
+    //CreateRenderTarget(); // fix
 
     ShowWindow(hwnd, nCmdShow);
 
-    Input::GetInst()->BindAction(VK_ESCAPE, KeyState::Pressed, this, &Application::Callback);
-
-    device = nullptr;
-    Check(device);
-
-    //Input::GetInst()->BindAction(InputDevice::Keyboard, 0x04, KeyState::Pressed, this, &Application::Callback);
+    Input::GetInst()->BindAction(VK_ESCAPE, KeyState::Pressed, this, &Application::Callback); // DEBUG REMOVE!
 
     EngineLoop::GetInst()->StartEngineLoop();
 }
@@ -74,6 +70,69 @@ void Application::CreateSwapChain()
     Check(swapChain);
 }
 
+void Application::CreateRenderTarget()
+{
+    ID3D11Texture2D* pBackBuffer = nullptr;
+    HRESULT hr = swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&pBackBuffer);
+
+    if (!hr)
+    {
+        Logger::ENGINE_LOG(Logger::Error, "Failed to create back buffer")
+    }
+
+    hr = device->CreateRenderTargetView(pBackBuffer, nullptr, &renderTarget);
+
+    if (!hr)
+    {
+        Logger::ENGINE_LOG(Logger::Error, "Failed to create render target")
+    }
+
+    pBackBuffer->Release();
+
+    //ID3D11Texture2D* backBuffer = nullptr;
+    //swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&backBuffer);
+    //
+    //Check((device->CreateRenderTargetView(backBuffer, nullptr, &renderTarget)));
+    //backBuffer->Release();
+}
+
+void Application::InitializeShaderInputLayouts()
+{
+    //ID3DBlob* pVSBlob = nullptr;
+    //HRESULT hr = CompileShaderFromFile(L"Test", "VS", "vs_4_0", &pVSBlob);
+    //
+    //
+}
+
+HRESULT Application::CompileShaderFromFile(const wchar_t* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, ID3DBlob** ppBlobOut)
+{
+    HRESULT hr = S_OK;
+
+    DWORD dwShaderFlags = D3DCOMPILE_ENABLE_STRICTNESS;
+#if defined(DEBUG) || defined(_DEBUG)
+    dwShaderFlags |= D3DCOMPILE_DEBUG;
+#endif
+
+    ID3DBlob* pErrorBlob;
+    hr = D3DCompileFromFile(szFileName, nullptr, nullptr, szEntryPoint, szShaderModel,
+        dwShaderFlags, 0, ppBlobOut, &pErrorBlob);
+
+    if (FAILED(hr))
+    {
+        if (pErrorBlob != nullptr)
+            OutputDebugStringA((char*)pErrorBlob->GetBufferPointer());
+
+        if (pErrorBlob) 
+            pErrorBlob->Release();
+
+        return hr;
+    }
+
+    if (pErrorBlob) pErrorBlob->Release();
+
+    return S_OK;
+}
+
 void Application::Callback()
 {
     PostQuitMessage(0);
@@ -81,15 +140,15 @@ void Application::Callback()
 
 void Application::Update()
 {
-	
+	Logger::ENGINE_LOG(Logger::Info, "Update Called")
 }
 
 void Application::Render()
 {
-    PAINTSTRUCT ps;
-    HDC hdc = BeginPaint(hwnd, &ps);
+    //Logger::ENGINE_LOG(Logger::Info, "Rendering");
+    //float bgColor[4]{ 0.f, 0.f, 0.f, 0.f }; // TODO: Replace with color class
+    //deviceContext->ClearRenderTargetView(renderTarget, bgColor);
 
-    FillRect(hdc, &ps.rcPaint, (HBRUSH)(COLOR_WINDOW + 1));
 
-    EndPaint(hwnd, &ps);
+    swapChain->Present(0, 0);
 }

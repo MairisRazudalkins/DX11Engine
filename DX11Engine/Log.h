@@ -5,14 +5,15 @@
 
 namespace Logger
 {
-#define LOG_FATAL_ERROR(...) LogFatalError(__TIME__, __LINE__, __FILE__, __VA_ARGS__);
+    enum LogType
+    {
+        Info,
+        Warning,
+        Error,
+        Fatal
+    };
 
-	enum LogType
-	{
-		Warning,
-        Error, 
-        Fatal,
-	};
+#define ENGINE_LOG(type, ...) LogFatalError(type, __TIME__, __LINE__, __FILE__, __VA_ARGS__);
 
     inline const char* ShortFileName(const char* file)
     {
@@ -25,22 +26,17 @@ namespace Logger
         return name;
     }
 
-    inline std::string LogFormat(const char* time, int line, const char* fileName)
+    inline std::string LogFormat(LogType type, const char* time, int line, const char* fileName)
     {
-        return ("[LOGGER][FATAL][" + std::string(time) + "][LINE:" + std::to_string(line) + "][" + ShortFileName(fileName) + "] ");
-    }
-
-    template <typename Arg1>
-    std::string function(Arg1&& arg1)
-    {
-        return arg1;
+        std::string logLevel = type == Info ? "[INFO]" : type == Warning ? "[WARNING]" : type == Error ? "[ERROR]" : "[FATAl]";
+        return ("[LOGGER]" + logLevel + "[" + std::string(time) + "][LINE:" + std::to_string(line) + "][" + ShortFileName(fileName) + "] ");
     }
 
     template<typename... Args>
-    void LogFatalError(const char* time, int line, const char* fileName, Args&&... args)
+    void LogFatalError(LogType type, const char* time, int line, const char* fileName, Args&&... args)
     {
         std::stringstream outputSS;
-        outputSS << LogFormat(time, line, fileName);
+        outputSS << LogFormat(type, time, line, fileName);
 
         using expander = int[];
         (void)expander { 0, (void(outputSS << args), 0)... };

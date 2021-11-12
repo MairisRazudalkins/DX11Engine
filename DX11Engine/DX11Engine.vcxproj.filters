@@ -36,6 +36,15 @@
     <Filter Include="Source\Core\Events">
       <UniqueIdentifier>{aa54e6eb-1cf9-4230-b2d2-5d1b1fccace5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Core\Objects">
+      <UniqueIdentifier>{410720a1-10df-4f4d-892d-0db031d906de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Objects\Components">
+      <UniqueIdentifier>{52391c5d-fb8f-428e-96a3-2d525f103521}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Shaders">
+      <UniqueIdentifier>{e379e967-f0c6-44d5-b9ce-ad11729ffc83}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entry.cpp">
@@ -52,6 +61,18 @@
     </ClCompile>
     <ClCompile Include="EngineLoop.cpp">
       <Filter>Source\Application\EngineLoop</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Source\Core\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneComponent.cpp">
+      <Filter>Source\Core\Objects\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshComponent.cpp">
+      <Filter>Source\Core\Objects\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Source\Core\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -84,6 +105,21 @@
     </ClInclude>
     <ClInclude Include="EngineLoop.h">
       <Filter>Source\Application\EngineLoop</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Source\Core\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneComponent.h">
+      <Filter>Source\Core\Objects\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshComponent.h">
+      <Filter>Source\Core\Objects\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Source\Core\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsCore.h">
+      <Filter>Source\Application\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

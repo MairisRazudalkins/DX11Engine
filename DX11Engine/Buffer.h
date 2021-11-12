@@ -19,6 +19,9 @@ class Buffer
 public:
 	~Buffer() { if (buffer) buffer->Release(); }
 
+	ID3D11Buffer* GetBuffer() { return buffer; }
+	UINT GetBufferSize() { return bufferSize; }
+
 	template<class T>
 	static Buffer* CreateBuffer(T* data, UINT size, BufferBindFlag bindFlag)
 	{

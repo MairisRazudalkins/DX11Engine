@@ -21,6 +21,10 @@ class Application
 
 	void CreateAppWindow(const wchar_t* className, const wchar_t* windowTitle);
 	void CreateSwapChain(); // maybe move to graphics
+	void CreateRenderTarget();
+	void InitializeShaderInputLayouts();
+
+	HRESULT CompileShaderFromFile(const wchar_t* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, ID3DBlob** ppBlobOut);
 
 public:
 	void Callback();
@@ -30,4 +34,5 @@ public:
 
 	static void CreateApp(HINSTANCE hInstance, int nCmdShow, Application* app = nullptr) { if (inst == nullptr) { app = (inst = new Application(hInstance, nCmdShow)); } }
 	static ID3D11Device* GetDevice() { return inst->device; }
+	static ID3D11DeviceContext* GetDeviceContext() { return inst->deviceContext; }
 };
