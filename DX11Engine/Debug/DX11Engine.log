@@ -1,0 +1,17 @@
+﻿  Application.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(54,31): warning C4018: '<': signed/unsigned mismatch
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(68,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(68,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  EngineLoop.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(54,31): warning C4018: '<': signed/unsigned mismatch
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(68,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(68,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Entry.cpp
+  EventHandler.cpp
+  Input.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(54,31): warning C4018: '<': signed/unsigned mismatch
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(68,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(68,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.cpp(13,20): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  DX11Engine.vcxproj -> E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\Debug\DX11Engine.exe

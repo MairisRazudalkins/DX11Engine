@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source\Application">
+      <UniqueIdentifier>{70a6864c-8c2e-4fac-97ea-3b6a623ce42c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Application\Graphics">
+      <UniqueIdentifier>{02dcd043-fc71-4483-8ff3-cc171c577d2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Application\EngineLoop">
+      <UniqueIdentifier>{1300dfe3-fadf-43f4-846e-03cdf6dc3138}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core">
+      <UniqueIdentifier>{e87e5236-3106-4c09-8627-ab0b05235df5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Math">
+      <UniqueIdentifier>{cbc429b3-5dcf-4af7-8989-32f3a9a446d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Logger">
+      <UniqueIdentifier>{0d275ee5-77a8-4559-866b-a075f734c67d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\PCH">
+      <UniqueIdentifier>{8363fb31-b485-4a45-bc4b-6f390de335c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Input">
+      <UniqueIdentifier>{b523547f-fe0d-48a1-a630-4444721b10f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Events">
+      <UniqueIdentifier>{aa54e6eb-1cf9-4230-b2d2-5d1b1fccace5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Entry.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>Source\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="EventHandler.cpp">
+      <Filter>Source\Core\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Source\Core\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineLoop.cpp">
+      <Filter>Source\Application\EngineLoop</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Events.h">
+      <Filter>Source\Core\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Source\Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Application.h">
+      <Filter>Source\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3.h">
+      <Filter>Source\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>Source\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>Source\Core\Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreMinimal.h">
+      <Filter>Source\Core\PCH</Filter>
+    </ClInclude>
+    <ClInclude Include="Buffer.h">
+      <Filter>Source\Application\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EventHandler.h">
+      <Filter>Source\Core\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineLoop.h">
+      <Filter>Source\Application\EngineLoop</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
