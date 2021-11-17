@@ -1,10 +1,42 @@
-﻿  EngineLoop.cpp
-E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(17,27): warning C4458: declaration of 'position' hides class member
-E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(7,10): message : see declaration of 'SceneObject::position'
-E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(24,37): warning C4458: declaration of 'rotation' hides class member
-E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(6,10): message : see declaration of 'SceneObject::rotation'
-E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(102,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(102,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\EngineLoop.cpp(8,42): warning C4458: declaration of 'app' hides class member
-E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\EngineLoop.h(14,15): message : see declaration of 'EngineLoop::app'
-  DX11Engine.vcxproj -> E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\x64\Debug\DX11Engine.exe
+﻿  FileImporter.cpp
+C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\FileImporter.cpp(59,40): warning C4100: 'fileType': unreferenced formal parameter
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.28.29910\include\xstring(2468,23): warning C4244: 'argument': conversion from 'wchar_t' to 'const _Elem', possible loss of data
+          with
+          [
+              _Elem=char
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.28.29910\include\xstring(2479): message : see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(_Iter,const _Iter,std::input_iterator_tag)' being compiled
+          with
+          [
+              _Iter=wchar_t *
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.28.29910\include\xstring(2479): message : see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(_Iter,const _Iter,std::input_iterator_tag)' being compiled
+          with
+          [
+              _Iter=wchar_t *
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.28.29910\include\xstring(2459): message : see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(const _Iter,const _Iter,std::forward_iterator_tag)' being compiled
+          with
+          [
+              _Iter=wchar_t *
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.28.29910\include\xstring(2459): message : see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(const _Iter,const _Iter,std::forward_iterator_tag)' being compiled
+          with
+          [
+              _Iter=wchar_t *
+          ]
+C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\FileImporter.cpp(29): message : see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\FileImporter.cpp(29): message : see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+  DX11Engine.vcxproj -> C:\Users\r013858k\Documents\GitHub\DX11Engine\x64\Debug\DX11Engine.exe

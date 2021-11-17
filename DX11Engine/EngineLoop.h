@@ -30,4 +30,5 @@ class EngineLoop
 public:
 	static EngineLoop* GetInst() { return inst != nullptr ? inst : inst = new EngineLoop(); }
 
+	static float GetDeltaTime() { return inst != nullptr ? inst->deltaTime : 0.f; }
 };

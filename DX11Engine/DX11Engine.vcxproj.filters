@@ -101,6 +101,15 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Source\Core\Objects\Camera</Filter>
     </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>Source\Application\EngineLoop</Filter>
+    </ClCompile>
+    <ClCompile Include="FileImporter.cpp">
+      <Filter>Source\Application\FileImporter</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJLoader.cpp">
+      <Filter>Source\Application\FileImporter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Events.h">
@@ -166,8 +175,14 @@
     <ClInclude Include="Math.h">
       <Filter>Source\Core\Math</Filter>
     </ClInclude>
-    <ClInclude Include="TimeManager.h">
+    <ClInclude Include="Time.h">
       <Filter>Source\Application\EngineLoop</Filter>
+    </ClInclude>
+    <ClInclude Include="FileImporter.h">
+      <Filter>Source\Application\FileImporter</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJLoader.h">
+      <Filter>Source\Application\FileImporter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

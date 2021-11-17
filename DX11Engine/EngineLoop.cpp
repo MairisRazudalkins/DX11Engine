@@ -2,11 +2,16 @@
 #include "EngineLoop.h"
 #include "Graphics.h"
 #include "Input.h"
+#include "Time.h"
+
+#include "FileImporter.h"
 
 EngineLoop* EngineLoop::inst = nullptr;
 
 void EngineLoop::Initialize(Application* app, int nCmdShow)
 {
+    FileImporter::OpenExplorerDialogue(); //DEBUG (remove) 
+
     this->app = app;
 
     cam = new Camera(Vector3(0.f, 10.f, -10.f));
@@ -121,23 +126,8 @@ void EngineLoop::Update()
 {
     static float t = 0.0f;
 
-    if (Graphics::GetDriverType() == D3D_DRIVER_TYPE_REFERENCE)
-    {
-        t += (float)DirectX::XM_PI * 0.0125f;
-    }
-    else
-    {
-        static DWORD dwTimeStart = 0;
-        DWORD dwTimeCur = GetTickCount();
+    float deltaTime = Time::GetInst()->Tick();
 
-        if (dwTimeStart == 0)
-            dwTimeStart = dwTimeCur;
-
-        t = (dwTimeCur - dwTimeStart) / 1000.0f;
-        deltaTime = t;
-
-        Logger::ENGINE_LOG(Logger::Info, deltaTime);
-    }
 	//DirectX::XMStoreFloat4x4(&Graphics::GetInst()->_world, DirectX::XMMatrixTranslation(0.f, 0.f, 0.f) * DirectX::XMMatrixRotationY(t));
 
 }

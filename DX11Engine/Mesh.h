@@ -10,7 +10,7 @@ public:
 	Buffer* vBuffer;
 	Buffer* iBuffer;
 
-	Mesh() : Object() {};
+	Mesh() : Object() { vBuffer = nullptr; iBuffer = nullptr; }
 	Mesh(int vCount, VertexData::SimpleVertex* verts, int tCount, int* triangles, Vector2* uvs);
 	Mesh(Buffer* vBuffer, Buffer* iBuffer);
 
