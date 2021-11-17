@@ -10,8 +10,9 @@ public:
 	Buffer* vBuffer;
 	Buffer* iBuffer;
 
-	Mesh(int vCount, SimpleVertex* verts, int tCount, int* triangles, Vector2* uvs);
+	Mesh() : Object() {};
+	Mesh(int vCount, VertexData::SimpleVertex* verts, int tCount, int* triangles, Vector2* uvs);
 	Mesh(Buffer* vBuffer, Buffer* iBuffer);
-	virtual ~Mesh();
 
+	virtual ~Mesh();
 };

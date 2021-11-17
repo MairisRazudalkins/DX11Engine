@@ -1,4 +1,10 @@
-﻿  Application.cpp
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.h(68,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.h(68,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  DX11Engine.vcxproj -> C:\Users\r013858k\Documents\GitHub\DX11Engine\x64\Debug\DX11Engine.exe
+﻿  EngineLoop.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(17,27): warning C4458: declaration of 'position' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(7,10): message : see declaration of 'SceneObject::position'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(24,37): warning C4458: declaration of 'rotation' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(6,10): message : see declaration of 'SceneObject::rotation'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(102,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(102,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\EngineLoop.cpp(8,42): warning C4458: declaration of 'app' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\EngineLoop.h(14,15): message : see declaration of 'EngineLoop::app'
+  DX11Engine.vcxproj -> E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\x64\Debug\DX11Engine.exe

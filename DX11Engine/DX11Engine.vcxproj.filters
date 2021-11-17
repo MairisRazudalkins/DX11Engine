@@ -45,6 +45,21 @@
     <Filter Include="Source\Shaders">
       <UniqueIdentifier>{e379e967-f0c6-44d5-b9ce-ad11729ffc83}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Application\FileImporter">
+      <UniqueIdentifier>{2ebdcd89-c568-4206-b0d9-61b22763492e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Debug">
+      <UniqueIdentifier>{210dbe8a-4256-4b5c-9887-e6df77ebfce2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{cf8eda45-a75d-42b1-8c18-790a74dc46e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Objects\Mesh">
+      <UniqueIdentifier>{abd78933-b7bd-44f7-8106-572fb560a100}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Objects\Camera">
+      <UniqueIdentifier>{25e0e0e9-c548-4573-987c-7c0f4c4ce672}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entry.cpp">
@@ -71,8 +86,20 @@
     <ClCompile Include="MeshComponent.cpp">
       <Filter>Source\Core\Objects\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Mesh.cpp">
+    <ClCompile Include="Graphics.cpp">
+      <Filter>Source\Application\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="CoreMinimal.cpp">
+      <Filter>Source\Core\PCH</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneObject.cpp">
       <Filter>Source\Core\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Source\Core\Objects\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source\Core\Objects\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -115,11 +142,42 @@
     <ClInclude Include="MeshComponent.h">
       <Filter>Source\Core\Objects\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>Source\Core\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="GraphicsCore.h">
       <Filter>Source\Application\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="Graphics.h">
+      <Filter>Source\Application\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneObject.h">
+      <Filter>Source\Core\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Source\Core\Objects\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Source\Core\Objects\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Rotator.h">
+      <Filter>Source\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math.h">
+      <Filter>Source\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.h">
+      <Filter>Source\Application\EngineLoop</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DX11 Framework.fx">
+      <Filter>Source\Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DX11 Framework.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

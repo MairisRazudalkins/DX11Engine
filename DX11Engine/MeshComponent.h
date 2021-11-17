@@ -6,9 +6,6 @@ class MeshComponent : public SceneComponent
 {
 	Mesh* mesh;
 
-	DirectX::XMFLOAT4X4 worldMatrix;
-
-
 protected:
 	void Render() override;
 

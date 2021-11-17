@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Application.h"
+#include "Graphics.h"
 
 enum BufferBindFlag
 {
@@ -38,7 +38,7 @@ public:
 		ZeroMemory(&bufferData, sizeof(bufferData));
 		bufferData.pSysMem = data;
 
-		if (FAILED(Application::GetDevice()->CreateBuffer(&bufferDesc, &bufferData, &newBuffer->buffer)))
+		if (FAILED(Graphics::GetDevice()->CreateBuffer(&bufferDesc, &bufferData, &newBuffer->buffer)))
 		{
 			delete newBuffer;
 			return nullptr;

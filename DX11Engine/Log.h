@@ -29,7 +29,7 @@ namespace Logger
     inline std::string LogFormat(LogType type, const char* time, int line, const char* fileName)
     {
         std::string logLevel = type == Info ? "[INFO]" : type == Warning ? "[WARNING]" : type == Error ? "[ERROR]" : "[FATAl]";
-        return ("[LOGGER]" + logLevel + "[" + std::string(time) + "][LINE:" + std::to_string(line) + "][" + ShortFileName(fileName) + "] ");
+        return ("[" + std::string(time) + "][LOGGER]" + logLevel + "[LINE:" + std::to_string(line) + "][" + ShortFileName(fileName) + "] ");
     }
 
     template<typename... Args>
@@ -39,7 +39,7 @@ namespace Logger
         outputSS << LogFormat(type, time, line, fileName);
 
         using expander = int[];
-        (void)expander { 0, (void(outputSS << args), 0)... };
+        (void)expander { 0, (void(outputSS << args), 0)... }; // Replacement for fold expression (requires C++17)
 
         outputSS << std::endl;
         OutputDebugStringA(outputSS.str().c_str());

@@ -1,30 +1,43 @@
-
+#include "CoreMinimal.h"
 #include "EngineLoop.h"
-#include "Application.h"
+#include "Graphics.h"
 #include "Input.h"
 
 EngineLoop* EngineLoop::inst = nullptr;
 
-void EngineLoop::Initialize(Application* app, HINSTANCE* hInstance, const wchar_t* className)
+void EngineLoop::Initialize(Application* app, int nCmdShow)
 {
-    WNDCLASS wc = { };
-    wc.lpfnWndProc = ProcessWindowsEvent;
-    wc.hInstance = *hInstance;
-    wc.lpszClassName = className;
-    
-    RegisterClass(&wc);
-
     this->app = app;
+
+    cam = new Camera(Vector3(0.f, 10.f, -10.f));
+
+    graphics = Graphics::GetInst();
+    graphics->Initialize(nCmdShow);
 }
+
+#ifndef HID_USAGE_PAGE_GENERIC
+#define HID_USAGE_PAGE_GENERIC         ((USHORT) 0x01)
+#endif
+#ifndef HID_USAGE_GENERIC_MOUSE
+#define HID_USAGE_GENERIC_MOUSE        ((USHORT) 0x02)
+#endif
 
 void EngineLoop::StartEngineLoop()
 {
     MSG msg = { };
 
-    while (GetMessage(&msg, NULL, 0, 0))
+    while (WM_QUIT != msg.message)
     {
-        TranslateMessage(&msg);
-        DispatchMessage(&msg);
+        if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+        {
+            TranslateMessage(&msg);
+            DispatchMessage(&msg);
+        }
+        else
+        {
+            this->Update();
+            graphics->Render();
+        }
     }
 }
 
@@ -32,19 +45,25 @@ LRESULT EngineLoop::ProcessWindowsEvent(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 {
     switch (uMsg)
     {
-
-        case WM_MOUSEMOVE:
+        case WM_INPUT: // directly from win docs: https://docs.microsoft.com/en-us/windows/win32/dxtecharts/taking-advantage-of-high-dpi-mouse-movement
         {
-            Input::GetInst()->RecieveMouseMove(LOWORD(lParam), HIWORD(lParam));
+            UINT dwSize = sizeof(RAWINPUT);
+            static BYTE lpb[sizeof(RAWINPUT)];
+
+            GetRawInputData((HRAWINPUT)lParam, RID_INPUT, lpb, &dwSize, sizeof(RAWINPUTHEADER));
+
+            RAWINPUT* raw = (RAWINPUT*)lpb;
+
+            if (raw->header.dwType == RIM_TYPEMOUSE)
+                Input::GetInst()->RecieveRawMouseInput(raw->data.mouse.lLastX, raw->data.mouse.lLastY);
+
             break;
         }
 
     	case WM_CHAR:
 		{
-			if (lParam & 0x40000000) // check if key is repeating
-                Input::GetInst()->RecieveInput(static_cast<unsigned char>(wParam), KeyState::Repeat);
-            else
-                Input::GetInst()->RecieveInput(static_cast<unsigned char>(wParam), KeyState::Pressed);
+			if (lParam & 0x40000000) Input::GetInst()->RecieveInput(static_cast<unsigned char>(wParam), KeyState::Repeat); // check if key is repeating 
+            else Input::GetInst()->RecieveInput(static_cast<unsigned char>(wParam), KeyState::Pressed);
 
             break;
 		}
@@ -67,6 +86,18 @@ LRESULT EngineLoop::ProcessWindowsEvent(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
             break;
         }
 
+        case WM_RBUTTONDOWN:
+        {
+            Input::GetInst()->RecieveInput(VK_RBUTTON, KeyState::Pressed);
+            break;
+        }
+
+        case WM_RBUTTONUP:
+        {
+            Input::GetInst()->RecieveInput(VK_RBUTTON, KeyState::Released);
+            break;
+        }
+
         case WM_DESTROY:
 	    {
 		    PostQuitMessage(0);
@@ -77,16 +108,36 @@ LRESULT EngineLoop::ProcessWindowsEvent(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
         {
             PAINTSTRUCT ps;
 			BeginPaint(hwnd, &ps);
-
-            GetInst()->app->Render();
-
             EndPaint(hwnd, &ps);
         }
-
-        GetInst()->app->Update();
 
     return 0;
     }
 
     return DefWindowProc(hwnd, uMsg, wParam, lParam);
+}
+
+void EngineLoop::Update()
+{
+    static float t = 0.0f;
+
+    if (Graphics::GetDriverType() == D3D_DRIVER_TYPE_REFERENCE)
+    {
+        t += (float)DirectX::XM_PI * 0.0125f;
+    }
+    else
+    {
+        static DWORD dwTimeStart = 0;
+        DWORD dwTimeCur = GetTickCount();
+
+        if (dwTimeStart == 0)
+            dwTimeStart = dwTimeCur;
+
+        t = (dwTimeCur - dwTimeStart) / 1000.0f;
+        deltaTime = t;
+
+        Logger::ENGINE_LOG(Logger::Info, deltaTime);
+    }
+	//DirectX::XMStoreFloat4x4(&Graphics::GetInst()->_world, DirectX::XMMatrixTranslation(0.f, 0.f, 0.f) * DirectX::XMMatrixRotationY(t));
+
 }
