@@ -2,13 +2,14 @@
 
 //custom inputs
 #define VK_MOUSE_UP       0xFF
-#define VK_MOUSE_RIGHT     0x100 // broken!!!!!
+#define VK_MOUSE_RIGHT     0x07 // Using dx11 reserved value.
 
 enum KeyState : int8_t
 {
 	Pressed = 0,
 	Released = 1,
-	Repeat = 2
+	Repeat = 2,
+	Held = 3
 };
 
 class Callback
@@ -25,16 +26,18 @@ class AxisCallback : public Callback
 {
 	KeyState state;
 	float scale = 1.f;
+	bool bIsHeld = false;
 	unsigned char key;
 
 	T* object;
 	void(T::* callback)(float);
 
 public:
-	AxisCallback(float scale, unsigned char key, T* object, void(T::* callback)(float))
+	AxisCallback(float scale, unsigned char key, KeyState state, T* object, void(T::* callback)(float))
 	{
 		this->scale = scale;
 		this->key = key;
+		this->state = state;
 		this->object = object;
 		this->callback = callback;
 	}
@@ -42,7 +45,20 @@ public:
 	virtual ~AxisCallback() { delete object; }
 
 	void Call(float value = 1.f) override { if (object) (object->*callback)(value * scale); }
-	bool ShouldCall(unsigned char key, KeyState state) override { return (this->key == key); }
+	bool ShouldCall(unsigned char key, KeyState state) override 
+	{ 
+		if (this->key == key && this->state == KeyState::Held)
+		{
+			if (state == KeyState::Pressed) // TODO: FIX the engine loop callback so it looks up inputs -> or update from engine loop and peek all key states 
+				bIsHeld = true;
+			else if (state == KeyState::Released)
+				bIsHeld = false;
+
+			return bIsHeld;
+		}
+
+		return this->key == key;
+	}
 };
 
 template <typename T>
@@ -92,7 +108,7 @@ public:
 	void BindAction(unsigned char key, KeyState state, T* object, void(T::* callback)()) { actionBinds.push_back(new ActionCallback<T>(key, state, object, callback)); }
 
 	template<class T>
-	void BindAxis(unsigned char key, float scale, T* object, void(T::* callback)(float)) { axisBinds.push_back(new AxisCallback<T>(scale, key, object, callback)); }
+	void BindAxis(unsigned char key, float scale, T* object, void(T::* callback)(float), KeyState state = KeyState::Held) { axisBinds.push_back(new AxisCallback<T>(scale, key, state, object, callback)); }
 
 	void RecieveInput(unsigned char key, KeyState state, float value = 1.f);
 	void RecieveRawMouseInput(int x, int y);

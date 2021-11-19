@@ -60,6 +60,12 @@
     <Filter Include="Source\Core\Objects\Camera">
       <UniqueIdentifier>{25e0e0e9-c548-4573-987c-7c0f4c4ce672}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\BinaryTree">
+      <UniqueIdentifier>{0e85c9ec-9bec-4871-b966-0935a9c0aef5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Lighting">
+      <UniqueIdentifier>{0c721072-b9bd-4d65-a1ec-6b1353dcf0bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entry.cpp">

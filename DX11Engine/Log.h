@@ -28,7 +28,7 @@ namespace Logger
 
     inline std::string LogFormat(LogType type, const char* time, int line, const char* fileName)
     {
-        std::string logLevel = type == Info ? "[INFO]" : type == Warning ? "[WARNING]" : type == Error ? "[ERROR]" : "[FATAl]";
+        std::string logLevel = type == Info ? "[INFO]" : type == Warning ? "[WARNING]" : type == Error ? "[ERROR]" : "[FATAL]";
         return ("[" + std::string(time) + "][LOGGER]" + logLevel + "[LINE:" + std::to_string(line) + "][" + ShortFileName(fileName) + "] ");
     }
 

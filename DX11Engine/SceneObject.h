@@ -24,7 +24,7 @@ public:
 	void SetRotation(Rotator rotation) { this->rotation = rotation; }
 
 	Vector3 GetForward() { return forward; }
-	Vector3 GetRight() { return forward.Cross(Vector3(0.f, 1.f, 0.f)); }
+	Vector3 GetRight() { return forward.Cross(up); }
 	Vector3 GetUp() { return up; }
 
 	DirectX::XMMATRIX GetMatrix();

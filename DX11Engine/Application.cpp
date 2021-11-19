@@ -28,13 +28,6 @@ Application::~Application()
 
 void Application::RegisterWin(HINSTANCE& hInstance, const wchar_t* className)
 {
-    //WNDCLASS wc = { };
-    //wc.lpfnWndProc = EngineLoop::ProcessWindowsEvent;
-    //wc.hInstance = hInstance;
-    //wc.lpszClassName = className;
-    //
-    //RegisterClass(&wc);
-
     WNDCLASSEX wcex;
     wcex.cbSize = sizeof(WNDCLASSEX);
     wcex.style = CS_HREDRAW | CS_VREDRAW;

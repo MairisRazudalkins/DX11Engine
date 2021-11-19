@@ -47,22 +47,29 @@ class Graphics
 	static Graphics* GetInst() { return inst == nullptr ? inst = new Graphics() : inst; }
 	void Initialize(int nCmdShow);
 
+	int winHeight = 500, winWidth = 500;
+
 public:
 	static ID3D11Device* GetDevice() { return inst->device; }
 	static ID3D11DeviceContext* GetDeviceContext() { return inst->deviceContext; }
 	static D3D_DRIVER_TYPE GetDriverType() { return inst->driverType; }
 
-	static int winHeight, winWidth;
+	static int GetWindowHeight() { return GetInst()->winHeight; }
+	static int GetWindowWidth() { return GetInst()->winWidth; }
 
 	// DEBUG
-	DirectX::XMFLOAT4X4	_world;
+	DirectX::XMFLOAT4X4	world;
 	DirectX::XMFLOAT4X4	_view;
 	DirectX::XMFLOAT4X4	_projection;
 
-	ID3D11Buffer* _pConstantBuffer;
+	Buffer* modelConstBuffer;
+	Buffer* lightConstBuffer;
+	Buffer* mtrlConstBuffer;
 	Mesh* mesh;
 
-	ModelConstBuffer cb;
+	ModelConstBuffer modelCB;
+	LightingConstBuffer lightCB;
+	MaterialConstBuffer mtrlCB;
 
 	//ModelConstBuffer cb;
 };

@@ -15,14 +15,14 @@ namespace ShaderBuffers
 		DirectX::XMMATRIX projection;
 	};
 
-	struct LightingBuffer // TODO: Implement
+	struct LightingConstBuffer // TODO: Implement
 	{
-		
+		DirectX::XMMATRIX world;
 	};
 
-	struct MaterialBuffer // TODO: Implement
+	struct MaterialConstBuffer // TODO: Implement
 	{
-		
+		DirectX::XMMATRIX world;
 	};
 }
 

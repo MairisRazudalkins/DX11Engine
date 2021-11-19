@@ -4,7 +4,7 @@
 
 #include "Graphics.h"
 
-void FileImporter::OpenExplorerDialogue() // directly from windows - https://docs.microsoft.com/en-us/windows/win32/learnwin32/example--the-open-dialog-box
+void FileImporter::OpenExplorerDialogue(std::string& localFilePath) // directly from windows - https://docs.microsoft.com/en-us/windows/win32/learnwin32/example--the-open-dialog-box
 {
     if (SUCCEEDED(CoInitializeEx(NULL, COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE)))
     {
@@ -28,7 +28,7 @@ void FileImporter::OpenExplorerDialogue() // directly from windows - https://doc
                     std::wstring ws(filePath);
                     std::string filePathStr(ws.begin(), ws.end()); // convert PWSTR to string
 
-                    ImportFile(ParsePathToType(filePathStr), filePathStr);
+                    localFilePath = ImportFile(ParsePathToType(filePathStr), filePathStr);
                 }
 
                 item->Release();
@@ -56,19 +56,21 @@ FileType FileImporter::ParsePathToType(std::string path)
     return type;
 }
 
-void FileImporter::ImportFile(FileType fileType, std::string filePath) // TODO: Implement actual loading of objects into memory for use inside application.
+std::string FileImporter::ImportFile(FileType fileType, std::string filePath) // TODO: Implement actual loading of objects into memory for use inside application.
 {
     TCHAR path[MAX_PATH] = L"";
     GetCurrentDirectory(MAX_PATH, path);
 
     std::wstring ws(path);
     std::string projPathStr(ws.begin(), ws.end()); // convert TCHAR to string
+    std::string folderName = fileType == FileType::obj ? "Models\\" : fileType == FileType::dds ? "Textures\\" : "TextFiles\\";
+    std::string localPath = ("Assets\\" + folderName + filePath.substr(filePath.find_last_of("\\") + 1));
 
     //TODO: Allow for adding to different project directories
-    if (!CopyFileA(filePath.c_str(), (projPathStr + "\\Assets\\Models\\" + filePath.substr(filePath.find_last_of("\\") + 1)).c_str(), FALSE)) // copy file to project directory.
+    if (!CopyFileA(filePath.c_str(), (projPathStr + "\\" + localPath).c_str(), FALSE)) // copy file to project directory.
     {
         Logger::ENGINE_LOG(Logger::Error, "Failed to copy file to project path. ERROR:", GetLastError());
-        return;
+        return "";
     }
 
     //MeshData data = OBJLoader::Load(filePath.c_str(), Graphics::GetDevice(), false);
@@ -88,5 +90,7 @@ void FileImporter::ImportFile(FileType fileType, std::string filePath) // TODO: 
     //    break;
     //}
 
-    Logger::ENGINE_LOG(Logger::Info, "Imported " + filePath.substr(filePath.find_last_of("\\") + 1));
+    Logger::ENGINE_LOG(Logger::Info, "Imported ", localPath);
+    
+    return localPath;
 }

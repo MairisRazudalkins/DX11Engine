@@ -6,10 +6,10 @@
 
 #include "Mesh.h"
 #include "OBJLoader.h"
+#include "FileImporter.h"
+#include "Input.h"
 
 Graphics* Graphics::inst = nullptr;
-int Graphics::winWidth = 500;
-int Graphics::winHeight = 500;
 
 Graphics::~Graphics()
 {
@@ -52,14 +52,14 @@ void Graphics::Initialize(int nCmdShow)
 
     //debug
 
-    XMStoreFloat4x4(&_world, DirectX::XMMatrixIdentity());
+    XMStoreFloat4x4(&world, DirectX::XMMatrixIdentity());
 
     DirectX::XMVECTOR Eye = DirectX::XMVectorSet(0.0f, 10.0f, -10.0f, 0.0f);
     DirectX::XMVECTOR At = DirectX::XMVectorSet(0.0f, 0.0f, 0.0f, 0.0f);
     DirectX::XMVECTOR Up = DirectX::XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f);
 
     XMStoreFloat4x4(&_view, DirectX::XMMatrixLookAtLH(Eye, At, Up));
-    XMStoreFloat4x4(&_projection, DirectX::XMMatrixPerspectiveFovLH(DirectX::XM_PIDIV2, winWidth / (FLOAT)winHeight, 0.01f, 100.0f));
+    //XMStoreFloat4x4(&_projection, DirectX::XMMatrixPerspectiveFovLH(DirectX::XM_PIDIV2, winWidth / (FLOAT)winHeight, 0.01f, 1500.f));
 
     //GraphicsCore::SimpleVertex verts[] =
     //{
@@ -81,9 +81,11 @@ void Graphics::Initialize(int nCmdShow)
     //Buffer* vBuffer = Buffer::CreateBuffer<GraphicsCore::SimpleVertex>(verts, 8, BufferBindFlag::Vertex);
     //Buffer* iBuffer = Buffer::CreateBuffer<WORD>(indices, 36, BufferBindFlag::Index);
 
-    GraphicsCore::MeshData data = OBJLoader::Load("Assets/Models/Cube.obj", device, false);
+    std::string localFilePath = "";
+    FileImporter::OpenExplorerDialogue(localFilePath);
+    mesh = new Mesh(OBJLoader::Load(localFilePath.c_str(), device, false));
 
-    mesh = new Mesh(data);
+    Input::GetInst()->FocusCursor(true);
 }
 
 void Graphics::InitializeShaders()
@@ -164,15 +166,19 @@ void Graphics::CreateDepthStencilBuff()
 
 void Graphics::CreateConstBuffer()
 {
-    D3D11_BUFFER_DESC bd;
-    ZeroMemory(&bd, sizeof(bd));
-    bd.Usage = D3D11_USAGE_DEFAULT;
-    bd.ByteWidth = sizeof(ShaderBuffers::ModelConstBuffer);
-    bd.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-    bd.CPUAccessFlags = 0;
+    //D3D11_BUFFER_DESC bd;
+    //ZeroMemory(&bd, sizeof(bd));
+    //bd.Usage = D3D11_USAGE_DEFAULT;
+    //bd.ByteWidth = sizeof(ShaderBuffers::ModelConstBuffer);
+    //bd.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+    //bd.CPUAccessFlags = 0;
+    //
+    //if (FAILED(device->CreateBuffer(&bd, nullptr, &modelConstBuffer)))
+    //    Quit(Logger::Fatal, "Failed to create constant buffer")
 
-    if (FAILED(device->CreateBuffer(&bd, nullptr, &_pConstantBuffer)))
-        Quit(Logger::Fatal, "Failed to create constant buffer")
+    modelConstBuffer = Buffer::CreateConstBuffer<ModelConstBuffer>();
+    lightConstBuffer = Buffer::CreateConstBuffer<LightingConstBuffer>();
+    mtrlConstBuffer = Buffer::CreateConstBuffer<MaterialConstBuffer>();
 }
 
 void Graphics::CreateSwapChain()
@@ -258,21 +264,29 @@ void Graphics::Render()
 
     DirectX::XMMATRIX viewMatrix = Camera::GetActiveCamera()->GetMatrix();
 
-    DirectX::XMMATRIX world = XMLoadFloat4x4(&_world);
-    //DirectX::XMMATRIX view = XMLoadFloat4x4(&viewMatrix);
-    DirectX::XMMATRIX projection = XMLoadFloat4x4(&_projection);
+    modelCB.world = DirectX::XMMatrixTranspose(XMLoadFloat4x4(&world));
+    modelCB.projection = DirectX::XMMatrixTranspose(XMLoadFloat4x4(&Camera::GetActiveCamera()->GetProjection()));
+    modelCB.view = DirectX::XMMatrixTranspose(Camera::GetActiveCamera()->GetMatrix());
 
-    cb.world = DirectX::XMMatrixTranspose(world);
-    cb.projection = DirectX::XMMatrixTranspose(projection);
-    cb.view = DirectX::XMMatrixTranspose(viewMatrix);
+    deviceContext->UpdateSubresource(modelConstBuffer->GetBuffer(), 0, nullptr, &modelCB, 0, 0);
+    deviceContext->UpdateSubresource(lightConstBuffer->GetBuffer(), 0, nullptr, &lightCB, 0, 0);
+    deviceContext->UpdateSubresource(mtrlConstBuffer->GetBuffer(), 0, nullptr, &mtrlCB, 0, 0);
 
-    deviceContext->UpdateSubresource(_pConstantBuffer, 0, nullptr, &cb, 0, 0);
+    // TODO: Tidy this up maybe put into a function??? 
+
+    ID3D11Buffer* modelBuff = modelConstBuffer->GetBuffer();
+    ID3D11Buffer* lightBuff = modelConstBuffer->GetBuffer();
+    ID3D11Buffer* mtrlBuff = modelConstBuffer->GetBuffer();
 
     deviceContext->VSSetShader(vertexShader, nullptr, 0);
-    deviceContext->VSSetConstantBuffers(0, 1, &_pConstantBuffer);
+    deviceContext->VSSetConstantBuffers(0, 1, &modelBuff);
+    deviceContext->VSSetConstantBuffers(1, 1, &lightBuff);
+    deviceContext->VSSetConstantBuffers(2, 1, &mtrlBuff);
 
     deviceContext->PSSetShader(pixelShader, nullptr, 0);
-    deviceContext->PSSetConstantBuffers(0, 1, &_pConstantBuffer);
+    deviceContext->PSSetConstantBuffers(0, 1, &modelBuff);
+    deviceContext->PSSetConstantBuffers(1, 1, &lightBuff);
+    deviceContext->PSSetConstantBuffers(2, 1, &mtrlBuff);
 
     UINT stride = sizeof(GraphicsCore::SimpleVertex), offset = 0;
 

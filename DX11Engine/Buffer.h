@@ -28,9 +28,27 @@ public:
 	UINT GetBufferSize() { return bufferSize; }
 
 	template<class T>
+	static Buffer* CreateConstBuffer() 
+	{
+		Buffer* buffer = new Buffer(0);
+
+		D3D11_BUFFER_DESC bd;
+		ZeroMemory(&bd, sizeof(bd));
+		bd.Usage = D3D11_USAGE_DEFAULT;
+		bd.ByteWidth = sizeof(T);
+		bd.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+		bd.CPUAccessFlags = 0;
+
+		if (FAILED(Graphics::GetDevice()->CreateBuffer(&bd, nullptr, &buffer->buffer)))
+			Quit(Logger::Fatal, "Failed to create constant buffer");
+
+		return buffer;
+	}
+
+	template<class T>
 	static Buffer* CreateBuffer(T* data, UINT size, BufferBindFlag bindFlag)
 	{
-		Buffer* newBuffer = new Buffer(size);
+		Buffer* buffer = new Buffer(size);
 
 		D3D11_BUFFER_DESC bufferDesc;
 		ZeroMemory(&bufferDesc, sizeof(bufferDesc));
@@ -43,12 +61,12 @@ public:
 		ZeroMemory(&bufferData, sizeof(bufferData));
 		bufferData.pSysMem = data;
 
-		if (FAILED(Graphics::GetDevice()->CreateBuffer(&bufferDesc, &bufferData, &newBuffer->buffer)))
+		if (FAILED(Graphics::GetDevice()->CreateBuffer(&bufferDesc, &bufferData, &buffer->buffer)))
 		{
-			delete newBuffer;
+			delete buffer;
 			return nullptr;
 		}
 
-		return newBuffer;
+		return buffer;
 	}
 };

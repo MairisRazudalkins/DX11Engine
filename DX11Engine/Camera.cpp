@@ -1,6 +1,7 @@
 #include "CoreMinimal.h"
 #include "Camera.h"
 
+#include "Graphics.h"
 #include "EngineLoop.h"
 #include "Input.h"
 
@@ -11,7 +12,8 @@ Camera::Camera(Vector3 position, Rotator rotation) : SceneObject(position, rotat
 	if (activeCamera == nullptr)
 		activeCamera = this;
 
-	Input::GetInst()->FocusCursor(true);
+	//XMStoreFloat4x4(&view, DirectX::XMMatrixLookAtLH(Eye, At, Up));
+	XMStoreFloat4x4(&projection, DirectX::XMMatrixPerspectiveFovLH(DirectX::XM_PIDIV2, Graphics::GetWindowWidth() / (FLOAT)Graphics::GetWindowHeight(), 0.01f, 500.f));
 
 	Input::GetInst()->BindAxis(VK_MOUSE_UP, 0.01f, this, &Camera::LookUp);
 	Input::GetInst()->BindAxis(VK_MOUSE_RIGHT, 0.01f, this, &Camera::LookRight);
