@@ -1,6 +1,11 @@
 #pragma once
-#include "CoreMinimal.h"
+
+#ifndef BUFFER
+	#define BUFFER
+
 #include "Graphics.h"
+
+#endif
 
 enum BufferBindFlag
 {

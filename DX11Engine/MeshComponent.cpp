@@ -5,7 +5,7 @@ void MeshComponent::Render()
 {
 	ID3D11DeviceContext* context = Graphics::GetDeviceContext();
 
-	UINT stride = sizeof(VertexData::SimpleVertex), offset = 0;
+	UINT stride = sizeof(GraphicsCore::SimpleVertex), offset = 0;
 
 	ID3D11Buffer* vBuffer = mesh->vBuffer->GetBuffer();
 	ID3D11Buffer* iBuffer = mesh->iBuffer->GetBuffer();

@@ -26,12 +26,12 @@ Camera::Camera(Vector3 position, Rotator rotation) : SceneObject(position, rotat
 
 void Camera::MoveForward(float value)
 {
-	SetPosition(GetPosition() + (GetForward() * value * EngineLoop::GetDeltaTime()));
+	SetPosition(GetPosition() + (GetForward() * value));
 }
 
 void Camera::MoveRight(float value)
 {
-	SetPosition(GetPosition() + (GetRight() * value * EngineLoop::GetDeltaTime()));
+	SetPosition(GetPosition() + (GetRight() * value));
 }
 
 void Camera::LookUp(float value)

@@ -1,4 +1,6 @@
 #include "OBJLoader.h"
+#include "Buffer.h"
+
 #include <string>
 
 bool OBJLoader::FindSimilarVertex(const SimpleVertex& vertex, std::map<SimpleVertex, unsigned short>& vertToIndexMap, unsigned short& index)
@@ -222,8 +224,8 @@ MeshData OBJLoader::Load(const char* filename, ID3D11Device* _pd3dDevice, bool i
 			//_pd3dDevice->CreateBuffer(&bd, &InitData, &vertexBuffer);
 			//
 			//meshData.VertexBuffer = vertexBuffer;
-			meshData.VBOffset = 0;
-			meshData.VBStride = sizeof(SimpleVertex);
+			//meshData.VBOffset = 0;
+			//meshData.VBStride = sizeof(SimpleVertex);
 
 			unsigned short* indicesArray = new unsigned short[meshIndices.size()];
 			unsigned int numMeshIndices = meshIndices.size();
@@ -252,7 +254,7 @@ MeshData OBJLoader::Load(const char* filename, ID3D11Device* _pd3dDevice, bool i
 			//InitData.pSysMem = indicesArray;
 			//_pd3dDevice->CreateBuffer(&bd, &InitData, &indexBuffer);
 
-			meshData.IndexCount = meshIndices.size();
+			//meshData.IndexCount = meshIndices.size();
 			//meshData.IndexBuffer = indexBuffer;
 
 			meshData.vBuffer = Buffer::CreateBuffer<SimpleVertex>(finalVerts, numMeshVertices, BufferBindFlag::Vertex); // implementation of own buffer
@@ -299,8 +301,8 @@ MeshData OBJLoader::Load(const char* filename, ID3D11Device* _pd3dDevice, bool i
 		//_pd3dDevice->CreateBuffer(&bd, &InitData, &vertexBuffer);
 
 		meshData.vBuffer = Buffer::CreateBuffer<SimpleVertex>(finalVerts, numVertices, BufferBindFlag::Vertex);
-		meshData.VBOffset = 0;
-		meshData.VBStride = sizeof(SimpleVertex);
+		//meshData.VBOffset = 0;
+		//meshData.VBStride = sizeof(SimpleVertex);
 
 		//ID3D11Buffer* indexBuffer;
 		//
@@ -314,7 +316,7 @@ MeshData OBJLoader::Load(const char* filename, ID3D11Device* _pd3dDevice, bool i
 		//InitData.pSysMem = indices;
 		//_pd3dDevice->CreateBuffer(&bd, &InitData, &indexBuffer);
 
-		meshData.IndexCount = numIndices;
+		//meshData.IndexCount = numIndices;
 		meshData.iBuffer = Buffer::CreateBuffer<WORD>(indices, numIndices, BufferBindFlag::Index);
 
 		//This data has now been sent over to the GPU so we can delete this CPU-side stuff

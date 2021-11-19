@@ -1,10 +1,11 @@
 #include "CoreMinimal.h"
-#include "GraphicsCore.h"
 #include "Graphics.h"
+
 #include "Application.h"
 #include "Camera.h"
 
 #include "Mesh.h"
+#include "OBJLoader.h"
 
 Graphics* Graphics::inst = nullptr;
 int Graphics::winWidth = 500;
@@ -60,27 +61,29 @@ void Graphics::Initialize(int nCmdShow)
     XMStoreFloat4x4(&_view, DirectX::XMMatrixLookAtLH(Eye, At, Up));
     XMStoreFloat4x4(&_projection, DirectX::XMMatrixPerspectiveFovLH(DirectX::XM_PIDIV2, winWidth / (FLOAT)winHeight, 0.01f, 100.0f));
 
-    VertexData::SimpleVertex verts[] =
-    {
-        {DirectX::XMFLOAT3(-1.0f, 1.0f, -1.0f), DirectX::XMFLOAT4(1.f, 1.f, 1.f, 1.f) },
-        {DirectX::XMFLOAT3(1.0f, 1.0f, -1.0f), DirectX::XMFLOAT4(1.f, 1.f, 1.f, 1.f) },
+    //GraphicsCore::SimpleVertex verts[] =
+    //{
+    //    {DirectX::XMFLOAT3(-1.0f, 1.0f, -1.0f), DirectX::XMFLOAT4(1.f, 1.f, 1.f, 1.f) },
+    //    {DirectX::XMFLOAT3(1.0f, 1.0f, -1.0f), DirectX::XMFLOAT4(1.f, 1.f, 1.f, 1.f) },
+    //
+    //    {DirectX::XMFLOAT3(-1.0f, -1.0f, -1.0f), DirectX::XMFLOAT4(1.f, 1.f, 1.f, 1.f) },
+    //    {DirectX::XMFLOAT3(1.0f, -1.0f, -1.0f), DirectX::XMFLOAT4(1.f, 1.f, 1.f, 1.f) },
+    //
+    //    {DirectX::XMFLOAT3(1.0f, 1.0f, 1.0f), DirectX::XMFLOAT4(1.f, 1.f, 1.f, 1.f) },
+    //    {DirectX::XMFLOAT3(1.0f, -1.0f, 1.0f), DirectX::XMFLOAT4(1.f, 1.f, 1.f, 1.f) },
+    //
+    //    {DirectX::XMFLOAT3(-1.0f, 1.0f, 1.0f), DirectX::XMFLOAT4(1.f, 1.f, 1.f, 1.f) },
+    //    {DirectX::XMFLOAT3(-1.0f, -1.0f, 1.0f), DirectX::XMFLOAT4(1.f, 1.f, 1.f, 1.f) },
+    //};
+    //
+    //WORD indices[] = { 0,1,2, 2,1,3, 3,1,4, 4,5,3, 5,4,6, 7,5,6, 7,0,2, 7,6,0, 4,1,0, 0,6,4, 3,5,2, 5,7,2 };
 
-        {DirectX::XMFLOAT3(-1.0f, -1.0f, -1.0f), DirectX::XMFLOAT4(1.f, 1.f, 1.f, 1.f) },
-        {DirectX::XMFLOAT3(1.0f, -1.0f, -1.0f), DirectX::XMFLOAT4(1.f, 1.f, 1.f, 1.f) },
+    //Buffer* vBuffer = Buffer::CreateBuffer<GraphicsCore::SimpleVertex>(verts, 8, BufferBindFlag::Vertex);
+    //Buffer* iBuffer = Buffer::CreateBuffer<WORD>(indices, 36, BufferBindFlag::Index);
 
-        {DirectX::XMFLOAT3(1.0f, 1.0f, 1.0f), DirectX::XMFLOAT4(1.f, 1.f, 1.f, 1.f) },
-        {DirectX::XMFLOAT3(1.0f, -1.0f, 1.0f), DirectX::XMFLOAT4(1.f, 1.f, 1.f, 1.f) },
+    GraphicsCore::MeshData data = OBJLoader::Load("Assets/Models/Cube.obj", device, false);
 
-        {DirectX::XMFLOAT3(-1.0f, 1.0f, 1.0f), DirectX::XMFLOAT4(1.f, 1.f, 1.f, 1.f) },
-        {DirectX::XMFLOAT3(-1.0f, -1.0f, 1.0f), DirectX::XMFLOAT4(1.f, 1.f, 1.f, 1.f) },
-    };
-
-    WORD indices[] = { 0,1,2, 2,1,3, 3,1,4, 4,5,3, 5,4,6, 7,5,6, 7,0,2, 7,6,0, 4,1,0, 0,6,4, 3,5,2, 5,7,2 };
-
-    Buffer* vBuffer = Buffer::CreateBuffer<VertexData::SimpleVertex>(verts, 8, BufferBindFlag::Vertex);
-    Buffer* iBuffer = Buffer::CreateBuffer<WORD>(indices, 36, BufferBindFlag::Index);
-
-    mesh = new Mesh(vBuffer, iBuffer);
+    mesh = new Mesh(data);
 }
 
 void Graphics::InitializeShaders()
@@ -100,6 +103,9 @@ void Graphics::CreateInputLayouts(ID3DBlob* vsBlob, ID3DBlob* psBlob)
 {
 	if (FAILED(device->CreateInputLayout(InputLayout::VertexShaderInputLayout, ARRAYSIZE(InputLayout::VertexShaderInputLayout), vsBlob->GetBufferPointer(), vsBlob->GetBufferSize(), &vertexInputLayout))) // TODO: Replace input layout 
         Quit("Failed to create input layouts");
+
+    //if (FAILED(device->CreateInputLayout(InputLayout::PixelShaderInputLayout, ARRAYSIZE(InputLayout::PixelShaderInputLayout), psBlob->GetBufferPointer(), psBlob->GetBufferSize(), &pixelInputLayout))) // TODO: Replace input layout 
+    //    Quit("Failed to create input layouts");
 
     vsBlob->Release();
     psBlob->Release();
@@ -268,7 +274,7 @@ void Graphics::Render()
     deviceContext->PSSetShader(pixelShader, nullptr, 0);
     deviceContext->PSSetConstantBuffers(0, 1, &_pConstantBuffer);
 
-    UINT stride = sizeof(VertexData::SimpleVertex), offset = 0;
+    UINT stride = sizeof(GraphicsCore::SimpleVertex), offset = 0;
 
     ID3D11Buffer* vBuffer = this->mesh->vBuffer->GetBuffer();
     ID3D11Buffer* iBuffer = this->mesh->iBuffer->GetBuffer();

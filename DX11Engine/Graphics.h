@@ -63,4 +63,6 @@ public:
 	Mesh* mesh;
 
 	ModelConstBuffer cb;
+
+	//ModelConstBuffer cb;
 };
