@@ -5,8 +5,6 @@
 
 #include "Graphics.h"
 
-#endif
-
 enum BufferBindFlag
 {
 	Vertex = D3D11_BIND_VERTEX_BUFFER,
@@ -70,3 +68,5 @@ public:
 		return buffer;
 	}
 };
+
+#endif

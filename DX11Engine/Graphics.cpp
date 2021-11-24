@@ -42,7 +42,7 @@ void Graphics::Initialize(int nCmdShow)
 
     CreateDepthStencilView();
     CreateDepthStencilBuff();
-    CreateConstBuffer();
+    CreateConstBuffers();
     CreateViewport();
 
     ShowWindow(Application::GetHWND(), nCmdShow);
@@ -103,7 +103,7 @@ void Graphics::InitializeShaders()
 
 void Graphics::CreateInputLayouts(ID3DBlob* vsBlob, ID3DBlob* psBlob)
 {
-	if (FAILED(device->CreateInputLayout(InputLayout::VertexShaderInputLayout, ARRAYSIZE(InputLayout::VertexShaderInputLayout), vsBlob->GetBufferPointer(), vsBlob->GetBufferSize(), &vertexInputLayout))) // TODO: Replace input layout 
+	if (FAILED(device->CreateInputLayout(InputLayout::PixelShaderInputLayout, ARRAYSIZE(InputLayout::PixelShaderInputLayout), vsBlob->GetBufferPointer(), vsBlob->GetBufferSize(), &vertexInputLayout))) // TODO: Replace input layout 
         Quit("Failed to create input layouts");
 
     //if (FAILED(device->CreateInputLayout(InputLayout::PixelShaderInputLayout, ARRAYSIZE(InputLayout::PixelShaderInputLayout), psBlob->GetBufferPointer(), psBlob->GetBufferSize(), &pixelInputLayout))) // TODO: Replace input layout 
@@ -164,7 +164,7 @@ void Graphics::CreateDepthStencilBuff()
         Quit(Logger::Fatal, "Depth stencil view failed to be created");
 }
 
-void Graphics::CreateConstBuffer()
+void Graphics::CreateConstBuffers()
 {
     //D3D11_BUFFER_DESC bd;
     //ZeroMemory(&bd, sizeof(bd));
@@ -179,6 +179,16 @@ void Graphics::CreateConstBuffer()
     modelConstBuffer = Buffer::CreateConstBuffer<ModelConstBuffer>();
     lightConstBuffer = Buffer::CreateConstBuffer<LightingConstBuffer>();
     mtrlConstBuffer = Buffer::CreateConstBuffer<MaterialConstBuffer>();
+
+    lightCB.diffuseLight = XMFLOAT4(1.f, 1.f, 1.f, 1.f);
+    lightCB.ambientLight = XMFLOAT4(1.f, 1.f, 1.f, 1.f);
+    lightCB.specularLight = XMFLOAT4(1.f, 1.f, 1.f, 1.f);
+    lightCB.lightDir = XMFLOAT3(1.f, 1.f, -1.f);
+    
+    mtrlCB.diffuseMtrl = XMFLOAT4(1.f, 1.f, 1.f, 1.f);
+    mtrlCB.ambientMtrl = XMFLOAT4(1.f, 1.f, 1.f, 1.f);
+    mtrlCB.specularMtrl = XMFLOAT4(1.f, 1.f, 1.f, 1.f);
+    mtrlCB.specularPower = 10.f;
 }
 
 void Graphics::CreateSwapChain()
@@ -262,11 +272,12 @@ void Graphics::Render()
 
     //----------- debug -----------
 
-    DirectX::XMMATRIX viewMatrix = Camera::GetActiveCamera()->GetMatrix();
-
     modelCB.world = DirectX::XMMatrixTranspose(XMLoadFloat4x4(&world));
     modelCB.projection = DirectX::XMMatrixTranspose(XMLoadFloat4x4(&Camera::GetActiveCamera()->GetProjection()));
     modelCB.view = DirectX::XMMatrixTranspose(Camera::GetActiveCamera()->GetMatrix());
+
+    Vector3 camPos = Camera::GetActiveCamera()->GetPosition();
+    mtrlCB.eyePosW = DirectX::XMFLOAT3(camPos.x, camPos.y, camPos.z);
 
     deviceContext->UpdateSubresource(modelConstBuffer->GetBuffer(), 0, nullptr, &modelCB, 0, 0);
     deviceContext->UpdateSubresource(lightConstBuffer->GetBuffer(), 0, nullptr, &lightCB, 0, 0);
@@ -277,6 +288,8 @@ void Graphics::Render()
     ID3D11Buffer* modelBuff = modelConstBuffer->GetBuffer();
     ID3D11Buffer* lightBuff = modelConstBuffer->GetBuffer();
     ID3D11Buffer* mtrlBuff = modelConstBuffer->GetBuffer();
+
+    deviceContext->PSSetSamplers(0, 1, &mesh->linearSampler);
 
     deviceContext->VSSetShader(vertexShader, nullptr, 0);
     deviceContext->VSSetConstantBuffers(0, 1, &modelBuff);

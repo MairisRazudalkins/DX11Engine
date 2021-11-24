@@ -1,131 +1,16 @@
-﻿  Camera.cpp
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\SceneObject.h(17,27): warning C4458: declaration of 'position' hides class member
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\SceneObject.h(7,10): message : see declaration of 'SceneObject::position'
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\SceneObject.h(24,37): warning C4458: declaration of 'rotation' hides class member
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\SceneObject.h(6,10): message : see declaration of 'SceneObject::rotation'
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.h(118,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.h(118,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.h(48,32): warning C4458: declaration of 'key' hides class member
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.h(30,16): message : see declaration of 'AxisCallback<T>::key'
-          with
-          [
-              T=Camera
-          ]
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.h(49): message : while compiling class template member function 'bool AxisCallback<T>::ShouldCall(unsigned char,KeyState)'
-          with
-          [
-              T=Camera
-          ]
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.h(111): message : see reference to class template instantiation 'AxisCallback<T>' being compiled
-          with
-          [
-              T=Camera
-          ]
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Camera.cpp(18): message : see reference to function template instantiation 'void Input::BindAxis<Camera>(unsigned char,float,T *,void (__cdecl Camera::* )(float),KeyState)' being compiled
-          with
-          [
-              T=Camera
-          ]
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.h(48,46): warning C4458: declaration of 'state' hides class member
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.h(27,11): message : see declaration of 'AxisCallback<T>::state'
-          with
-          [
-              T=Camera
-          ]
-  EngineLoop.cpp
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\SceneObject.h(17,27): warning C4458: declaration of 'position' hides class member
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\SceneObject.h(7,10): message : see declaration of 'SceneObject::position'
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\SceneObject.h(24,37): warning C4458: declaration of 'rotation' hides class member
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\SceneObject.h(6,10): message : see declaration of 'SceneObject::rotation'
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.h(118,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.h(118,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\EngineLoop.cpp(11,42): warning C4458: declaration of 'app' hides class member
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\EngineLoop.h(14,15): message : see declaration of 'EngineLoop::app'
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\EngineLoop.cpp(129,23): warning C4458: declaration of 'deltaTime' hides class member
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\EngineLoop.h(16,8): message : see declaration of 'EngineLoop::deltaTime'
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\EngineLoop.cpp(129,11): warning C4189: 'deltaTime': local variable is initialized but not referenced
-  FileImporter.cpp
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.28.29910\include\xstring(2468,23): warning C4244: 'argument': conversion from 'wchar_t' to 'const _Elem', possible loss of data
-          with
-          [
-              _Elem=char
-          ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.28.29910\include\xstring(2479): message : see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(_Iter,const _Iter,std::input_iterator_tag)' being compiled
-          with
-          [
-              _Iter=wchar_t *
-          ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.28.29910\include\xstring(2479): message : see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(_Iter,const _Iter,std::input_iterator_tag)' being compiled
-          with
-          [
-              _Iter=wchar_t *
-          ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.28.29910\include\xstring(2459): message : see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(const _Iter,const _Iter,std::forward_iterator_tag)' being compiled
-          with
-          [
-              _Iter=wchar_t *
-          ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.28.29910\include\xstring(2459): message : see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(const _Iter,const _Iter,std::forward_iterator_tag)' being compiled
-          with
-          [
-              _Iter=wchar_t *
-          ]
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\FileImporter.cpp(29): message : see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
-          with
-          [
-              _Elem=wchar_t,
-              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
-              _Alloc=std::allocator<char>
-          ]
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\FileImporter.cpp(29): message : see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
-          with
-          [
-              _Elem=wchar_t,
-              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
-              _Alloc=std::allocator<char>
-          ]
-  Graphics.cpp
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\SceneObject.h(17,27): warning C4458: declaration of 'position' hides class member
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\SceneObject.h(7,10): message : see declaration of 'SceneObject::position'
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\SceneObject.h(24,37): warning C4458: declaration of 'rotation' hides class member
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\SceneObject.h(6,10): message : see declaration of 'SceneObject::rotation'
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Buffer.h(43,4): warning C4002: too many arguments for function-like macro invocation 'Quit'
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.h(118,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.h(118,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Graphics.cpp(123,9): warning C4002: too many arguments for function-like macro invocation 'Quit'
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Graphics.cpp(139,9): warning C4002: too many arguments for function-like macro invocation 'Quit'
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Graphics.cpp(161,9): warning C4002: too many arguments for function-like macro invocation 'Quit'
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Graphics.cpp(164,9): warning C4002: too many arguments for function-like macro invocation 'Quit'
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Graphics.cpp(268): warning C4238: nonstandard extension used: class rvalue used as lvalue
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Graphics.cpp(268,109): warning C4238: nonstandard extension used: class rvalue used as lvalue
-  Input.cpp
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.h(118,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.h(118,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.cpp(12,3): warning C5205: delete of an abstract class 'Callback' that has a non-virtual destructor results in undefined behavior
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.h(15): message : see declaration of 'Callback'
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.cpp(15,3): warning C5205: delete of an abstract class 'Callback' that has a non-virtual destructor results in undefined behavior
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.h(15): message : see declaration of 'Callback'
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.cpp(58,38): warning C4458: declaration of 'x' hides class member
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.h(102,6): message : see declaration of 'Input::x'
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.cpp(58,45): warning C4458: declaration of 'y' hides class member
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.h(102,13): message : see declaration of 'Input::y'
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.cpp(72,26): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Input.cpp(74,26): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Mesh.cpp
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Buffer.h(43,4): warning C4002: too many arguments for function-like macro invocation 'Quit'
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Mesh.cpp(5,96): warning C4100: 'uvs': unreferenced formal parameter
-  MeshComponent.cpp
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Buffer.h(43,4): warning C4002: too many arguments for function-like macro invocation 'Quit'
-  Time.cpp
-  Generating Code...
-  OBJLoader.cpp
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Vector3.h(36,32): warning C4100: 'vec': unreferenced formal parameter
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Vector3.h(38,33): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\OBJLoader.cpp(34,37): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\OBJLoader.cpp(147,34): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\OBJLoader.cpp(148,51): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\OBJLoader.cpp(176,48): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\OBJLoader.cpp(200,54): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\OBJLoader.cpp(231,52): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\OBJLoader.cpp(70,62): warning C4100: '_pd3dDevice': unreferenced formal parameter
-  DX11Engine.vcxproj -> C:\Users\r013858k\Documents\GitHub\DX11Engine\x64\Debug\DX11Engine.exe
+﻿  Graphics.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(22,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(17,27): warning C4458: declaration of 'position' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(7,10): message : see declaration of 'SceneObject::position'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(24,37): warning C4458: declaration of 'rotation' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(6,10): message : see declaration of 'SceneObject::rotation'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Buffer.h(41,4): warning C4002: too many arguments for function-like macro invocation 'Quit'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(118,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(118,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Graphics.cpp(123,9): warning C4002: too many arguments for function-like macro invocation 'Quit'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Graphics.cpp(139,9): warning C4002: too many arguments for function-like macro invocation 'Quit'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Graphics.cpp(161,9): warning C4002: too many arguments for function-like macro invocation 'Quit'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Graphics.cpp(164,9): warning C4002: too many arguments for function-like macro invocation 'Quit'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Graphics.cpp(276): warning C4238: nonstandard extension used: class rvalue used as lvalue
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Graphics.cpp(276,109): warning C4238: nonstandard extension used: class rvalue used as lvalue
+  DX11Engine.vcxproj -> E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\x64\Debug\DX11Engine.exe

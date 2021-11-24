@@ -66,6 +66,12 @@
     <Filter Include="Source\Core\Lighting">
       <UniqueIdentifier>{0c721072-b9bd-4d65-a1ec-6b1353dcf0bc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Application\FileImporter\OBJLoader">
+      <UniqueIdentifier>{bd4ca2dd-82e2-480f-a0e3-9295bbc91e99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Application\FileImporter\DDSLoader">
+      <UniqueIdentifier>{f7419a91-d948-4387-ba37-9e4edf472cf6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entry.cpp">
@@ -114,7 +120,10 @@
       <Filter>Source\Application\FileImporter</Filter>
     </ClCompile>
     <ClCompile Include="OBJLoader.cpp">
-      <Filter>Source\Application\FileImporter</Filter>
+      <Filter>Source\Application\FileImporter\OBJLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="DDSTextureLoader.cpp">
+      <Filter>Source\Application\FileImporter\DDSLoader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -188,7 +197,10 @@
       <Filter>Source\Application\FileImporter</Filter>
     </ClInclude>
     <ClInclude Include="OBJLoader.h">
-      <Filter>Source\Application\FileImporter</Filter>
+      <Filter>Source\Application\FileImporter\OBJLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="DDSTextureLoader.h">
+      <Filter>Source\Application\FileImporter\DDSLoader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

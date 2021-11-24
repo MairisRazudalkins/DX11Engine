@@ -3,9 +3,6 @@
 #ifndef GRAPHICS_CORE
 #define GRAPHICS_CORE
 
-#include "Vector3.h"
-#include "Vector2.h"
-
 namespace ShaderBuffers
 {
 	struct ModelConstBuffer
@@ -15,14 +12,23 @@ namespace ShaderBuffers
 		DirectX::XMMATRIX projection;
 	};
 
+	__declspec(align(16)) // fix dx11 buffer complaining that the data isn't a multiple of 16
 	struct LightingConstBuffer // TODO: Implement
 	{
-		DirectX::XMMATRIX world;
+		DirectX::XMFLOAT4 diffuseLight;
+		DirectX::XMFLOAT4 ambientLight;
+		DirectX::XMFLOAT4 specularLight;
+		DirectX::XMFLOAT3 lightDir;
 	};
 
+	__declspec(align(16))
 	struct MaterialConstBuffer // TODO: Implement
 	{
-		DirectX::XMMATRIX world;
+		DirectX::XMFLOAT4 diffuseMtrl;
+		DirectX::XMFLOAT4 ambientMtrl;
+		DirectX::XMFLOAT4 specularMtrl;
+		float specularPower;
+		DirectX::XMFLOAT3 eyePosW;
 	};
 }
 
@@ -60,9 +66,9 @@ namespace GraphicsCore
 
 	struct SimpleVertex
 	{
-		DirectX::XMFLOAT3 Pos;
-		DirectX::XMFLOAT3 Normal;
-		DirectX::XMFLOAT2 TexC;
+		DirectX::XMFLOAT3 pos;
+		DirectX::XMFLOAT3 normal;
+		DirectX::XMFLOAT2 texCoord;
 
 		bool operator<(const SimpleVertex other) const
 		{

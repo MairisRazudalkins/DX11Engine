@@ -37,7 +37,7 @@ class Graphics
 	void CreateInputLayouts(ID3DBlob* vsBlob, ID3DBlob* psBlob);
 	void CreateDepthStencilView();
 	void CreateDepthStencilBuff();
-	void CreateConstBuffer();
+	void CreateConstBuffers();
 	void InitializeShaders();
 	void CreateSwapChain();
 	void CreateViewport();

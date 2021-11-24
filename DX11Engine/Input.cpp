@@ -74,7 +74,7 @@ void Input::RecieveRawMouseInput(int x, int y)
 			axisBinds.at(i)->Call(x);
 	}
 
-	Logger::ENGINE_LOG(Logger::Info, "X:", x, " Y:", y);
+	//Logger::ENGINE_LOG(Logger::Info, "X:", x, " Y:", y);
 }
 
 void Input::TrapCursor()
