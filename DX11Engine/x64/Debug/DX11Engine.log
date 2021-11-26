@@ -1,4 +1,8 @@
-﻿  SkyDomeShader.cpp
-E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(22,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
-E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Buffer.h(41,4): warning C4002: too many arguments for function-like macro invocation 'Quit'
-  DX11Engine.vcxproj -> E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\x64\Debug\DX11Engine.exe
+﻿  DirectionalLight.cpp
+  Light.cpp
+C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Light.cpp(4,61): warning C4100: 'color': unreferenced formal parameter
+C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Light.cpp(4,41): warning C4100: 'brightness': unreferenced formal parameter
+C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Light.cpp(4,24): warning C4100: 'transform': unreferenced formal parameter
+  PointLight.cpp
+  Generating Code...
+  DX11Engine.vcxproj -> C:\Users\r013858k\Documents\GitHub\DX11Engine\x64\Debug\DX11Engine.exe

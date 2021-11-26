@@ -1,6 +1,8 @@
 #pragma once
 #include "GraphicsCore.h"
 
+class Mesh;
+
 using namespace ShaderBuffers;
 
 class BaseShader
@@ -9,14 +11,28 @@ class BaseShader
 protected:
 	HRESULT CompileShaderFromFile(WCHAR* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, ID3DBlob** ppBlobOut);
 
-	virtual void InitializeShaders() = 0;
-	virtual void SetShaderParams(ID3D11DeviceContext* deviceContext) = 0;
+	virtual void InitializeShaders();
+	virtual void SetShaderParams(ID3D11DeviceContext* deviceContext);
+	virtual void InitializeInputLayout(ID3DBlob* vsBlob, ID3DBlob* psBlob);
+	virtual void CreateRasterizer();
+
+	Mesh* mesh;
 
 	ID3D11InputLayout* inputLayout;
+	ID3D11RasterizerState* rasterizer;
+
+	ID3D11VertexShader* vertexShader;
+	ID3D11PixelShader* pixelShader;
+
+	Buffer* modelConstBuffer;
+	ModelConstBuffer modelCB;
 
 public:
 	BaseShader();
+	BaseShader(Mesh* mesh);
 	virtual ~BaseShader();
 
-	virtual void Render() = 0;
+	virtual void Render();
+
+	void Initialize(Mesh* mesh);
 };

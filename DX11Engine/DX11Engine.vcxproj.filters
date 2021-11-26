@@ -72,11 +72,17 @@
     <Filter Include="Source\Application\FileImporter\DDSLoader">
       <UniqueIdentifier>{f7419a91-d948-4387-ba37-9e4edf472cf6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Core\Objects\Mesh\Sphere">
-      <UniqueIdentifier>{8ef1e5a0-b798-4229-ad86-727e4b493e8a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Shaders\Basic">
       <UniqueIdentifier>{cf7126e1-3952-41e2-be42-c626d758dc65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Objects\Mesh\SkyDome">
+      <UniqueIdentifier>{8ef1e5a0-b798-4229-ad86-727e4b493e8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Lighting\DirectionalLight">
+      <UniqueIdentifier>{007ae6aa-ab4a-4cfa-86df-7cd279078d19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Lighting\PointLight">
+      <UniqueIdentifier>{86da4e9f-3bba-4261-b26e-aa1e53c6b00e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -132,13 +138,22 @@
       <Filter>Source\Application\FileImporter\DDSLoader</Filter>
     </ClCompile>
     <ClCompile Include="SkyDome.cpp">
-      <Filter>Source\Core\Objects\Mesh\Sphere</Filter>
+      <Filter>Source\Core\Objects\Mesh\SkyDome</Filter>
     </ClCompile>
     <ClCompile Include="SkyDomeShader.cpp">
-      <Filter>Source\Core\Objects\Mesh\Sphere</Filter>
+      <Filter>Source\Core\Objects\Mesh\SkyDome</Filter>
     </ClCompile>
     <ClCompile Include="BaseShader.cpp">
       <Filter>Source\Shaders\Basic</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>Source\Core\Lighting</Filter>
+    </ClCompile>
+    <ClCompile Include="PointLight.cpp">
+      <Filter>Source\Core\Lighting\PointLight</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectionalLight.cpp">
+      <Filter>Source\Core\Lighting\DirectionalLight</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -218,16 +233,25 @@
       <Filter>Source\Application\FileImporter\DDSLoader</Filter>
     </ClInclude>
     <ClInclude Include="SkyDome.h">
-      <Filter>Source\Core\Objects\Mesh\Sphere</Filter>
+      <Filter>Source\Core\Objects\Mesh\SkyDome</Filter>
     </ClInclude>
     <ClInclude Include="Transform.h">
       <Filter>Source\Core\Math</Filter>
     </ClInclude>
     <ClInclude Include="SkyDomeShader.h">
-      <Filter>Source\Core\Objects\Mesh\Sphere</Filter>
+      <Filter>Source\Core\Objects\Mesh\SkyDome</Filter>
     </ClInclude>
     <ClInclude Include="BaseShader.h">
       <Filter>Source\Shaders\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>Source\Core\Lighting</Filter>
+    </ClInclude>
+    <ClInclude Include="PointLight.h">
+      <Filter>Source\Core\Lighting\PointLight</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectionalLight.h">
+      <Filter>Source\Core\Lighting\DirectionalLight</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -235,6 +259,9 @@
       <Filter>Source\Shaders</Filter>
     </None>
     <None Include="SkyDomeShader.fx">
+      <Filter>Source\Shaders</Filter>
+    </None>
+    <None Include="UnlitShader.fx">
       <Filter>Source\Shaders</Filter>
     </None>
   </ItemGroup>

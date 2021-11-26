@@ -9,6 +9,7 @@
 #include "SkyDome.h"
 #include "OBJLoader.h"
 #include "Input.h"
+#include "SkyDomeShader.h"
 
 Graphics* Graphics::inst = nullptr;
 
@@ -57,8 +58,7 @@ void Graphics::Initialize(int nCmdShow)
 
     std::string localFilePath = "";
     FileImporter::OpenExplorerDialogue(localFilePath);
-    mesh = new Mesh(Transform(), OBJLoader::Load(localFilePath.c_str(), false), nullptr);
-    mesh->LoadTexture();
+    mesh = new Mesh(Transform(), OBJLoader::Load(localFilePath.c_str(), false), new BaseShader());
 
 	skyDome = new SkyDome();
 
@@ -256,8 +256,6 @@ void Graphics::Render()
     ID3D11Buffer* lightBuff = modelConstBuffer->GetBuffer();
     ID3D11Buffer* mtrlBuff = modelConstBuffer->GetBuffer();
 
-    deviceContext->PSSetSamplers(0, 1, &mesh->linearSampler);
-    
     deviceContext->VSSetShader(vertexShader, nullptr, 0);
     deviceContext->VSSetConstantBuffers(0, 1, &modelBuff);
     deviceContext->VSSetConstantBuffers(1, 1, &lightBuff);

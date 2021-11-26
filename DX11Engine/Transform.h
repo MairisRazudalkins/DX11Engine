@@ -9,7 +9,7 @@ public:
 	Vector3 scale;
 	Rotator rotation;
 
-	Transform(Vector3 position = Vector3(), Rotator rotation = Rotator(), Vector3 scale = Vector3()) 
+	Transform(Vector3 position = Vector3(), Rotator rotation = Rotator(), Vector3 scale = Vector3(1.f, 1.f, 1.f)) 
 	{
 		this->position = position;
 		this->rotation = rotation;

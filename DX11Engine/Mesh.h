@@ -16,7 +16,7 @@ public:
 
 	BaseShader* shader;
 
-	Mesh(Transform transform, BaseShader* shader) : SceneObject(transform) { vBuffer = nullptr; iBuffer = nullptr; this->shader = shader; }
+	Mesh(Transform transform, BaseShader* shader): SceneObject(transform) { vBuffer = nullptr; iBuffer = nullptr; this->shader = shader; }
 	Mesh(Transform transform, int vCount, GraphicsCore::SimpleVertex* verts, int tCount, int* triangles, BaseShader* shader);
 	Mesh(Transform transform, Buffer* vBuffer, Buffer* iBuffer, BaseShader* shader);
 	Mesh(Transform transform, GraphicsCore::MeshData data, BaseShader* shader);

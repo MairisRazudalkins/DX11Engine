@@ -11,6 +11,7 @@ Mesh::Mesh(Transform transform, int vCount, GraphicsCore::SimpleVertex* verts, i
 	iBuffer = Buffer::CreateBuffer<int>(triangles, tCount, BufferBindFlag::Index);
 
 	this->shader = shader;
+	this->shader->Initialize(this);
 }
 
 Mesh::Mesh(Transform transform, Buffer* vBuffer, Buffer* iBuffer, BaseShader* shader) : SceneObject(transform)
@@ -19,6 +20,7 @@ Mesh::Mesh(Transform transform, Buffer* vBuffer, Buffer* iBuffer, BaseShader* sh
 	this->iBuffer = iBuffer;
 
 	this->shader = shader;
+	this->shader->Initialize(this);
 }
 
 Mesh::Mesh(Transform transform, GraphicsCore::MeshData data, BaseShader* shader) : SceneObject(transform)
@@ -27,6 +29,7 @@ Mesh::Mesh(Transform transform, GraphicsCore::MeshData data, BaseShader* shader)
 	this->iBuffer = data.iBuffer;
 
 	this->shader = shader;
+	this->shader->Initialize(this);
 }
 
 Mesh::~Mesh()
