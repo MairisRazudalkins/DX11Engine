@@ -73,7 +73,7 @@ namespace GraphicsCore
 		bool operator<(const SimpleVertex other) const
 		{
 			return memcmp((void*)this, (void*)&other, sizeof(SimpleVertex)) > 0;
-		};;
+		};
 	};
 }
 

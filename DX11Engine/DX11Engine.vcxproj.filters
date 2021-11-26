@@ -72,6 +72,12 @@
     <Filter Include="Source\Application\FileImporter\DDSLoader">
       <UniqueIdentifier>{f7419a91-d948-4387-ba37-9e4edf472cf6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Core\Objects\Mesh\Sphere">
+      <UniqueIdentifier>{8ef1e5a0-b798-4229-ad86-727e4b493e8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Shaders\Basic">
+      <UniqueIdentifier>{cf7126e1-3952-41e2-be42-c626d758dc65}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entry.cpp">
@@ -124,6 +130,15 @@
     </ClCompile>
     <ClCompile Include="DDSTextureLoader.cpp">
       <Filter>Source\Application\FileImporter\DDSLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyDome.cpp">
+      <Filter>Source\Core\Objects\Mesh\Sphere</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyDomeShader.cpp">
+      <Filter>Source\Core\Objects\Mesh\Sphere</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseShader.cpp">
+      <Filter>Source\Shaders\Basic</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -202,9 +217,24 @@
     <ClInclude Include="DDSTextureLoader.h">
       <Filter>Source\Application\FileImporter\DDSLoader</Filter>
     </ClInclude>
+    <ClInclude Include="SkyDome.h">
+      <Filter>Source\Core\Objects\Mesh\Sphere</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Source\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyDomeShader.h">
+      <Filter>Source\Core\Objects\Mesh\Sphere</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseShader.h">
+      <Filter>Source\Shaders\Basic</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="DX11 Framework.fx">
+      <Filter>Source\Shaders</Filter>
+    </None>
+    <None Include="SkyDomeShader.fx">
       <Filter>Source\Shaders</Filter>
     </None>
   </ItemGroup>

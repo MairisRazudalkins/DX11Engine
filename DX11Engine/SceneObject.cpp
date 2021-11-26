@@ -1,21 +1,20 @@
 #include "CoreMinimal.h"
 #include "SceneObject.h"
 
-SceneObject::SceneObject(Vector3 position, Rotator rotation, Vector3 scale)
+SceneObject::SceneObject(Transform transform)
 {
-	this->position = position;
-	this->rotation = rotation;
-	this->scale = scale;
+	this->transform.position = transform.position;
+	this->transform.rotation = transform.rotation;
+	this->transform.scale = transform.scale;
 }
 
 DirectX::XMMATRIX SceneObject::GetMatrix()
 {
-	auto quaternion = DirectX::XMQuaternionRotationRollPitchYaw(rotation.x, rotation.y, rotation.z);
-
+	auto quaternion = DirectX::XMQuaternionRotationRollPitchYaw(transform.rotation.x, transform.rotation.y, transform.rotation.z);
 	DirectX::XMVECTOR fwdDir = DirectX::XMVector3Rotate(DirectX::XMVectorSet(0.f, 0.f, 1.f, 0), quaternion);
-	DirectX::XMVECTOR upDir = DirectX::XMVectorSet(0, 1, 0, 0);
-	DirectX::XMVECTOR pos = DirectX::XMVectorSet(position.x, position.y, position.z, 0);
+	DirectX::XMMATRIX scale = DirectX::XMMatrixScaling(transform.scale.x, transform.scale.y, transform.scale.z);
 
 	this->forward = Vector3(fwdDir.m128_f32[0], fwdDir.m128_f32[1], fwdDir.m128_f32[2]);
-	return DirectX::XMMatrixLookToLH(pos, fwdDir, DirectX::XMVectorSet(0, 1, 0, 0));
+
+	return scale * DirectX::XMMatrixTranslation(transform.position.x, transform.position.y, transform.position.z);
 }

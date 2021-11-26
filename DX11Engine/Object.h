@@ -5,4 +5,5 @@ class Object
 
 public:
 	Object() = default;
+
 };

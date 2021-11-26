@@ -1,11 +1,11 @@
 #pragma once
-#include "Object.h"
+#include "SceneObject.h"
 #include "Buffer.h"
 
-class Mesh : public Object
-{
+class BaseShader;
 
-	void LoadTexture();
+class Mesh : public SceneObject
+{
 
 public:
 	Buffer* vBuffer;
@@ -14,10 +14,16 @@ public:
 	ID3D11ShaderResourceView* textureResourceView = nullptr;
 	ID3D11SamplerState* linearSampler = nullptr;
 
-	Mesh() : Object() { vBuffer = nullptr; iBuffer = nullptr; }
-	Mesh(int vCount, GraphicsCore::SimpleVertex* verts, int tCount, int* triangles, Vector2* uvs);
-	Mesh(Buffer* vBuffer, Buffer* iBuffer);
-	Mesh(GraphicsCore::MeshData data);
+	BaseShader* shader;
+
+	Mesh(Transform transform, BaseShader* shader) : SceneObject(transform) { vBuffer = nullptr; iBuffer = nullptr; this->shader = shader; }
+	Mesh(Transform transform, int vCount, GraphicsCore::SimpleVertex* verts, int tCount, int* triangles, BaseShader* shader);
+	Mesh(Transform transform, Buffer* vBuffer, Buffer* iBuffer, BaseShader* shader);
+	Mesh(Transform transform, GraphicsCore::MeshData data, BaseShader* shader);
+
+	virtual void Render(ID3D11DeviceContext* deviceContext, UINT& offset);
 
 	virtual ~Mesh();
+
+	void LoadTexture();
 };

@@ -7,7 +7,7 @@
 
 Camera* Camera::activeCamera = nullptr;
 
-Camera::Camera(Vector3 position, Rotator rotation) : SceneObject(position, rotation)
+Camera::Camera(Vector3 position, Rotator rotation) : SceneObject(Transform(position, rotation))
 {
 	if (activeCamera == nullptr)
 		activeCamera = this;
@@ -24,6 +24,17 @@ Camera::Camera(Vector3 position, Rotator rotation) : SceneObject(position, rotat
 	Input::GetInst()->BindAxis('a', 1.f, this, &Camera::MoveRight);
 	Input::GetInst()->BindAxis('d', -1.f, this, &Camera::MoveRight);
 
+}
+
+DirectX::XMMATRIX Camera::GetMatrix()
+{
+	auto quaternion = DirectX::XMQuaternionRotationRollPitchYaw(transform.rotation.x, transform.rotation.y, transform.rotation.z);
+	
+	DirectX::XMVECTOR fwdDir = DirectX::XMVector3Rotate(DirectX::XMVectorSet(0.f, 0.f, 1.f, 0), quaternion);
+	DirectX::XMVECTOR pos = DirectX::XMVectorSet(transform.position.x, transform.position.y, transform.position.z, 0);
+	this->forward = Vector3(fwdDir.m128_f32[0], fwdDir.m128_f32[1], fwdDir.m128_f32[2]);
+
+	return DirectX::XMMatrixLookToLH(pos, fwdDir, DirectX::XMVectorSet(0, 1, 0, 0));
 }
 
 void Camera::MoveForward(float value)

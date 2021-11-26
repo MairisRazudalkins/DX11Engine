@@ -3,10 +3,11 @@
 
 #include "Application.h"
 #include "Camera.h"
+#include "FileImporter.h"
 
 #include "Mesh.h"
+#include "SkyDome.h"
 #include "OBJLoader.h"
-#include "FileImporter.h"
 #include "Input.h"
 
 Graphics* Graphics::inst = nullptr;
@@ -54,36 +55,12 @@ void Graphics::Initialize(int nCmdShow)
 
     XMStoreFloat4x4(&world, DirectX::XMMatrixIdentity());
 
-    DirectX::XMVECTOR Eye = DirectX::XMVectorSet(0.0f, 10.0f, -10.0f, 0.0f);
-    DirectX::XMVECTOR At = DirectX::XMVectorSet(0.0f, 0.0f, 0.0f, 0.0f);
-    DirectX::XMVECTOR Up = DirectX::XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f);
-
-    XMStoreFloat4x4(&_view, DirectX::XMMatrixLookAtLH(Eye, At, Up));
-    //XMStoreFloat4x4(&_projection, DirectX::XMMatrixPerspectiveFovLH(DirectX::XM_PIDIV2, winWidth / (FLOAT)winHeight, 0.01f, 1500.f));
-
-    //GraphicsCore::SimpleVertex verts[] =
-    //{
-    //    {DirectX::XMFLOAT3(-1.0f, 1.0f, -1.0f), DirectX::XMFLOAT4(1.f, 1.f, 1.f, 1.f) },
-    //    {DirectX::XMFLOAT3(1.0f, 1.0f, -1.0f), DirectX::XMFLOAT4(1.f, 1.f, 1.f, 1.f) },
-    //
-    //    {DirectX::XMFLOAT3(-1.0f, -1.0f, -1.0f), DirectX::XMFLOAT4(1.f, 1.f, 1.f, 1.f) },
-    //    {DirectX::XMFLOAT3(1.0f, -1.0f, -1.0f), DirectX::XMFLOAT4(1.f, 1.f, 1.f, 1.f) },
-    //
-    //    {DirectX::XMFLOAT3(1.0f, 1.0f, 1.0f), DirectX::XMFLOAT4(1.f, 1.f, 1.f, 1.f) },
-    //    {DirectX::XMFLOAT3(1.0f, -1.0f, 1.0f), DirectX::XMFLOAT4(1.f, 1.f, 1.f, 1.f) },
-    //
-    //    {DirectX::XMFLOAT3(-1.0f, 1.0f, 1.0f), DirectX::XMFLOAT4(1.f, 1.f, 1.f, 1.f) },
-    //    {DirectX::XMFLOAT3(-1.0f, -1.0f, 1.0f), DirectX::XMFLOAT4(1.f, 1.f, 1.f, 1.f) },
-    //};
-    //
-    //WORD indices[] = { 0,1,2, 2,1,3, 3,1,4, 4,5,3, 5,4,6, 7,5,6, 7,0,2, 7,6,0, 4,1,0, 0,6,4, 3,5,2, 5,7,2 };
-
-    //Buffer* vBuffer = Buffer::CreateBuffer<GraphicsCore::SimpleVertex>(verts, 8, BufferBindFlag::Vertex);
-    //Buffer* iBuffer = Buffer::CreateBuffer<WORD>(indices, 36, BufferBindFlag::Index);
-
     std::string localFilePath = "";
     FileImporter::OpenExplorerDialogue(localFilePath);
-    mesh = new Mesh(OBJLoader::Load(localFilePath.c_str(), device, false));
+    mesh = new Mesh(Transform(), OBJLoader::Load(localFilePath.c_str(), false), nullptr);
+    mesh->LoadTexture();
+
+	skyDome = new SkyDome();
 
     Input::GetInst()->FocusCursor(true);
 }
@@ -166,16 +143,6 @@ void Graphics::CreateDepthStencilBuff()
 
 void Graphics::CreateConstBuffers()
 {
-    //D3D11_BUFFER_DESC bd;
-    //ZeroMemory(&bd, sizeof(bd));
-    //bd.Usage = D3D11_USAGE_DEFAULT;
-    //bd.ByteWidth = sizeof(ShaderBuffers::ModelConstBuffer);
-    //bd.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-    //bd.CPUAccessFlags = 0;
-    //
-    //if (FAILED(device->CreateBuffer(&bd, nullptr, &modelConstBuffer)))
-    //    Quit(Logger::Fatal, "Failed to create constant buffer")
-
     modelConstBuffer = Buffer::CreateConstBuffer<ModelConstBuffer>();
     lightConstBuffer = Buffer::CreateConstBuffer<LightingConstBuffer>();
     mtrlConstBuffer = Buffer::CreateConstBuffer<MaterialConstBuffer>();
@@ -290,27 +257,21 @@ void Graphics::Render()
     ID3D11Buffer* mtrlBuff = modelConstBuffer->GetBuffer();
 
     deviceContext->PSSetSamplers(0, 1, &mesh->linearSampler);
-
+    
     deviceContext->VSSetShader(vertexShader, nullptr, 0);
     deviceContext->VSSetConstantBuffers(0, 1, &modelBuff);
     deviceContext->VSSetConstantBuffers(1, 1, &lightBuff);
     deviceContext->VSSetConstantBuffers(2, 1, &mtrlBuff);
-
+    
     deviceContext->PSSetShader(pixelShader, nullptr, 0);
     deviceContext->PSSetConstantBuffers(0, 1, &modelBuff);
     deviceContext->PSSetConstantBuffers(1, 1, &lightBuff);
     deviceContext->PSSetConstantBuffers(2, 1, &mtrlBuff);
 
-    UINT stride = sizeof(GraphicsCore::SimpleVertex), offset = 0;
+    UINT offset = 0;
 
-    ID3D11Buffer* vBuffer = this->mesh->vBuffer->GetBuffer();
-    ID3D11Buffer* iBuffer = this->mesh->iBuffer->GetBuffer();
-
-    // TODO: Assign vShader and pShader
-
-    deviceContext->IASetVertexBuffers(0, 1, &vBuffer, &stride, &offset);
-    deviceContext->IASetIndexBuffer(iBuffer, DXGI_FORMAT_R16_UINT, 0);
-    deviceContext->DrawIndexed(this->mesh->iBuffer->GetBufferSize(), 0, 0);
+    mesh->Render(deviceContext, offset);
+    skyDome->Render(deviceContext, offset);
 
     //----------- debug -----------
 

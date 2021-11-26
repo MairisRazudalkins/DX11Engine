@@ -2,6 +2,7 @@
 #include "GraphicsCore.h"
 
 class Mesh;
+class SkyDome;
 
 using namespace ShaderBuffers;
 
@@ -19,9 +20,6 @@ class Graphics
 
 	IDXGISwapChain*			swapChain;
 
-	ID3D11PixelShader*		pixelShader;
-	ID3D11VertexShader*		vertexShader;
-
 	ID3D11RenderTargetView* renderTargetView;
 	ID3D11DepthStencilView* depthStencilView;
 	ID3D11Texture2D*		depthStencilBuffer;
@@ -31,6 +29,9 @@ class Graphics
 
 	D3D_DRIVER_TYPE         driverType;
 	D3D_FEATURE_LEVEL       featureLevel;
+
+	ID3D11VertexShader* vertexShader;
+	ID3D11PixelShader* pixelShader;
 
 	HRESULT CompileShaderFromFile(WCHAR* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, ID3DBlob** ppBlobOut);
 
@@ -65,11 +66,15 @@ public:
 	Buffer* modelConstBuffer;
 	Buffer* lightConstBuffer;
 	Buffer* mtrlConstBuffer;
+
 	Mesh* mesh;
+	SkyDome* skyDome;
 
 	ModelConstBuffer modelCB;
 	LightingConstBuffer lightCB;
 	MaterialConstBuffer mtrlCB;
+
+	static ModelConstBuffer GetModelCB() { return inst->modelCB; }
 
 	//ModelConstBuffer cb;
 };
