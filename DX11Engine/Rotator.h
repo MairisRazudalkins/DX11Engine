@@ -27,4 +27,5 @@ public:
 	Rotator ToRadians() { return Rotator(x, y, z) * (Math::PI / 180.f); }
 
 	std::string ToString() { char buffer[256]; sprintf_s(buffer, "X: %f Y: %f Z: %f", x, y, z); return std::string(buffer); }
+	float* ToArray() { return new float[] {x, y, z}; }
 };

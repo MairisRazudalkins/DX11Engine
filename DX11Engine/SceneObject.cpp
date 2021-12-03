@@ -12,9 +12,8 @@ DirectX::XMMATRIX SceneObject::GetMatrix()
 {
 	auto quaternion = DirectX::XMQuaternionRotationRollPitchYaw(transform.rotation.x, transform.rotation.y, transform.rotation.z);
 	DirectX::XMVECTOR fwdDir = DirectX::XMVector3Rotate(DirectX::XMVectorSet(0.f, 0.f, 1.f, 0), quaternion);
-	DirectX::XMMATRIX scale = DirectX::XMMatrixScaling(transform.scale.x, transform.scale.y, transform.scale.z);
 
 	this->forward = Vector3(fwdDir.m128_f32[0], fwdDir.m128_f32[1], fwdDir.m128_f32[2]);
 
-	return scale * DirectX::XMMatrixTranslation(transform.position.x, transform.position.y, transform.position.z);
+	return DirectX::XMMatrixRotationQuaternion(quaternion) * DirectX::XMMatrixScaling(transform.scale.x, transform.scale.y, transform.scale.z) * DirectX::XMMatrixTranslation(transform.position.x, transform.position.y, transform.position.z);
 }

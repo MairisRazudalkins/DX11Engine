@@ -9,6 +9,8 @@ class LogUi : public UI
 	ImVector<int> lineOffsets;
 	bool autoScroll;
 
+	float winHeight;
+
 public:
 	LogUi();
 
@@ -17,4 +19,5 @@ public:
 	void AddLog(std::string logMsg);
 	void ClearLog();
 
+	float GetHeight() { return winHeight; }
 };

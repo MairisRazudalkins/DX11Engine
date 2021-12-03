@@ -56,6 +56,9 @@ public:
 	static int GetWindowWidth() { return GetInst()->winWidth; }
 
 	// DEBUG
+
+	void SelectObj();
+
 	DirectX::XMFLOAT4X4	world;
 	DirectX::XMFLOAT4X4	_view;
 	DirectX::XMFLOAT4X4	_projection;

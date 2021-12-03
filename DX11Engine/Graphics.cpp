@@ -5,6 +5,7 @@
 #include "Camera.h"
 #include "FileImporter.h"
 #include "ImGuiManager.h"
+#include "PropertyManagerUi.h"
 
 #include "Mesh.h"
 #include "SkyDome.h"
@@ -64,31 +65,30 @@ void Graphics::Initialize(int nCmdShow)
 
     std::string localFilePath = "";
     FileImporter::OpenExplorerDialogue(localFilePath);
-    mesh = new Mesh(Transform(), OBJLoader::Load(localFilePath.c_str(), false), new LitShader());
-    plane = new Plane(5, 5, Transform(), new LitShader());
+    mesh = new Mesh(Transform(), OBJLoader::Load(localFilePath.c_str(), false), new BaseShader());
+    plane = new Plane(50, 50, Transform(), new LitShader());
 
 	skyDome = new SkyDome();
 
-    //for (int i = 0; i < 5000; i++)
-    //{
-    //    ImGuiManager::GetInst()->GetLogUI()->AddLog(std::to_string(i) + " test dwawdaw dawdahwduih ad");
-    //}
+    Input::GetInst()->FocusCursor(true);
 
-    SimplexNoise noise(2351);
+    Input::GetInst()->BindAction('o', KeyState::Pressed, this, &Graphics::SelectObj); // DEBUG (REMOVE)
+}
 
-    for (int y = 0; y < 20; y++)
+void Graphics::SelectObj()
+{
+    static bool t = false;
+
+    if (t)
     {
-        std::string str = "";
-
-        for (int x = 0; x < 20; x++)
-        {
-            str += std::to_string(noise.GetNoise3D(x, y, 1.f, 6, 1.8f, 0.4f, 1.f)) + " ";
-        }
-
-        Logger::ENGINE_LOG(Logger::Info, str);
+        PropertyManagerUi::GetInst()->EditProperties(nullptr);
+    }
+    else
+    {
+        PropertyManagerUi::GetInst()->EditProperties(mesh);
     }
 
-    Input::GetInst()->FocusCursor(true);
+    t = !t;
 }
 
 void Graphics::CreateInputLayouts(ID3DBlob* vsBlob, ID3DBlob* psBlob)
@@ -254,7 +254,7 @@ void Graphics::Render()
 
     modelCB.world = DirectX::XMMatrixTranspose(XMLoadFloat4x4(&world));
     modelCB.projection = DirectX::XMMatrixTranspose(XMLoadFloat4x4(&Camera::GetActiveCamera()->GetProjection()));
-    modelCB.view = DirectX::XMMatrixTranspose(Camera::GetActiveCamera()->GetMatrix());
+    modelCB.view = DirectX::XMMatrixTranspose(Camera::GetActiveCamera()->GetCameraMatrix());
 
     Vector3 camPos = Camera::GetActiveCamera()->GetPosition();
     mtrlCB.eyePos = DirectX::XMFLOAT3(camPos.x, camPos.y, camPos.z);

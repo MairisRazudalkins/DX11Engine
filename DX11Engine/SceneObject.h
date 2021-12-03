@@ -18,6 +18,9 @@ public:
 	Rotator GetRotation() { return transform.rotation; }
 	void SetRotation(Rotator rotation) { this->transform.rotation = rotation; }
 
+	Vector3 GetScale() { return transform.scale; }
+	void SetScale(Vector3 scale) { this->transform.scale = scale; }
+
 	Vector3 GetForward() { return forward; }
 	Vector3 GetRight() { return forward.Cross(up); }
 	Vector3 GetUp() { return up; }

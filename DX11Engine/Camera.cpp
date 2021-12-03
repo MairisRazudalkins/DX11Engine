@@ -27,7 +27,7 @@ Camera::Camera(Vector3 position, Rotator rotation) : SceneObject(Transform(posit
 
 }
 
-DirectX::XMMATRIX Camera::GetMatrix()
+DirectX::XMMATRIX Camera::GetCameraMatrix() // TODO: FIX - Causing weird results for objects when moved in the scene. View matrix is messed up.
 {
 	Rotator rot = (transform.rotation).ToRadians();
 	auto quaternion = DirectX::XMQuaternionRotationRollPitchYaw(rot.x, rot.y, rot.z);
@@ -36,7 +36,7 @@ DirectX::XMMATRIX Camera::GetMatrix()
 	DirectX::XMVECTOR pos = DirectX::XMVectorSet(transform.position.x, transform.position.y, transform.position.z, 0);
 	this->forward = Vector3(fwdDir.m128_f32[0], fwdDir.m128_f32[1], fwdDir.m128_f32[2]);
 
-	return DirectX::XMMatrixLookToLH(pos, fwdDir, DirectX::XMVectorSet(0, 1, 0, 0));
+	return DirectX::XMMatrixLookToLH(pos, fwdDir, DirectX::XMVectorSet(up.x, up.y, up.z, 0));
 }
 
 void Camera::MoveForward(float value)

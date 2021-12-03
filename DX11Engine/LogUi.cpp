@@ -19,6 +19,9 @@ void LogUi::Render()
 	ImGui::SetWindowPos(ImVec2(0.f, height - ImGui::GetWindowHeight()));
 
 	// Main window
+
+	winHeight = ImGui::GetWindowHeight();
+
 	bool clear = ImGui::Button("Clear");
 	ImGui::SameLine();
 

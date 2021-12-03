@@ -19,5 +19,5 @@ public:
 	static Camera* GetActiveCamera() { return activeCamera; }
 	DirectX::XMFLOAT4X4 GetProjection() { return projection; }
 
-	DirectX::XMMATRIX GetMatrix() override;
+	DirectX::XMMATRIX GetCameraMatrix();
 };

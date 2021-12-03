@@ -2,6 +2,7 @@
 #include "ImGuiManager.h"
 
 #include "LogUi.h"
+#include "PropertyManagerUi.h"
 
 #include "Application.h"
 #include "DirectionalLight.h"
@@ -45,27 +46,28 @@ void ImGuiManager::Render()
 	ImGui_ImplWin32_NewFrame();
 	ImGui::NewFrame();
 
-	ImGui::Begin("Directional Light Settings", 0, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoMove);
-
-	Vector3 lightDir = DirectionalLight::GetInst()->GetLightDirection();
-
-	ImGui::SliderFloat("X", &lightDir.x, -2.f, 2.f);
-	ImGui::SliderFloat("Y", &lightDir.y, -2.f, 2.f);
-	ImGui::SliderFloat("Z", &lightDir.z, -2.f, 2.f);
-
-	DirectionalLight::GetInst()->SetLightDirection(lightDir);
-
-	Color lightColor = DirectionalLight::GetInst()->GetDiffuseColor();
-
-	float color[3] = { lightColor.r, lightColor.g, lightColor.b };
-
-	ImGui::ColorEdit3("LightColor", color);
-
-	DirectionalLight::GetInst()->SetDiffuseColor(Color(color[0], color[1], color[2], 1.f));
-
-	ImGui::End();
+	//ImGui::Begin("Directional Light Settings", 0, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoMove);
+	//
+	//Vector3 lightDir = DirectionalLight::GetInst()->GetLightDirection();
+	//
+	//ImGui::SliderFloat("X", &lightDir.x, -2.f, 2.f);
+	//ImGui::SliderFloat("Y", &lightDir.y, -2.f, 2.f);
+	//ImGui::SliderFloat("Z", &lightDir.z, -2.f, 2.f);
+	//
+	//DirectionalLight::GetInst()->SetLightDirection(lightDir);
+	//
+	//Color lightColor = DirectionalLight::GetInst()->GetDiffuseColor();
+	//
+	//float color[3] = { lightColor.r, lightColor.g, lightColor.b };
+	//
+	//ImGui::ColorEdit3("LightColor", color);
+	//
+	//DirectionalLight::GetInst()->SetDiffuseColor(Color(color[0], color[1], color[2], 1.f));
+	//
+	//ImGui::End();
 
 	logUIInst->Render();
+	PropertyManagerUi::GetInst()->Render();
 
 	ImGui::Render();
 	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());

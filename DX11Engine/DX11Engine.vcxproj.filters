@@ -102,6 +102,9 @@
     <Filter Include="Source\UI\LogUi">
       <UniqueIdentifier>{6c7cea36-81b5-40d4-8931-3fe20fb30572}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\UI\PropertyManager">
+      <UniqueIdentifier>{0901a57f-4487-4252-8629-38f67f4286c2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entry.cpp">
@@ -202,6 +205,9 @@
     </ClCompile>
     <ClCompile Include="LogUi.cpp">
       <Filter>Source\UI\LogUi</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertyManagerUi.cpp">
+      <Filter>Source\UI\PropertyManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -345,6 +351,9 @@
     </ClInclude>
     <ClInclude Include="SimplexNoise.h">
       <Filter>Source\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="PropertyManagerUi.h">
+      <Filter>Source\UI\PropertyManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

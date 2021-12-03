@@ -282,6 +282,7 @@
     </ClCompile>
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="PointLight.cpp" />
+    <ClCompile Include="PropertyManagerUi.cpp" />
     <ClCompile Include="SceneComponent.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
@@ -328,6 +329,7 @@
     <ClInclude Include="OBJLoader.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="PointLight.h" />
+    <ClInclude Include="PropertyManagerUi.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Rotator.h" />
     <ClInclude Include="SceneComponent.h" />

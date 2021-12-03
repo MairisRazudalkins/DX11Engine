@@ -1,5 +1,7 @@
 #pragma once
+
 class LogUi;
+class PropertyManagerUi;
 
 class ImGuiManager
 {
