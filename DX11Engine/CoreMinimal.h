@@ -21,6 +21,7 @@
 
 // Math
 #include "Math.h"
+#include "Color.h"
 #include "Vector2.h"
 #include "Vector3.h"
 #include "Rotator.h"

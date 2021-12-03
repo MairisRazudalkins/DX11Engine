@@ -21,7 +21,10 @@ class EngineLoop
 	static LRESULT CALLBACK ProcessWindowsEvent(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 	void Initialize(Application* app, int nCmdShow);
+	void SetupEngineBinds();
 	void StartEngineLoop();
+
+	void ToggleGameFocus();
 
 	void Update();
 

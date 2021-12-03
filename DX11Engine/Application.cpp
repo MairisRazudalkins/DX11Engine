@@ -3,8 +3,6 @@
 #include "EngineLoop.h"
 #include "resource.h"
 
-#include "Input.h"
-
 Application* Application::inst = nullptr;
 
 Application::Application(HINSTANCE hInstance, int nCmdShow) : hInstance(hInstance)
@@ -48,7 +46,7 @@ void Application::RegisterWin(HINSTANCE& hInstance, const wchar_t* className)
 
 void Application::CreateAppWindow(const wchar_t* className, const wchar_t* windowTitle)
 {
-    RECT rc = { 0, 0, 640, 480 };
+    RECT rc = { 0, 0, 1620, 960 };
     AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, FALSE);
 
     Check((hwnd = CreateWindow(className, windowTitle, WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, rc.right - rc.left, rc.bottom - rc.top, nullptr, nullptr, hInstance, nullptr)));

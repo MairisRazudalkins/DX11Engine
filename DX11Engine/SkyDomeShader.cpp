@@ -21,20 +21,7 @@ SkyDomeShader::SkyDomeShader(SkyDome* skyDome) : BaseShader(skyDome)
 
 SkyDomeShader::~SkyDomeShader()
 {
-
 	if (resourceView) resourceView->Release();
-
-	delete modelConstBuffer;
-}
-
-void SkyDomeShader::Render()
-{
-	BaseShader::Render();
-
-	//ID3D11DeviceContext* deviceContext = Graphics::GetDeviceContext();
-	//
-	//deviceContext->VSSetShader(vertexShader, nullptr, 0);
-	//deviceContext->PSSetShader(pixelShader, nullptr, 0);
 }
 
 void SkyDomeShader::InitializeShaders()
@@ -66,27 +53,11 @@ void SkyDomeShader::CreateRasterizer()
 	ZeroMemory(&rasterizerDesc, sizeof(D3D11_RASTERIZER_DESC));
 
 	rasterizerDesc.FillMode = D3D11_FILL_SOLID;
-	rasterizerDesc.CullMode = D3D11_CULL_BACK;
-	rasterizerDesc.FrontCounterClockwise = true;
+	rasterizerDesc.CullMode = D3D11_CULL_FRONT;
+	rasterizerDesc.FrontCounterClockwise = false;
 
 	Graphics::GetDevice()->CreateRasterizerState(&rasterizerDesc, &rasterizer);
 }
-
-//void SkyDomeShader::SetShaderParams(ID3D11DeviceContext* deviceContext)
-//{
-//	if (skyDome)
-//	{
-//		modelCB = Graphics::GetModelCB();
-//		ID3D11Buffer* modelBuffer = modelConstBuffer->GetBuffer();
-//
-//		//modelCB.world = Camera::GetActiveCamera()->GetMatrix();
-//		modelCB.world = skyDome->GetMatrix();
-//
-//		deviceContext->UpdateSubresource(modelBuffer, 0, nullptr, &modelCB, 0, 0);
-//		deviceContext->VSSetConstantBuffers(0, 1, &modelBuffer);
-//		deviceContext->PSSetConstantBuffers(0, 1, &modelBuffer);
-//	}
-//}
 
 void SkyDomeShader::CreateTextures()
 {

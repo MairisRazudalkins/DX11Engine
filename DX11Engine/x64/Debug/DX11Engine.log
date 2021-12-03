@@ -1,8 +1,14 @@
-﻿  DirectionalLight.cpp
-  Light.cpp
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Light.cpp(4,61): warning C4100: 'color': unreferenced formal parameter
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Light.cpp(4,41): warning C4100: 'brightness': unreferenced formal parameter
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Light.cpp(4,24): warning C4100: 'transform': unreferenced formal parameter
-  PointLight.cpp
-  Generating Code...
-  DX11Engine.vcxproj -> C:\Users\r013858k\Documents\GitHub\DX11Engine\x64\Debug\DX11Engine.exe
+﻿  LitShader.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(23,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(32,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(42,2): warning C4324: 'ShaderBuffers::MaterialConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\LitShader.h(12,32): warning C4324: 'LitShader': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Buffer.h(40,4): warning C4002: too many arguments for function-like macro invocation 'Quit'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectionalLight.h(18,40): warning C4324: 'DirectionalLight': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectionalLight.h(30,43): warning C4458: declaration of 'lightDir' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectionalLight.h(15,10): message : see declaration of 'DirectionalLight::lightDir'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectionalLight.h(33,43): warning C4458: declaration of 'diffuseColor' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Light.h(8,8): message : see declaration of 'Light::diffuseColor'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\LitShader.cpp(47,34): warning C4458: declaration of 'mesh' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\BaseShader.h(20,8): message : see declaration of 'BaseShader::mesh'
+  DX11Engine.vcxproj -> E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\x64\Debug\DX11Engine.exe

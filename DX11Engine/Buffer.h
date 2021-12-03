@@ -17,7 +17,6 @@ class Buffer
 	UINT bufferSize = 0;
 
 	Buffer(UINT size) : bufferSize(size) {};
-	Buffer(const Buffer& rhs) = default;
 
 public:
 	~Buffer() { if (buffer) buffer->Release(); }

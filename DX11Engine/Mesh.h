@@ -11,7 +11,7 @@ public:
 	Buffer* vBuffer;
 	Buffer* iBuffer;
 
-	ID3D11ShaderResourceView* textureResourceView = nullptr;
+	ID3D11ShaderResourceView* textureResourceView = nullptr; // remove
 	ID3D11SamplerState* linearSampler = nullptr;
 
 	BaseShader* shader;

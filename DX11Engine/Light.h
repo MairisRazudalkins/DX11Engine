@@ -3,12 +3,15 @@
 
 class Light : public SceneObject
 {
+
 protected:
-	Vector3 color;
+	Color diffuseColor = Color(1.f, 1.f, 1.f, 1.f);
+	Color ambientColor = Color(1.f, 1.f, 1.f, 1.f);
 
 	float brightness = 1.f;
 
 public:
-	Light(Transform transform, float brightness, Vector3 color); // TODO: Replace Vector3 with color class once implemented.
-	~Light();
+	Light();
+	Light(Transform transform, float brightness, Color color); // TODO: Replace Vector3 with color class once implemented.
+	~Light() = default;
 };

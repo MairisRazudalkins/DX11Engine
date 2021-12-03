@@ -4,11 +4,16 @@
 #include "Application.h"
 #include "Camera.h"
 #include "FileImporter.h"
+#include "ImGuiManager.h"
 
 #include "Mesh.h"
 #include "SkyDome.h"
+#include "Plane.h"
+
 #include "OBJLoader.h"
 #include "Input.h"
+#include "LitShader.h"
+#include "SimplexNoise.h"
 #include "SkyDomeShader.h"
 
 Graphics* Graphics::inst = nullptr;
@@ -24,12 +29,12 @@ Graphics::~Graphics()
 
     if (renderTargetView) renderTargetView->Release();
     if (depthStencilView) depthStencilView->Release();
-
-    if (vertexShader) vertexShader->Release();
-    if (pixelShader) pixelShader->Release();
+    if (depthStencilBuffer) depthStencilBuffer->Release();
 
     if (pixelInputLayout) pixelInputLayout->Release();
     if (vertexInputLayout) vertexInputLayout->Release();
+
+    delete modelConstBuffer;
 }
 
 void Graphics::Initialize(int nCmdShow)
@@ -40,7 +45,8 @@ void Graphics::Initialize(int nCmdShow)
     winHeight = rc.bottom - rc.top;
 
     CreateSwapChain();
-    InitializeShaders();
+
+	ImGuiManager::Initialize(device, deviceContext);
 
     CreateDepthStencilView();
     CreateDepthStencilBuff();
@@ -58,24 +64,31 @@ void Graphics::Initialize(int nCmdShow)
 
     std::string localFilePath = "";
     FileImporter::OpenExplorerDialogue(localFilePath);
-    mesh = new Mesh(Transform(), OBJLoader::Load(localFilePath.c_str(), false), new BaseShader());
+    mesh = new Mesh(Transform(), OBJLoader::Load(localFilePath.c_str(), false), new LitShader());
+    plane = new Plane(5, 5, Transform(), new LitShader());
 
 	skyDome = new SkyDome();
 
+    //for (int i = 0; i < 5000; i++)
+    //{
+    //    ImGuiManager::GetInst()->GetLogUI()->AddLog(std::to_string(i) + " test dwawdaw dawdahwduih ad");
+    //}
+
+    SimplexNoise noise(2351);
+
+    for (int y = 0; y < 20; y++)
+    {
+        std::string str = "";
+
+        for (int x = 0; x < 20; x++)
+        {
+            str += std::to_string(noise.GetNoise3D(x, y, 1.f, 6, 1.8f, 0.4f, 1.f)) + " ";
+        }
+
+        Logger::ENGINE_LOG(Logger::Info, str);
+    }
+
     Input::GetInst()->FocusCursor(true);
-}
-
-void Graphics::InitializeShaders()
-{
-	ID3DBlob* vsBlob = nullptr, *psBlob = nullptr;
-
-	if (FAILED(CompileShaderFromFile(L"DX11 Framework.fx", "VS", "vs_4_0", &vsBlob)) || FAILED(CompileShaderFromFile(L"DX11 Framework.fx", "PS", "ps_4_0", &psBlob))) // compile shader
-        Quit("Failed to compile shader from file");
-
-	if (FAILED(device->CreateVertexShader(vsBlob->GetBufferPointer(), vsBlob->GetBufferSize(), nullptr, &vertexShader)) || FAILED(device->CreatePixelShader(psBlob->GetBufferPointer(), psBlob->GetBufferSize(), nullptr, &pixelShader))) // create shader
-        Quit("Failed to compile shader from file");
-
-    CreateInputLayouts(vsBlob, psBlob);
 }
 
 void Graphics::CreateInputLayouts(ID3DBlob* vsBlob, ID3DBlob* psBlob)
@@ -144,18 +157,18 @@ void Graphics::CreateDepthStencilBuff()
 void Graphics::CreateConstBuffers()
 {
     modelConstBuffer = Buffer::CreateConstBuffer<ModelConstBuffer>();
-    lightConstBuffer = Buffer::CreateConstBuffer<LightingConstBuffer>();
-    mtrlConstBuffer = Buffer::CreateConstBuffer<MaterialConstBuffer>();
-
-    lightCB.diffuseLight = XMFLOAT4(1.f, 1.f, 1.f, 1.f);
-    lightCB.ambientLight = XMFLOAT4(1.f, 1.f, 1.f, 1.f);
-    lightCB.specularLight = XMFLOAT4(1.f, 1.f, 1.f, 1.f);
-    lightCB.lightDir = XMFLOAT3(1.f, 1.f, -1.f);
-    
-    mtrlCB.diffuseMtrl = XMFLOAT4(1.f, 1.f, 1.f, 1.f);
-    mtrlCB.ambientMtrl = XMFLOAT4(1.f, 1.f, 1.f, 1.f);
-    mtrlCB.specularMtrl = XMFLOAT4(1.f, 1.f, 1.f, 1.f);
-    mtrlCB.specularPower = 10.f;
+    //lightConstBuffer = Buffer::CreateConstBuffer<LightingConstBuffer>();
+    //mtrlConstBuffer = Buffer::CreateConstBuffer<MaterialConstBuffer>();
+    //
+    //lightCB.diffuseLight = XMFLOAT4(1.f, 1.f, 1.f, 1.f);
+    //lightCB.ambientLight = XMFLOAT4(1.f, 1.f, 1.f, 1.f);
+    //lightCB.specularLight = XMFLOAT4(1.f, 1.f, 1.f, 1.f);
+    //lightCB.lightDir = XMFLOAT3(1.f, 1.f, -1.f);
+    //
+    //mtrlCB.diffuseMtrl = XMFLOAT4(1.f, 1.f, 1.f, 1.f);
+    //mtrlCB.ambientMtrl = XMFLOAT4(1.f, 1.f, 1.f, 1.f);
+    //mtrlCB.specularMtrl = XMFLOAT4(1.f, 1.f, 1.f, 1.f);
+    //mtrlCB.specularPower = 10.f;
 }
 
 void Graphics::CreateSwapChain()
@@ -244,34 +257,24 @@ void Graphics::Render()
     modelCB.view = DirectX::XMMatrixTranspose(Camera::GetActiveCamera()->GetMatrix());
 
     Vector3 camPos = Camera::GetActiveCamera()->GetPosition();
-    mtrlCB.eyePosW = DirectX::XMFLOAT3(camPos.x, camPos.y, camPos.z);
+    mtrlCB.eyePos = DirectX::XMFLOAT3(camPos.x, camPos.y, camPos.z);
 
     deviceContext->UpdateSubresource(modelConstBuffer->GetBuffer(), 0, nullptr, &modelCB, 0, 0);
-    deviceContext->UpdateSubresource(lightConstBuffer->GetBuffer(), 0, nullptr, &lightCB, 0, 0);
-    deviceContext->UpdateSubresource(mtrlConstBuffer->GetBuffer(), 0, nullptr, &mtrlCB, 0, 0);
+    //deviceContext->UpdateSubresource(lightConstBuffer->GetBuffer(), 0, nullptr, &lightCB, 0, 0);
+    //deviceContext->UpdateSubresource(mtrlConstBuffer->GetBuffer(), 0, nullptr, &mtrlCB, 0, 0);
 
     // TODO: Tidy this up maybe put into a function??? 
 
-    ID3D11Buffer* modelBuff = modelConstBuffer->GetBuffer();
-    ID3D11Buffer* lightBuff = modelConstBuffer->GetBuffer();
-    ID3D11Buffer* mtrlBuff = modelConstBuffer->GetBuffer();
-
-    deviceContext->VSSetShader(vertexShader, nullptr, 0);
-    deviceContext->VSSetConstantBuffers(0, 1, &modelBuff);
-    deviceContext->VSSetConstantBuffers(1, 1, &lightBuff);
-    deviceContext->VSSetConstantBuffers(2, 1, &mtrlBuff);
-    
-    deviceContext->PSSetShader(pixelShader, nullptr, 0);
-    deviceContext->PSSetConstantBuffers(0, 1, &modelBuff);
-    deviceContext->PSSetConstantBuffers(1, 1, &lightBuff);
-    deviceContext->PSSetConstantBuffers(2, 1, &mtrlBuff);
 
     UINT offset = 0;
 
     mesh->Render(deviceContext, offset);
+    //plane->Render(deviceContext, offset);
     skyDome->Render(deviceContext, offset);
 
     //----------- debug -----------
+
+    ImGuiManager::GetInst()->Render();
 
     swapChain->Present(0, 0);
 }

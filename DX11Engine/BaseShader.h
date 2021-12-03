@@ -15,11 +15,14 @@ protected:
 	virtual void SetShaderParams(ID3D11DeviceContext* deviceContext);
 	virtual void InitializeInputLayout(ID3DBlob* vsBlob, ID3DBlob* psBlob);
 	virtual void CreateRasterizer();
+	virtual void CreateStencilState();
 
 	Mesh* mesh;
 
 	ID3D11InputLayout* inputLayout;
+
 	ID3D11RasterizerState* rasterizer;
+	ID3D11DepthStencilState* depthStencil;
 
 	ID3D11VertexShader* vertexShader;
 	ID3D11PixelShader* pixelShader;
@@ -34,5 +37,5 @@ public:
 
 	virtual void Render();
 
-	void Initialize(Mesh* mesh);
+	virtual void Initialize(Mesh* mesh);
 };

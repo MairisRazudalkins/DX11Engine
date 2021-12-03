@@ -13,11 +13,7 @@ public:
 	SceneObject(Transform transform = Transform());
 
 	Vector3 GetPosition() { return transform.position; }
-	void SetPosition(Vector3 position)
-	{
-		this->transform.position = position;
-		Logger::ENGINE_LOG(Logger::Info, position.ToString());
-	}
+	void SetPosition(Vector3 position) { this->transform.position = position; }
 
 	Rotator GetRotation() { return transform.rotation; }
 	void SetRotation(Rotator rotation) { this->transform.rotation = rotation; }
@@ -25,6 +21,8 @@ public:
 	Vector3 GetForward() { return forward; }
 	Vector3 GetRight() { return forward.Cross(up); }
 	Vector3 GetUp() { return up; }
+
+	Transform GetTransform() { return transform; }
 
 	virtual DirectX::XMMATRIX GetMatrix();
 };

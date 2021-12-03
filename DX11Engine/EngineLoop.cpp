@@ -10,14 +10,18 @@ EngineLoop* EngineLoop::inst = nullptr;
 
 void EngineLoop::Initialize(Application* app, int nCmdShow)
 {
-    //FileImporter::OpenExplorerDialogue(); //DEBUG (remove) 
-
     this->app = app;
-
-    cam = new Camera(Vector3(0.f, 10.f, -10.f));
+    cam = new Camera(Vector3(0.f, 10.f, -10.f)); // DEBUG REMOVE!
 
     graphics = Graphics::GetInst();
     graphics->Initialize(nCmdShow);
+
+    SetupEngineBinds();
+}
+
+void EngineLoop::SetupEngineBinds()
+{
+    Input::GetInst()->BindEngineAction('p', KeyState::Pressed, this, &EngineLoop::ToggleGameFocus);
 }
 
 #ifndef HID_USAGE_PAGE_GENERIC
@@ -46,8 +50,19 @@ void EngineLoop::StartEngineLoop()
     }
 }
 
+void EngineLoop::ToggleGameFocus()
+{
+    Input::GetInst()->ToggleGameInput(!Input::GetInst()->GetGameFocus());
+
+    Logger::ENGINE_LOG(Logger::Info, "Game focus: ", Input::GetInst()->GetGameFocus() ? "gained" : "lost");
+}
+
+extern LRESULT ImGui_ImplWin32_WndProcHandler(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 LRESULT EngineLoop::ProcessWindowsEvent(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
+    if (ImGui_ImplWin32_WndProcHandler(hwnd, uMsg, wParam, lParam))
+        return true;
+
     switch (uMsg)
     {
         case WM_INPUT: // directly from win docs: https://docs.microsoft.com/en-us/windows/win32/dxtecharts/taking-advantage-of-high-dpi-mouse-movement

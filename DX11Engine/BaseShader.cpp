@@ -14,10 +14,10 @@ BaseShader::BaseShader()
 
 BaseShader::BaseShader(Mesh* mesh) : mesh(mesh)
 {
-    modelConstBuffer = Buffer::CreateConstBuffer<ShaderBuffers::ModelConstBuffer>();
-
-    InitializeShaders();
-    CreateRasterizer();
+    //modelConstBuffer = Buffer::CreateConstBuffer<ShaderBuffers::ModelConstBuffer>();
+    //
+    //InitializeShaders();
+    //CreateRasterizer();
 }
 
 void BaseShader::Initialize(Mesh* mesh)
@@ -33,7 +33,9 @@ void BaseShader::Initialize(Mesh* mesh)
 BaseShader::~BaseShader()
 {
     if (inputLayout) inputLayout->Release();
+
     if (rasterizer) rasterizer->Release();
+    if (depthStencil) depthStencil->Release();
         
     if (vertexShader) vertexShader->Release();
     if (pixelShader) pixelShader->Release();
@@ -126,8 +128,16 @@ void BaseShader::CreateRasterizer()
     ZeroMemory(&rasterizerDesc, sizeof(D3D11_RASTERIZER_DESC));
 
     rasterizerDesc.FillMode = D3D11_FILL_SOLID;
-    rasterizerDesc.CullMode = D3D11_CULL_FRONT;
-    rasterizerDesc.FrontCounterClockwise = true;
+    rasterizerDesc.CullMode = D3D11_CULL_BACK;
+    rasterizerDesc.FrontCounterClockwise = false;
 
     Graphics::GetDevice()->CreateRasterizerState(&rasterizerDesc, &rasterizer);
+}
+
+void BaseShader::CreateStencilState()
+{
+    D3D11_DEPTH_STENCIL_DESC depthStencilStateDesc;
+    ZeroMemory(&depthStencilStateDesc, sizeof(D3D11_DEPTH_STENCIL_DESC));
+
+    depthStencilStateDesc.DepthEnable = true;
 }

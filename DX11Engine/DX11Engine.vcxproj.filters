@@ -84,6 +84,24 @@
     <Filter Include="Source\Core\Lighting\PointLight">
       <UniqueIdentifier>{86da4e9f-3bba-4261-b26e-aa1e53c6b00e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Core\Objects\Mesh\Plane">
+      <UniqueIdentifier>{a3333f14-ee48-4a14-a606-82ed0ec8d4ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Shaders\Basic\LitShader">
+      <UniqueIdentifier>{a0e720f6-dcd6-4608-abae-5b6b6ad22dee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty">
+      <UniqueIdentifier>{23592936-612d-4879-b6d4-aed4cb771368}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\ImGui">
+      <UniqueIdentifier>{9d255e99-5679-4276-b190-47d211b1cbe4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\UI">
+      <UniqueIdentifier>{3a009a5a-8b7b-4dde-b1d0-8478ecfd63dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\UI\LogUi">
+      <UniqueIdentifier>{6c7cea36-81b5-40d4-8931-3fe20fb30572}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entry.cpp">
@@ -154,6 +172,36 @@
     </ClCompile>
     <ClCompile Include="DirectionalLight.cpp">
       <Filter>Source\Core\Lighting\DirectionalLight</Filter>
+    </ClCompile>
+    <ClCompile Include="Plane.cpp">
+      <Filter>Source\Core\Objects\Mesh\Plane</Filter>
+    </ClCompile>
+    <ClCompile Include="LitShader.cpp">
+      <Filter>Source\Shaders\Basic\LitShader</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui.cpp">
+      <Filter>ThirdParty\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_draw.cpp">
+      <Filter>ThirdParty\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_tables.cpp">
+      <Filter>ThirdParty\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_widgets.cpp">
+      <Filter>ThirdParty\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_impl_dx11.cpp">
+      <Filter>ThirdParty\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_impl_win32.cpp">
+      <Filter>ThirdParty\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGuiManager.cpp">
+      <Filter>Source\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="LogUi.cpp">
+      <Filter>Source\UI\LogUi</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -253,6 +301,51 @@
     <ClInclude Include="DirectionalLight.h">
       <Filter>Source\Core\Lighting\DirectionalLight</Filter>
     </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Source\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>Source\Core\Objects\Mesh\Plane</Filter>
+    </ClInclude>
+    <ClInclude Include="LitShader.h">
+      <Filter>Source\Shaders\Basic\LitShader</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui.h">
+      <Filter>ThirdParty\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_internal.h">
+      <Filter>ThirdParty\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_rectpack.h">
+      <Filter>ThirdParty\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_textedit.h">
+      <Filter>ThirdParty\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_truetype.h">
+      <Filter>ThirdParty\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_impl_dx11.h">
+      <Filter>ThirdParty\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_impl_win32.h">
+      <Filter>ThirdParty\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imconfig.h">
+      <Filter>ThirdParty\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGuiManager.h">
+      <Filter>Source\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>Source\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="LogUi.h">
+      <Filter>Source\UI\LogUi</Filter>
+    </ClInclude>
+    <ClInclude Include="SimplexNoise.h">
+      <Filter>Source\Core\Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="DX11 Framework.fx">
@@ -262,6 +355,9 @@
       <Filter>Source\Shaders</Filter>
     </None>
     <None Include="UnlitShader.fx">
+      <Filter>Source\Shaders</Filter>
+    </None>
+    <None Include="LitShader.fx">
       <Filter>Source\Shaders</Filter>
     </None>
   </ItemGroup>

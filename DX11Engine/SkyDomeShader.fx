@@ -48,7 +48,7 @@ float4 PS( VS_OUTPUT input ) : SV_Target
 {
     float3 diffuseMap = txDiffuse.Sample(samLinear, input.Tex);
     
-    return float4(diffuseMap, 1.f);
+    //return float4(diffuseMap, 1.f);
     
-    //return lerp(float4(0.2f, 0.6f, 1.f, 1.f), float4(0.f, 0.f, 0.8f, 1.f), input.Tex.y);
+    return lerp(float4(0.2f, 0.6f, 1.f, 1.f), float4(0.f, 0.f, 0.8f, 1.f), input.Tex.y);
 }

@@ -5,6 +5,8 @@
 
 namespace ShaderBuffers
 {
+	// __declspec(align(16)) <--- fix dx11 buffer complaining that the data isn't a multiple of 16
+
 	struct ModelConstBuffer
 	{
 		DirectX::XMMATRIX world;
@@ -12,7 +14,15 @@ namespace ShaderBuffers
 		DirectX::XMMATRIX projection;
 	};
 
-	__declspec(align(16)) // fix dx11 buffer complaining that the data isn't a multiple of 16
+	__declspec(align(16))
+	struct DirectionalLightConstBuffer
+	{
+		DirectX::XMFLOAT4 diffuseColor;
+		DirectX::XMFLOAT4 ambientColor;
+		DirectX::XMFLOAT3 lightDirection;
+	};
+
+	__declspec(align(16))
 	struct LightingConstBuffer // TODO: Implement
 	{
 		DirectX::XMFLOAT4 diffuseLight;
@@ -27,8 +37,8 @@ namespace ShaderBuffers
 		DirectX::XMFLOAT4 diffuseMtrl;
 		DirectX::XMFLOAT4 ambientMtrl;
 		DirectX::XMFLOAT4 specularMtrl;
-		float specularPower;
-		DirectX::XMFLOAT3 eyePosW;
+		DirectX::XMFLOAT4 shininess;
+		DirectX::XMFLOAT3 eyePos;
 	};
 }
 

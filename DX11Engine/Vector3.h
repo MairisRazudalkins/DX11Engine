@@ -37,5 +37,6 @@ public:
 	float Dot(const Vector3& vec) { return x * vec.x + y * vec.y + z * vec.z; }
 	float Magnitude() { return sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2)); }
 
-	std::string ToString() { char buffer[256]; sprintf_s(buffer, "X: %f Y: %f Z: %f", x, y, z); return std::string(buffer); } // weird way of formating a string. Couldnt use <format> 
+	std::string ToString() { char buffer[256]; sprintf_s(buffer, "X: %f Y: %f Z: %f", x, y, z); return std::string(buffer); } // weird way of formating a string. Couldnt use <format>
+	DirectX::XMFLOAT3 ToFloat3() { return DirectX::XMFLOAT3(x, y, z); }
 };

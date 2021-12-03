@@ -3,7 +3,8 @@
 
 Application* application = nullptr;
 
-int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow){
+int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow)
+{
     Application::CreateApp(hInstance, nCmdShow, application);
 
     return 0;

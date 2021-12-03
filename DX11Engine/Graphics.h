@@ -1,6 +1,7 @@
 #pragma once
 #include "GraphicsCore.h"
 
+class Plane;
 class Mesh;
 class SkyDome;
 
@@ -30,16 +31,12 @@ class Graphics
 	D3D_DRIVER_TYPE         driverType;
 	D3D_FEATURE_LEVEL       featureLevel;
 
-	ID3D11VertexShader* vertexShader;
-	ID3D11PixelShader* pixelShader;
-
 	HRESULT CompileShaderFromFile(WCHAR* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, ID3DBlob** ppBlobOut);
 
 	void CreateInputLayouts(ID3DBlob* vsBlob, ID3DBlob* psBlob);
 	void CreateDepthStencilView();
 	void CreateDepthStencilBuff();
 	void CreateConstBuffers();
-	void InitializeShaders();
 	void CreateSwapChain();
 	void CreateViewport();
 
@@ -64,11 +61,10 @@ public:
 	DirectX::XMFLOAT4X4	_projection;
 
 	Buffer* modelConstBuffer;
-	Buffer* lightConstBuffer;
-	Buffer* mtrlConstBuffer;
 
 	Mesh* mesh;
 	SkyDome* skyDome;
+	Plane* plane;
 
 	ModelConstBuffer modelCB;
 	LightingConstBuffer lightCB;

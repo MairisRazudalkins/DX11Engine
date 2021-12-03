@@ -4,7 +4,7 @@
 #define VK_MOUSE_UP       0xFF
 #define VK_MOUSE_RIGHT     0x07 // Using dx11 reserved value.
 
-enum KeyState : int8_t
+enum KeyState
 {
 	Pressed = 0,
 	Released = 1,
@@ -81,27 +81,31 @@ public:
 		this->callback = callback;
 	}
 
-	virtual ~ActionCallback() { delete object; }
-
 	void Call(float value = 1.f) override { if (object) (object->*callback)(); }
 	bool ShouldCall(unsigned char key, KeyState state) override { return (this->key == key && this->state == state); }
 };
 
 class Input
 {
-	Input() { RegisterRawInput(); }
+	Input() { RegisterRawInput(); GetClipCursor(&defaultCursorTrap); }
 	~Input();
 
 	void RegisterRawInput(); // Register mouse raw input so WM_INPUT event is dispatched by windows.
-	void TrapCursor(); // Trap cursor within the window. Useful for first person camera movement since using raw input to rotate camera TODO: Fix issue when tabbed out!
+	void TrapCursor(bool bShouldTrap); // Trap cursor within the window. Useful for first person camera movement since using raw input to rotate camera TODO: Fix issue when tabbed out!
 
 	static Input* inst;
 
+	RECT defaultCursorTrap;
+
 	bool bIsCursorFocused = false;
+	bool bIsGameFocused = true;
 
 	int x = 0, y = 0;
+
 	std::vector<Callback*> actionBinds;
 	std::vector<Callback*> axisBinds;
+
+	std::vector<Callback*> engineBinds;
 
 public:
 	template<class T>
@@ -110,10 +114,16 @@ public:
 	template<class T>
 	void BindAxis(unsigned char key, float scale, T* object, void(T::* callback)(float), KeyState state = KeyState::Held) { axisBinds.push_back(new AxisCallback<T>(scale, key, state, object, callback)); }
 
-	void RecieveInput(unsigned char key, KeyState state, float value = 1.f);
-	void RecieveRawMouseInput(int x, int y);
+	template<class T>
+	void BindEngineAction(unsigned char key, KeyState state, T* object, void(T::* callback)()) { engineBinds.push_back(new ActionCallback<T>(key, state, object, callback)); }
+
+	void ToggleGameInput(bool bIsGameFocused) { this->bIsGameFocused = bIsGameFocused; FocusCursor(bIsGameFocused); }
+	bool GetGameFocus() { return bIsGameFocused; }
 
 	void FocusCursor(bool bShouldTrap);
+
+	void RecieveInput(unsigned char key, KeyState state, float value = 1.f);
+	void RecieveRawMouseInput(int x, int y);
 
 	Vector2 GetMousePos() { return Vector2(x, y); }
 
