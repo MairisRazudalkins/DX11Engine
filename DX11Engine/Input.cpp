@@ -73,22 +73,22 @@ void Input::RecieveRawMouseInput(int x, int y)
 
 void Input::TrapCursor(bool bShouldTrap)
 {
-	if (bShouldTrap)
-	{
-		RECT rc;
-		GetClientRect(Application::GetHWND(), &rc);
-		MapWindowPoints(Application::GetHWND(), nullptr, (POINT*)(&rc), 2);
-		ClipCursor(&rc);
-	}
-	else
-	{
-		ClipCursor(&defaultCursorTrap);
-	}
+	//if (bShouldTrap)
+	//{
+	//	RECT rc;
+	//	GetClientRect(Application::GetHWND(), &rc);
+	//	MapWindowPoints(Application::GetHWND(), nullptr, (POINT*)(&rc), 2);
+	//	ClipCursor(&rc);
+	//}
+	//else
+	//{
+	//	ClipCursor(&defaultCursorTrap);
+	//}
 }
 
 void Input::FocusCursor(bool bShouldTrap)
 {
-	this->bIsCursorFocused = bShouldTrap;
-	ShowCursor(!bShouldTrap);
-	TrapCursor(bShouldTrap);
+	//this->bIsCursorFocused = bShouldTrap;
+	//ShowCursor(!bShouldTrap);
+	//TrapCursor(bShouldTrap);
 }

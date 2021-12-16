@@ -12,7 +12,7 @@ class DirectionalLight : public Light
 {
 	static DirectionalLight* inst;
 
-	Vector3 lightDir = Vector3(0.5f, 0.5f, 1.f);
+	Vector3 lightDir = Vector3(0.5f, 0.5f, -0.7f);
 
 	Buffer* dirLightBuffer;
 	DirectionalLightConstBuffer dirLightCB;

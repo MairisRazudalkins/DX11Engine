@@ -19,6 +19,7 @@ namespace ShaderBuffers
 	{
 		DirectX::XMFLOAT4 diffuseColor;
 		DirectX::XMFLOAT4 ambientColor;
+		DirectX::XMFLOAT4 specularColor;
 		DirectX::XMFLOAT3 lightDirection;
 	};
 
@@ -37,7 +38,7 @@ namespace ShaderBuffers
 		DirectX::XMFLOAT4 diffuseMtrl;
 		DirectX::XMFLOAT4 ambientMtrl;
 		DirectX::XMFLOAT4 specularMtrl;
-		DirectX::XMFLOAT4 shininess;
+		float specularPower;
 		DirectX::XMFLOAT3 eyePos;
 	};
 }

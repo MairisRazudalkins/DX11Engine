@@ -80,8 +80,3 @@ HRESULT Application::CompileShaderFromFile(const wchar_t* szFileName, LPCSTR szE
 
     return S_OK;
 }
-
-void Application::Callback(float val)
-{
-    Logger::ENGINE_LOG(Logger::Info, val);
-}

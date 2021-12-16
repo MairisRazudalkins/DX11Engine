@@ -1,11 +1,12 @@
 #pragma once
 
-class SceneComponent : public Object // maybe add a friend class for a graphics class that handles all rendering operations to call Render on components
+class SceneComponent : public Object
 {
 	
 
 protected:
 	DirectX::XMFLOAT4X4 worldMatrix;
 
+public:
 	virtual void Render() = 0;
 };

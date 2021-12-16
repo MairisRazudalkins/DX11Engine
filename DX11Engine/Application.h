@@ -16,8 +16,8 @@ class Application
 	HRESULT CompileShaderFromFile(const wchar_t* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, ID3DBlob** ppBlobOut);
 
 public:
-	void Callback(float val);
 	static void CreateApp(HINSTANCE hInstance, int nCmdShow, Application* app = nullptr) { if (inst == nullptr) { app = new Application(hInstance, nCmdShow); } }
 
+	static HINSTANCE& GetHInstance() { return inst->hInstance; }
 	static HWND& GetHWND() { return inst->hwnd; }
 };

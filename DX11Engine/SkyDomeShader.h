@@ -11,7 +11,7 @@ class SkyDomeShader : public BaseShader
 	void CreateTextures();
 
 protected:
-	void InitializeShaders() override;
+	void InitializeShader() override;
 	void InitializeInputLayout(ID3DBlob* vsBlob, ID3DBlob* psBlob) override;
 	void CreateRasterizer() override;
 

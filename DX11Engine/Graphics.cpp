@@ -2,20 +2,21 @@
 #include "Graphics.h"
 
 #include "Application.h"
-#include "Camera.h"
 #include "FileImporter.h"
 #include "ImGuiManager.h"
 #include "PropertyManagerUi.h"
 
+#include "orbit.h"
 #include "Mesh.h"
 #include "SkyDome.h"
 #include "Plane.h"
+#include "DirectInput.h"
+#include "PostProcessorShader.h"
+#include "DemoController.h"
 
 #include "OBJLoader.h"
-#include "Input.h"
 #include "LitShader.h"
 #include "SimplexNoise.h"
-#include "SkyDomeShader.h"
 
 Graphics* Graphics::inst = nullptr;
 
@@ -35,7 +36,16 @@ Graphics::~Graphics()
     if (pixelInputLayout) pixelInputLayout->Release();
     if (vertexInputLayout) vertexInputLayout->Release();
 
-    delete modelConstBuffer;
+    if (backBuffer) { backBuffer->Release(); }
+
+    delete skyDome;
+    delete plane;
+    delete mesh;
+    delete orbit;
+
+    delete postProcShader;
+
+    delete controller;
 }
 
 void Graphics::Initialize(int nCmdShow)
@@ -61,32 +71,31 @@ void Graphics::Initialize(int nCmdShow)
 
     //debug
 
-    XMStoreFloat4x4(&world, DirectX::XMMatrixIdentity());
+    postProcShader = new PostProcessorShader();
 
     std::string localFilePath = "";
     FileImporter::OpenExplorerDialogue(localFilePath);
-    mesh = new Mesh(Transform(), OBJLoader::Load(localFilePath.c_str(), false), new BaseShader());
-    plane = new Plane(50, 50, Transform(), new LitShader());
+    mesh = new Mesh(Transform(Vector3(0.f, 0.f, 10.f)), OBJLoader::Load(localFilePath.c_str(), false), new LitShader(L"", L"Assets/Textures/CrateSpecular.dds", L"Assets/Textures/CrateNormal.dds"));
+    plane = new Plane(100, 100, Transform(Vector3(0.f, -5.f, 0.f)), new LitShader());
+    orbit = new Orbit(Transform(Vector3(15.f, 0.f, 10.f)));
 
 	skyDome = new SkyDome();
 
-    Input::GetInst()->FocusCursor(true);
+    controller = new DemoController();
 
-    Input::GetInst()->BindAction('o', KeyState::Pressed, this, &Graphics::SelectObj); // DEBUG (REMOVE)
+    //Input::GetInst()->FocusCursor(true);
+
+    DirectInput::BindEngineKeyboardAction(DIK_F1, DirectPressed, this, &Graphics::SelectObj); // DEBUG (REMOVE)
 }
 
-void Graphics::SelectObj()
+void Graphics::SelectObj() // DEBUG
 {
     static bool t = false;
 
     if (t)
-    {
         PropertyManagerUi::GetInst()->EditProperties(nullptr);
-    }
     else
-    {
         PropertyManagerUi::GetInst()->EditProperties(mesh);
-    }
 
     t = !t;
 }
@@ -96,8 +105,6 @@ void Graphics::CreateInputLayouts(ID3DBlob* vsBlob, ID3DBlob* psBlob)
 	if (FAILED(device->CreateInputLayout(InputLayout::PixelShaderInputLayout, ARRAYSIZE(InputLayout::PixelShaderInputLayout), vsBlob->GetBufferPointer(), vsBlob->GetBufferSize(), &vertexInputLayout))) // TODO: Replace input layout 
         Quit("Failed to create input layouts");
 
-    //if (FAILED(device->CreateInputLayout(InputLayout::PixelShaderInputLayout, ARRAYSIZE(InputLayout::PixelShaderInputLayout), psBlob->GetBufferPointer(), psBlob->GetBufferSize(), &pixelInputLayout))) // TODO: Replace input layout 
-    //    Quit("Failed to create input layouts");
 
     vsBlob->Release();
     psBlob->Release();
@@ -107,9 +114,7 @@ void Graphics::CreateInputLayouts(ID3DBlob* vsBlob, ID3DBlob* psBlob)
 
 void Graphics::CreateDepthStencilView()
 {
-    ID3D11Texture2D* backBuff = nullptr;
-
-    if (FAILED(swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&backBuff)))
+    if (FAILED(swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&backBuffer)))
         Quit(Logger::Fatal, "Back buffer texture failed to be created");
 
     CD3D11_TEXTURE2D_DESC depthStencilDesc;
@@ -125,10 +130,10 @@ void Graphics::CreateDepthStencilView()
     depthStencilDesc.CPUAccessFlags = 0;
     depthStencilDesc.MiscFlags = 0;
 
-    if (FAILED(device->CreateRenderTargetView(backBuff, nullptr, &renderTargetView)))
+    if (FAILED(device->CreateRenderTargetView(backBuffer, nullptr, &renderTargetView)))
         Quit(Logger::Fatal, "Render target view failed to be created");
 
-    backBuff->Release();
+    //deviceContext->OMSetRenderTargets(1, &backBuffer, NULL);
 }
 
 void Graphics::CreateDepthStencilBuff()
@@ -156,7 +161,6 @@ void Graphics::CreateDepthStencilBuff()
 
 void Graphics::CreateConstBuffers()
 {
-    modelConstBuffer = Buffer::CreateConstBuffer<ModelConstBuffer>();
     //lightConstBuffer = Buffer::CreateConstBuffer<LightingConstBuffer>();
     //mtrlConstBuffer = Buffer::CreateConstBuffer<MaterialConstBuffer>();
     //
@@ -250,29 +254,19 @@ void Graphics::Render()
     deviceContext->ClearRenderTargetView(renderTargetView, bgColor);
     deviceContext->ClearDepthStencilView(depthStencilView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.f, 0);
 
-    //----------- debug -----------
-
-    modelCB.world = DirectX::XMMatrixTranspose(XMLoadFloat4x4(&world));
-    modelCB.projection = DirectX::XMMatrixTranspose(XMLoadFloat4x4(&Camera::GetActiveCamera()->GetProjection()));
-    modelCB.view = DirectX::XMMatrixTranspose(Camera::GetActiveCamera()->GetCameraMatrix());
-
-    Vector3 camPos = Camera::GetActiveCamera()->GetPosition();
-    mtrlCB.eyePos = DirectX::XMFLOAT3(camPos.x, camPos.y, camPos.z);
-
-    deviceContext->UpdateSubresource(modelConstBuffer->GetBuffer(), 0, nullptr, &modelCB, 0, 0);
-    //deviceContext->UpdateSubresource(lightConstBuffer->GetBuffer(), 0, nullptr, &lightCB, 0, 0);
-    //deviceContext->UpdateSubresource(mtrlConstBuffer->GetBuffer(), 0, nullptr, &mtrlCB, 0, 0);
-
-    // TODO: Tidy this up maybe put into a function??? 
-
-
     UINT offset = 0;
 
     mesh->Render(deviceContext, offset);
-    //plane->Render(deviceContext, offset);
+    plane->Render(deviceContext, offset);
     skyDome->Render(deviceContext, offset);
 
+    orbit->Update();
+    orbit->Render(deviceContext, offset);
+
     //----------- debug -----------
+
+
+    //postProcShader->PreRender(renderTargetView);
 
     ImGuiManager::GetInst()->Render();
 

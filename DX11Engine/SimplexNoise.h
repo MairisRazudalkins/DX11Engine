@@ -45,7 +45,7 @@ public:
 	SimplexNoise() = default;
 	SimplexNoise(int seed)
 	{
-        SetSeed(seed);
+       SetSeed(seed);
 	}
 
 	void SetSeed(int seed)

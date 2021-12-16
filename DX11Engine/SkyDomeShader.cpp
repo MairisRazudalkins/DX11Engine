@@ -14,7 +14,7 @@ SkyDomeShader::SkyDomeShader(SkyDome* skyDome) : BaseShader(skyDome)
 {
 	modelConstBuffer = Buffer::CreateConstBuffer<ModelConstBuffer>();
 
-	InitializeShaders();
+	InitializeShader();
 	CreateRasterizer();
 	CreateTextures();
 }
@@ -24,7 +24,7 @@ SkyDomeShader::~SkyDomeShader()
 	if (resourceView) resourceView->Release();
 }
 
-void SkyDomeShader::InitializeShaders()
+void SkyDomeShader::InitializeShader()
 {
 	ID3D11Device* device = Graphics::GetDevice();
 	ID3DBlob* vsBlob = nullptr, *psBlob = nullptr;

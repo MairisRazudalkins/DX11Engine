@@ -1,5 +1,15 @@
 #pragma once
 
+class TimerHandle // TICK BASED TIMERS INSTEAD OF ACTUAL TIME
+{
+
+public:
+	//TimerHandle(float duration, )
+	//{
+	//	
+	//}
+};
+
 class Time
 {
 	Time() = default;

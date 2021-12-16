@@ -1,28 +1,24 @@
 #include "CoreMinimal.h"
 #include "EngineLoop.h"
+
+#include "DirectInput.h"
 #include "Graphics.h"
-#include "Input.h"
 #include "Time.h"
 
-#include "FileImporter.h"
+#include "EngineController.h"
 
 EngineLoop* EngineLoop::inst = nullptr;
 
 void EngineLoop::Initialize(Application* app, int nCmdShow)
 {
     this->app = app;
-    cam = new Camera(Vector3(0.f, 10.f, -10.f)); // DEBUG REMOVE!
 
     graphics = Graphics::GetInst();
     graphics->Initialize(nCmdShow);
 
-    SetupEngineBinds();
+    engineController = new EngineController();
 }
 
-void EngineLoop::SetupEngineBinds()
-{
-    Input::GetInst()->BindEngineAction('p', KeyState::Pressed, this, &EngineLoop::ToggleGameFocus);
-}
 
 #ifndef HID_USAGE_PAGE_GENERIC
     #define HID_USAGE_PAGE_GENERIC         ((USHORT) 0x01)
@@ -44,17 +40,11 @@ void EngineLoop::StartEngineLoop()
         }
         else
         {
+            DirectInput::GetInst()->Update();
             this->Update();
             graphics->Render();
         }
     }
-}
-
-void EngineLoop::ToggleGameFocus()
-{
-    Input::GetInst()->ToggleGameInput(!Input::GetInst()->GetGameFocus());
-
-    Logger::ENGINE_LOG(Logger::Info, "Game focus: ", Input::GetInst()->GetGameFocus() ? "gained" : "lost");
 }
 
 extern LRESULT ImGui_ImplWin32_WndProcHandler(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
@@ -65,58 +55,58 @@ LRESULT EngineLoop::ProcessWindowsEvent(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 
     switch (uMsg)
     {
-        case WM_INPUT: // directly from win docs: https://docs.microsoft.com/en-us/windows/win32/dxtecharts/taking-advantage-of-high-dpi-mouse-movement
-        {
-            UINT dwSize = sizeof(RAWINPUT);
-            static BYTE lpb[sizeof(RAWINPUT)];
-
-            GetRawInputData((HRAWINPUT)lParam, RID_INPUT, lpb, &dwSize, sizeof(RAWINPUTHEADER));
-
-            RAWINPUT* raw = (RAWINPUT*)lpb;
-
-            if (raw->header.dwType == RIM_TYPEMOUSE)
-                Input::GetInst()->RecieveRawMouseInput(raw->data.mouse.lLastX, raw->data.mouse.lLastY);
-
-            break;
-        }
-
-    	case WM_CHAR:
-		{
-			if (lParam & 0x40000000) Input::GetInst()->RecieveInput(static_cast<unsigned char>(wParam), KeyState::Repeat); // check if key is repeating 
-            else Input::GetInst()->RecieveInput(static_cast<unsigned char>(wParam), KeyState::Pressed);
-
-            break;
-		}
-
-        case WM_KEYUP:
-	    {
-            Input::GetInst()->RecieveInput(static_cast<unsigned char>(wParam), KeyState::Released);
-            break;
-	    }
-
-        case WM_LBUTTONDOWN:
-		{
-            Input::GetInst()->RecieveInput(VK_LBUTTON, KeyState::Pressed);
-            break;
-		}
-
-        case WM_LBUTTONUP:
-        {
-            Input::GetInst()->RecieveInput(VK_LBUTTON, KeyState::Released);
-            break;
-        }
-
-        case WM_RBUTTONDOWN:
-        {
-            Input::GetInst()->RecieveInput(VK_RBUTTON, KeyState::Pressed);
-            break;
-        }
-
-        case WM_RBUTTONUP:
-        {
-            Input::GetInst()->RecieveInput(VK_RBUTTON, KeyState::Released);
-            break;
-        }
+        //case WM_INPUT: // directly from win docs: https://docs.microsoft.com/en-us/windows/win32/dxtecharts/taking-advantage-of-high-dpi-mouse-movement
+        //{
+        //    UINT dwSize = sizeof(RAWINPUT);
+        //    static BYTE lpb[sizeof(RAWINPUT)];
+        //    
+        //    GetRawInputData((HRAWINPUT)lParam, RID_INPUT, lpb, &dwSize, sizeof(RAWINPUTHEADER));
+        //
+        //    RAWINPUT* raw = (RAWINPUT*)lpb;
+        //
+        //    if (raw->header.dwType == RIM_TYPEMOUSE)
+        //        Input::GetInst()->RecieveRawMouseInput(raw->data.mouse.lLastX, raw->data.mouse.lLastY);
+        //
+        //    break;
+        //}
+        //
+    	//case WM_CHAR:
+		//{
+		//	if (lParam & 0x40000000) Input::GetInst()->RecieveInput(static_cast<unsigned char>(wParam), KeyState::Repeat); // check if key is repeating 
+        //    else Input::GetInst()->RecieveInput(static_cast<unsigned char>(wParam), KeyState::Pressed);
+        //
+        //    break;
+		//}
+        //
+        //case WM_KEYUP:
+	    //{
+        //    Input::GetInst()->RecieveInput(static_cast<unsigned char>(wParam), KeyState::Released);
+        //    break;
+	    //}
+        //
+        //case WM_LBUTTONDOWN:
+		//{
+        //    Input::GetInst()->RecieveInput(VK_LBUTTON, KeyState::Pressed);
+        //    break;
+		//}
+        //
+        //case WM_LBUTTONUP:
+        //{
+        //    Input::GetInst()->RecieveInput(VK_LBUTTON, KeyState::Released);
+        //    break;
+        //}
+        //
+        //case WM_RBUTTONDOWN:
+        //{
+        //    Input::GetInst()->RecieveInput(VK_RBUTTON, KeyState::Pressed);
+        //    break;
+        //}
+        //
+        //case WM_RBUTTONUP:
+        //{
+        //    Input::GetInst()->RecieveInput(VK_RBUTTON, KeyState::Released);
+        //    break;
+        //}
 
         case WM_DESTROY:
 	    {
@@ -139,10 +129,5 @@ LRESULT EngineLoop::ProcessWindowsEvent(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 
 void EngineLoop::Update()
 {
-    static float t = 0.0f;
-
-    float deltaTime = Time::GetInst()->Tick();
-
-	//DirectX::XMStoreFloat4x4(&Graphics::GetInst()->_world, DirectX::XMMatrixTranslation(0.f, 0.f, 0.f) * DirectX::XMMatrixRotationY(t));
-
+    Time::GetInst()->Tick();
 }

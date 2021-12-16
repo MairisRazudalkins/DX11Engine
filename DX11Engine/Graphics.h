@@ -1,6 +1,9 @@
 #pragma once
 #include "GraphicsCore.h"
 
+class Controller;
+class Orbit;
+class PostProcessorShader;
 class Plane;
 class Mesh;
 class SkyDome;
@@ -31,6 +34,9 @@ class Graphics
 	D3D_DRIVER_TYPE         driverType;
 	D3D_FEATURE_LEVEL       featureLevel;
 
+	PostProcessorShader*	postProcShader;
+	ID3D11Texture2D*		backBuffer;
+
 	HRESULT CompileShaderFromFile(WCHAR* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, ID3DBlob** ppBlobOut);
 
 	void CreateInputLayouts(ID3DBlob* vsBlob, ID3DBlob* psBlob);
@@ -59,21 +65,12 @@ public:
 
 	void SelectObj();
 
-	DirectX::XMFLOAT4X4	world;
-	DirectX::XMFLOAT4X4	_view;
-	DirectX::XMFLOAT4X4	_projection;
-
-	Buffer* modelConstBuffer;
-
 	Mesh* mesh;
 	SkyDome* skyDome;
 	Plane* plane;
+	Orbit* orbit;
 
-	ModelConstBuffer modelCB;
-	LightingConstBuffer lightCB;
-	MaterialConstBuffer mtrlCB;
-
-	static ModelConstBuffer GetModelCB() { return inst->modelCB; }
+	Controller* controller;
 
 	//ModelConstBuffer cb;
 };

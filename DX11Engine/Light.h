@@ -5,8 +5,9 @@ class Light : public SceneObject
 {
 
 protected:
-	Color diffuseColor = Color(1.f, 1.f, 1.f, 1.f);
+	Color diffuseColor = Color(0.4f, 0.4f, 0.4f, 1.f);
 	Color ambientColor = Color(1.f, 1.f, 1.f, 1.f);
+	Color specularColor = Color(1.f, 1.f, 1.f, 1.f);
 
 	float brightness = 1.f;
 

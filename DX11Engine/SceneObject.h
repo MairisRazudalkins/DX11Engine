@@ -4,10 +4,14 @@
 class SceneObject : public Object
 {
 protected:
+	SceneObject* parent;
+
 	Transform transform;
 
 	Vector3 forward = Vector3(0.f, 0.f, 1.f);
 	Vector3 up = Vector3(0.f, 1.f, 0.f);
+
+	DirectX::XMFLOAT4X4 worldMatrix;
 
 public:
 	SceneObject(Transform transform = Transform());
@@ -27,5 +31,10 @@ public:
 
 	Transform GetTransform() { return transform; }
 
+	void SetParent(SceneObject* parent) { this->parent = parent; }
+
 	virtual DirectX::XMMATRIX GetMatrix();
+	virtual DirectX::XMFLOAT4X4 GetWorldMatrix();
+
+	virtual void Update() {};
 };

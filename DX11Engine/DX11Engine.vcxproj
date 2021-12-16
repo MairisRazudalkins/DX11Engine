@@ -175,6 +175,7 @@
     </ClCompile>
     <ClCompile Include="BaseShader.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Controller.cpp" />
     <ClCompile Include="CoreMinimal.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -185,7 +186,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="DemoController.cpp" />
+    <ClCompile Include="DirectInput.cpp" />
     <ClCompile Include="DirectionalLight.cpp" />
+    <ClCompile Include="EngineController.cpp" />
     <ClCompile Include="EngineLoop.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
@@ -280,8 +284,10 @@
     <ClCompile Include="OBJLoader.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Orbit.cpp" />
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="PointLight.cpp" />
+    <ClCompile Include="PostProcessorShader.cpp" />
     <ClCompile Include="PropertyManagerUi.cpp" />
     <ClCompile Include="SceneComponent.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
@@ -292,6 +298,7 @@
     <ClCompile Include="SceneObject.cpp" />
     <ClCompile Include="SkyDome.cpp" />
     <ClCompile Include="SkyDomeShader.cpp" />
+    <ClCompile Include="TexturedShader.cpp" />
     <ClCompile Include="Time.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -300,8 +307,12 @@
     <ClInclude Include="Buffer.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="Controller.h" />
     <ClInclude Include="DDSTextureLoader.h" />
+    <ClInclude Include="DemoController.h" />
+    <ClInclude Include="DirectInput.h" />
     <ClInclude Include="DirectionalLight.h" />
+    <ClInclude Include="EngineController.h" />
     <ClInclude Include="EngineLoop.h" />
     <ClInclude Include="Events.h" />
     <ClInclude Include="EventHandler.h" />
@@ -327,8 +338,10 @@
     <ClInclude Include="MeshComponent.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="OBJLoader.h" />
+    <ClInclude Include="Orbit.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="PointLight.h" />
+    <ClInclude Include="PostProcessorShader.h" />
     <ClInclude Include="PropertyManagerUi.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Rotator.h" />
@@ -337,6 +350,7 @@
     <ClInclude Include="SimplexNoise.h" />
     <ClInclude Include="SkyDome.h" />
     <ClInclude Include="SkyDomeShader.h" />
+    <ClInclude Include="TexturedShader.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="UI.h" />
@@ -364,6 +378,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="LitShader.fx">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TexturedShader.fx">
       <FileType>Document</FileType>
     </None>
   </ItemGroup>

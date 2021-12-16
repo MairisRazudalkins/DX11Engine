@@ -3,9 +3,12 @@
 #include "GraphicsCore.h"
 #include "Graphics.h"
 #include "Buffer.h"
+#include "Camera.h"
 #include "Mesh.h"
 
 // TODO: Create a basic vertex shader which can be used by any class
+
+ID3D11RasterizerState* BaseShader::globalRasterizer = nullptr;
 
 BaseShader::BaseShader()
 {
@@ -26,8 +29,28 @@ void BaseShader::Initialize(Mesh* mesh)
 
     modelConstBuffer = Buffer::CreateConstBuffer<ShaderBuffers::ModelConstBuffer>();
 
-    InitializeShaders();
+    InitializeShader();
     CreateRasterizer();
+}
+
+void BaseShader::SetGlobalRasterizer(D3D11_FILL_MODE state)
+{
+	if (state == D3D11_FILL_SOLID)
+	{
+		if (globalRasterizer) { globalRasterizer->Release(); }
+
+        globalRasterizer = nullptr;
+        return;
+	}
+
+    D3D11_RASTERIZER_DESC rasterizerDesc;
+    ZeroMemory(&rasterizerDesc, sizeof(D3D11_RASTERIZER_DESC));
+
+    rasterizerDesc.FillMode = state;
+    rasterizerDesc.CullMode = D3D11_CULL_NONE;
+    rasterizerDesc.FrontCounterClockwise = false;
+
+    Graphics::GetDevice()->CreateRasterizerState(&rasterizerDesc, &globalRasterizer);
 }
 
 BaseShader::~BaseShader()
@@ -47,7 +70,7 @@ void BaseShader::Render()
 {
     ID3D11DeviceContext* deviceContext = Graphics::GetDeviceContext();
 
-    deviceContext->RSSetState(rasterizer);
+    deviceContext->RSSetState(globalRasterizer == nullptr ? rasterizer : globalRasterizer);
     deviceContext->IASetInputLayout(inputLayout);
 
     SetShaderParams(deviceContext);
@@ -83,7 +106,7 @@ HRESULT BaseShader::CompileShaderFromFile(WCHAR* szFileName, LPCSTR szEntryPoint
     return S_OK;
 }
 
-void BaseShader::InitializeShaders()
+void BaseShader::InitializeShader()
 {
     ID3D11Device* device = Graphics::GetDevice();
     ID3DBlob* vsBlob = nullptr, * psBlob = nullptr;
@@ -101,10 +124,12 @@ void BaseShader::SetShaderParams(ID3D11DeviceContext* deviceContext)
 {
     if (mesh)
     {
-        modelCB = Graphics::GetModelCB();
-        ID3D11Buffer* modelBuffer = modelConstBuffer->GetBuffer();
+        modelCB.world = DirectX::XMMatrixTranspose(mesh->GetMatrix());
+        //modelCB.world = DirectX::XMMatrixTranspose(DirectX::XMLoadFloat4x4(&mesh->GetWorldMatrix()));
+        modelCB.projection = DirectX::XMMatrixTranspose(DirectX::XMLoadFloat4x4(&Camera::GetActiveCamera()->GetProjection()));
+        modelCB.view = DirectX::XMMatrixTranspose(Camera::GetActiveCamera()->GetCameraMatrix());
 
-        modelCB.world = mesh->GetMatrix();
+        ID3D11Buffer* modelBuffer = modelConstBuffer->GetBuffer();
 
         deviceContext->UpdateSubresource(modelBuffer, 0, nullptr, &modelCB, 0, 0);
 

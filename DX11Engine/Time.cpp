@@ -14,13 +14,22 @@ float Time::Tick()
     }
     else
     {
-        static DWORD dwTimeStart = 0;
-        DWORD dwTimeCur = GetTickCount();
+        //static DWORD dwTimeStart = 0;
+        //DWORD dwTimeCur = GetTickCount();
+        //
+        //if (dwTimeStart == 0)
+        //    dwTimeStart = dwTimeCur;
+        //
+        //float t = (dwTimeCur - dwTimeStart) / 1000.0f;
+        //
+        //return t;
 
-        if (dwTimeStart == 0)
-            dwTimeStart = dwTimeCur;
+        static float prevTime = 0.f;
+        deltaTime = (t = (float)GetTickCount() - prevTime) / 1000.f;
 
-        t = (dwTimeCur - dwTimeStart) / 1000.0f;
+        prevTime = (float)GetTickCount();
+
+        return t;
     }
 
     return t;

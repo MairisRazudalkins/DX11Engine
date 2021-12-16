@@ -105,6 +105,24 @@
     <Filter Include="Source\UI\PropertyManager">
       <UniqueIdentifier>{0901a57f-4487-4252-8629-38f67f4286c2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Core\Objects\Controller">
+      <UniqueIdentifier>{c3992be8-dc42-42e9-b85e-f2847979273b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Objects\Controller\EngineController">
+      <UniqueIdentifier>{e5f977fe-52d6-49af-9f88-3399741b4c99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Shaders\PostProcessing">
+      <UniqueIdentifier>{cd2cf9f5-4c84-430d-a149-e2737a9d10b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Objects\Mesh\Solar">
+      <UniqueIdentifier>{1957df4d-0d46-4549-9f42-49a01294ed8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Shaders\Basic\TexturedShader">
+      <UniqueIdentifier>{b9ee524a-7a4e-4857-869a-56a97594ae9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Objects\Controller\DemoController">
+      <UniqueIdentifier>{04f7d8e2-42f8-4adc-88f5-679ba8c4ce82}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entry.cpp">
@@ -208,6 +226,27 @@
     </ClCompile>
     <ClCompile Include="PropertyManagerUi.cpp">
       <Filter>Source\UI\PropertyManager</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectInput.cpp">
+      <Filter>Source\Core\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller.cpp">
+      <Filter>Source\Core\Objects\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineController.cpp">
+      <Filter>Source\Core\Objects\Controller\EngineController</Filter>
+    </ClCompile>
+    <ClCompile Include="PostProcessorShader.cpp">
+      <Filter>Source\Shaders\PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="Orbit.cpp">
+      <Filter>Source\Core\Objects\Mesh\Solar</Filter>
+    </ClCompile>
+    <ClCompile Include="TexturedShader.cpp">
+      <Filter>Source\Shaders\Basic\TexturedShader</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoController.cpp">
+      <Filter>Source\Core\Objects\Controller\DemoController</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -355,6 +394,27 @@
     <ClInclude Include="PropertyManagerUi.h">
       <Filter>Source\UI\PropertyManager</Filter>
     </ClInclude>
+    <ClInclude Include="DirectInput.h">
+      <Filter>Source\Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller.h">
+      <Filter>Source\Core\Objects\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineController.h">
+      <Filter>Source\Core\Objects\Controller\EngineController</Filter>
+    </ClInclude>
+    <ClInclude Include="PostProcessorShader.h">
+      <Filter>Source\Shaders\PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="Orbit.h">
+      <Filter>Source\Core\Objects\Mesh\Solar</Filter>
+    </ClInclude>
+    <ClInclude Include="TexturedShader.h">
+      <Filter>Source\Shaders\Basic\TexturedShader</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoController.h">
+      <Filter>Source\Core\Objects\Controller\DemoController</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="DX11 Framework.fx">
@@ -367,6 +427,9 @@
       <Filter>Source\Shaders</Filter>
     </None>
     <None Include="LitShader.fx">
+      <Filter>Source\Shaders</Filter>
+    </None>
+    <None Include="TexturedShader.fx">
       <Filter>Source\Shaders</Filter>
     </None>
   </ItemGroup>

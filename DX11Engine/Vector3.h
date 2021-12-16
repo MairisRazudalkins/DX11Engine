@@ -8,6 +8,8 @@ public:
 
 	Vector3() : x(0.f), y(0.f), z(0.f) {}
 	Vector3(float x, float y, float z) : x(x), y(y), z(z) {}
+	Vector3(float xyz) : x(xyz), y(xyz), z(xyz) {}
+	Vector3(DirectX::XMFLOAT3 pos) : x(pos.x), y(pos.y), z(pos.z) {}
 	Vector3(const Vector3& vector) : x(vector.x), y(vector.y), z(vector.z) {}
 
 	Vector3 operator+(const Vector3& vec) { return Vector3(x + vec.x, y + vec.y, z + vec.z); }

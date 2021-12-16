@@ -3,6 +3,7 @@
 
 class Application;
 class Graphics;
+class EngineController;
 
 class EngineLoop
 {
@@ -10,13 +11,15 @@ class EngineLoop
 
 	static EngineLoop* inst;
 
+	EngineController* engineController;
+
 	Graphics* graphics;
 	Application* app;
 
 	float deltaTime;
 
 	EngineLoop() = default;
-	~EngineLoop() { delete cam; delete inst; inst = nullptr; }
+	~EngineLoop() { delete inst; inst = nullptr; }
 
 	static LRESULT CALLBACK ProcessWindowsEvent(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
@@ -27,8 +30,6 @@ class EngineLoop
 	void ToggleGameFocus();
 
 	void Update();
-
-	Camera* cam;
 
 public:
 	static EngineLoop* GetInst() { return inst != nullptr ? inst : inst = new EngineLoop(); }
