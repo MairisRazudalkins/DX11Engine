@@ -8,6 +8,8 @@ class EngineController : public Controller
 	Camera* engineCamera;
 	Camera* gameCamera;
 
+	float camSpeed = 30.f;
+
 	void Trap();
 	void Release();
 

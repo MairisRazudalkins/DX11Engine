@@ -12,6 +12,7 @@ class PropertyManagerUi : public UI
 	virtual ~PropertyManagerUi();
 
 	void RenderTransformProperty();
+	void RenderLightingProperty();
 
 public:
 

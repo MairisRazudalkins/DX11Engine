@@ -13,6 +13,10 @@ SkyDomeShader::SkyDomeShader()
 SkyDomeShader::SkyDomeShader(SkyDome* skyDome) : BaseShader(skyDome)
 {
 	modelConstBuffer = Buffer::CreateConstBuffer<ModelConstBuffer>();
+	colorBuffer = Buffer::CreateConstBuffer<SkyDomeColorConstBuffer>();
+
+	colorCB.color1 = DirectX::XMFLOAT4(0.2f, 255.f, 1.f, 1.f);
+	colorCB.color2 = DirectX::XMFLOAT4(0.f, 0.f, 0.8f, 1.f);
 
 	InitializeShader();
 	CreateRasterizer();
@@ -22,6 +26,18 @@ SkyDomeShader::SkyDomeShader(SkyDome* skyDome) : BaseShader(skyDome)
 SkyDomeShader::~SkyDomeShader()
 {
 	if (resourceView) resourceView->Release();
+}
+
+void SkyDomeShader::LerpSkyDomeColor(float val)
+{
+	Color day = Color(0.2f, 0.6f, 1.f, 1.f), night = Color(0.2f, 0.2f, 0.2f, 1.f);
+	val /= 100.f;
+
+	Color c1 = Color(Math::Lerp(day.r, night.r, val), Math::Lerp(day.g, night.g, val), Math::Lerp(day.b, night.b, val), 1.f);
+	Color c2 = c1 * Color(0.9f, 0.9f, 0.9f, 1.f);
+
+	colorCB.color1 = DirectX::XMFLOAT4(c1.r, c1.g, c1.b, c1.a);
+	colorCB.color2 = DirectX::XMFLOAT4(c2.r, c2.g, c2.b, c2.a);
 }
 
 void SkyDomeShader::InitializeShader()
@@ -57,6 +73,16 @@ void SkyDomeShader::CreateRasterizer()
 	rasterizerDesc.FrontCounterClockwise = false;
 
 	Graphics::GetDevice()->CreateRasterizerState(&rasterizerDesc, &rasterizer);
+}
+
+void SkyDomeShader::SetShaderParams(ID3D11DeviceContext* deviceContext)
+{
+	BaseShader::SetShaderParams(deviceContext);
+
+	ID3D11Buffer* colBuffer = colorBuffer->GetBuffer();
+	deviceContext->UpdateSubresource(colBuffer, 0, nullptr, &colorCB, 0, 0); // material buffer
+	deviceContext->VSSetConstantBuffers(2, 1, &colBuffer);
+	deviceContext->PSSetConstantBuffers(2, 1, &colBuffer);
 }
 
 void SkyDomeShader::CreateTextures()

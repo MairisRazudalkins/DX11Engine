@@ -41,6 +41,13 @@ namespace ShaderBuffers
 		float specularPower;
 		DirectX::XMFLOAT3 eyePos;
 	};
+
+	__declspec(align(16))
+	struct SkyDomeColorConstBuffer // TODO: Implement
+	{
+		DirectX::XMFLOAT4 color1;
+		DirectX::XMFLOAT4 color2;
+	};
 }
 
 namespace InputLayout

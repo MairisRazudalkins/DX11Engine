@@ -123,6 +123,9 @@
     <Filter Include="Source\Core\Objects\Controller\DemoController">
       <UniqueIdentifier>{04f7d8e2-42f8-4adc-88f5-679ba8c4ce82}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Core\Objects\Mesh\WaterPlane">
+      <UniqueIdentifier>{281742a6-4b62-4e29-8b16-fa6ea46c7133}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entry.cpp">
@@ -247,6 +250,9 @@
     </ClCompile>
     <ClCompile Include="DemoController.cpp">
       <Filter>Source\Core\Objects\Controller\DemoController</Filter>
+    </ClCompile>
+    <ClCompile Include="WaterPlane.cpp">
+      <Filter>Source\Core\Objects\Mesh\WaterPlane</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -414,6 +420,9 @@
     </ClInclude>
     <ClInclude Include="DemoController.h">
       <Filter>Source\Core\Objects\Controller\DemoController</Filter>
+    </ClInclude>
+    <ClInclude Include="WaterPlane.h">
+      <Filter>Source\Core\Objects\Mesh\WaterPlane</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

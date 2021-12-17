@@ -4,6 +4,7 @@
 #include "BaseShader.h"
 #include "DirectInput.h"
 #include "Camera.h"
+#include "Time.h"
 
 void EngineController::SetupInputBinds()
 {
@@ -70,6 +71,10 @@ void EngineController::EngineFocus()
 	if (DirectInput::GetCursorFocus() == CursorFocus::Engine)
 	{
 		Vector2 rawInput = DirectInput::GetInst()->GetRawInput();
+		float scrollerInput = DirectInput::GetInst()->GetRawScollerInput();
+
+		if (scrollerInput != 0.f)
+			camSpeed = Math::Clamp((scrollerInput / 30.f) + camSpeed, 10.f, 100.f); // scrollerInput / 60.f <- scrolling up once has a value of 120.f
 
 		if (rawInput.x != 0.f)
 			engineCamera->LookRight(rawInput.x * mouseSensitivity);
@@ -78,14 +83,14 @@ void EngineController::EngineFocus()
 			engineCamera->LookUp(rawInput.y * mouseSensitivity);
 
 		if (DirectInput::IsKeyDown(DIK_W))
-			engineCamera->MoveForward(0.01f);
+			engineCamera->MoveForward(camSpeed * Time::GetDeltaTime());
 		else if (DirectInput::IsKeyDown(DIK_S))
-			engineCamera->MoveForward(-0.01f);
+			engineCamera->MoveForward(-camSpeed * Time::GetDeltaTime());
 
 		if (DirectInput::IsKeyDown(DIK_A))
-			engineCamera->MoveRight(0.01f);
+			engineCamera->MoveRight(camSpeed * Time::GetDeltaTime());
 		else if (DirectInput::IsKeyDown(DIK_D))
-			engineCamera->MoveRight(-0.01f);
+			engineCamera->MoveRight(-camSpeed * Time::GetDeltaTime());
 	}
 }
 

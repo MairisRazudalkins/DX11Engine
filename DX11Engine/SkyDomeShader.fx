@@ -9,9 +9,15 @@
 //--------------------------------------------------------------------------------------
 cbuffer ModelConstBuffer : register(b0) // Object buffer
 {
-	matrix World;
-	matrix View;
-	matrix Projection;
+    matrix World;
+    matrix View;
+    matrix Projection;
+}
+
+cbuffer ColorConstBuffer : register(b1)
+{
+    float4 color1;
+    float4 color2;
 }
 
 //--------------------------------------------------------------------------------------
@@ -30,13 +36,13 @@ SamplerState samLinear : register(s0);
 VS_OUTPUT VS(float4 Pos : POSITION, float3 NormalL : NORMAL, float2 TexCoord : TEXCOORD)
 {
     VS_OUTPUT output = (VS_OUTPUT)0;
-        
+
     output.Position = mul(Pos, World);
     output.Position = mul(output.Position, View);
     output.Position = mul(output.Position, Projection);
 
     output.Tex = TexCoord;
-    
+
     return output;
 }
 
@@ -44,11 +50,8 @@ VS_OUTPUT VS(float4 Pos : POSITION, float3 NormalL : NORMAL, float2 TexCoord : T
 //--------------------------------------------------------------------------------------
 // Pixel Shader
 //--------------------------------------------------------------------------------------
-float4 PS( VS_OUTPUT input ) : SV_Target
+float4 PS(VS_OUTPUT input) : SV_Target
 {
-    float3 diffuseMap = txDiffuse.Sample(samLinear, input.Tex);
-    
-    //return float4(diffuseMap, 1.f);
-    
+    //return lerp(color1, color2, input.Tex.y);
     return lerp(float4(0.2f, 0.6f, 1.f, 1.f), float4(0.f, 0.f, 0.8f, 1.f), input.Tex.y);
 }

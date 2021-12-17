@@ -27,6 +27,7 @@ enum DirectMouseButton
 	RightButton,
 	MiddleButton,
 	Button4,
+	ScrollerY,
 	Y,
 	X
 };
@@ -162,6 +163,7 @@ public:
 	void Update();
 
 	Vector2 GetRawInput() { return Vector2(mouseState.lX, mouseState.lY); }
+	float GetRawScollerInput() { return mouseState.lZ; }
 
 	void TrapCursor();
 	void ReleaseCursor();

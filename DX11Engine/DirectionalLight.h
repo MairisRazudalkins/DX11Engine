@@ -29,6 +29,6 @@ public:
 	Vector3 GetLightDirection() { return lightDir; }
 	void SetLightDirection(Vector3 lightDir) { this->lightDir = lightDir; UpdateConstBuffers(); }
 
-	Color GetDiffuseColor() { return diffuseColor; } // FIX
+	Color GetDiffuseColor() { return diffuseColor; }
 	void SetDiffuseColor(Color diffuseColor) { this->diffuseColor = diffuseColor; UpdateConstBuffers(); }
 };

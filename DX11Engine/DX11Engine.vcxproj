@@ -300,6 +300,7 @@
     <ClCompile Include="SkyDomeShader.cpp" />
     <ClCompile Include="TexturedShader.cpp" />
     <ClCompile Include="Time.cpp" />
+    <ClCompile Include="WaterPlane.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
@@ -357,6 +358,7 @@
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="GraphicsCore.h" />
+    <ClInclude Include="WaterPlane.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DX11 Framework.fx">

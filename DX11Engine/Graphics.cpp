@@ -87,19 +87,14 @@ void Graphics::Initialize(int nCmdShow)
 
     //Input::GetInst()->FocusCursor(true);
 
-    DirectInput::BindEngineKeyboardAction(DIK_F1, DirectPressed, this, &Graphics::SelectObj); // DEBUG (REMOVE)
+    DirectInput::BindEngineKeyboardAction(DIK_P, DirectPressed, this, &Graphics::SelectObj); // DEBUG (REMOVE)
 }
 
 void Graphics::SelectObj() // DEBUG
 {
-    static bool t = false;
+    PropertyManagerUi* ui = PropertyManagerUi::GetInst();
 
-    if (t)
-        PropertyManagerUi::GetInst()->EditProperties(nullptr);
-    else
-        PropertyManagerUi::GetInst()->EditProperties(mesh);
-
-    t = !t;
+    ui->SetVisibility(ui->IsVisible() ? false : true);
 }
 
 void Graphics::CreateInputLayouts(ID3DBlob* vsBlob, ID3DBlob* psBlob)
