@@ -6,7 +6,7 @@ class Camera;
 class DemoController : public Controller
 {
 	Camera* mainCam, *topDownCam;
-	float camSpeed = 4.f;
+	float camSpeed = 10.f;
 
 	void SwitchCamera();
 	void MoveRight(float value);

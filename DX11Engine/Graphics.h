@@ -69,6 +69,7 @@ public:
 	SkyDome* skyDome;
 	Plane* plane;
 	Orbit* orbit;
+	Mesh* aircraft;
 
 	Controller* controller;
 

@@ -1,2 +1,31 @@
-﻿  LINK : program database E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\x64\Debug\DX11Engine.pdb missing; performing full link
+﻿  Graphics.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(24,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(33,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(34,38): warning C4458: declaration of 'parent' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(7,15): message : see declaration of 'SceneObject::parent'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Buffer.h(40,4): warning C4002: too many arguments for function-like macro invocation 'Quit'
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(164,66): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(164,51): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\LitShader.h(12,32): warning C4324: 'LitShader': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Graphics.cpp(120,9): warning C4002: too many arguments for function-like macro invocation 'Quit'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Graphics.cpp(136,9): warning C4002: too many arguments for function-like macro invocation 'Quit'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Graphics.cpp(158,9): warning C4002: too many arguments for function-like macro invocation 'Quit'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Graphics.cpp(161,9): warning C4002: too many arguments for function-like macro invocation 'Quit'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(67,18): warning C4100: 'value': unreferenced formal parameter
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(67): message : while compiling class template member function 'void DirectActionCallback<T>::Call(float)'
+          with
+          [
+              T=Graphics
+          ]
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(134): message : see reference to class template instantiation 'DirectActionCallback<T>' being compiled
+          with
+          [
+              T=Graphics
+          ]
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Graphics.cpp(90): message : see reference to function template instantiation 'void DirectInput::BindEngineKeyboardAction<Graphics>(unsigned char,DirectKeyState,T *,void (__cdecl Graphics::* )(void))' being compiled
+          with
+          [
+              T=Graphics
+          ]
   DX11Engine.vcxproj -> E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\x64\Debug\DX11Engine.exe

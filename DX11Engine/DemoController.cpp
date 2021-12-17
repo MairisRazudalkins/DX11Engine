@@ -29,7 +29,7 @@ void DemoController::SwitchCamera()
 void DemoController::MoveRight(float value)
 {
 	Vector3 newPos = Camera::GetActiveCamera()->GetPosition() + Vector3(value * Time::GetDeltaTime() * camSpeed, 0.f, 0.f);
-	newPos.x = Math::Clamp(newPos.x, 0.f, 15.f);
+	newPos.x = Math::Clamp(newPos.x, 0.f, 30.f);
 
 	Camera::GetActiveCamera()->SetPosition(newPos);
 }
