@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Application">
+    <Position X="60.25" Y="16.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAABAAAAAIAAAAAAIACEAKAAIAAAIAAAgAAAA=</HashCode>
+      <FileName>Application.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Buffer">
+    <Position X="48.25" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAIAAAAACAAAAAAAAAAAABAAABAAAAQQAA=</HashCode>
+      <FileName>Buffer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Graphics">
+    <Position X="62.5" Y="16.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QACAICBiACAABQUAkAEAAAACCAgAAwoIEhtBAEAAKEE=</HashCode>
+      <FileName>Graphics.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EngineLoop">
+    <Position X="64.75" Y="16.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAACAEAAQIIAAAAAAAAAAoiAAoAECAAAAAAAAA=</HashCode>
+      <FileName>EngineLoop.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Time">
+    <Position X="67.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAQAAAAAAAAAAAAgAAAIAAAAAAEAAQQA=</HashCode>
+      <FileName>Time.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FileImporter">
+    <Position X="62" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAgAAAAAAAAAAgAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FileImporter.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Color">
+    <Position X="45" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAABAAAAAAAAAAAAAAAAoAQAhgABAAAA=</HashCode>
+      <FileName>Color.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rotator">
+    <Position X="40.5" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAIEAAAAAQAAAAAAAAAAAABgAQBAAAA=</HashCode>
+      <FileName>Rotator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimplexNoise">
+    <Position X="54.75" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgABAAAAAAAAAAAIAQAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>SimplexNoise.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Transform">
+    <Position X="40.5" Y="7.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAIAQCAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Transform.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vector2">
+    <Position X="42.75" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAEAAAAAAAAAAAAAAAAAABgAAAAAAA=</HashCode>
+      <FileName>Vector2.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vector3">
+    <Position X="42.75" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAEEAAAAQAACAAAAIBAAADgAQFAAAA=</HashCode>
+      <FileName>Vector3.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DirectCallback">
+    <Position X="31" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAgAQAAAAAAAAAAAQAAEAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>DirectInput.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DirectActionCallback&lt;T&gt;">
+    <Position X="29.75" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AABAQAAAACAAAAAAAAAAAAACAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>DirectInput.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DirectAxisCallback&lt;T&gt;">
+    <Position X="32.5" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AABAQAAAACAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DirectInput.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DirectInput">
+    <Position X="67.5" Y="2.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>QVQBABIICBAEMFEAQgCAAkAEAAhQAAIAkCAAQDMAMAA=</HashCode>
+      <FileName>DirectInput.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Callback">
+    <Position X="73.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAACAAAAAAAAAAAAAAAAAAABAAAAAAAAAAQAA=</HashCode>
+      <FileName>Input.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AxisCallback&lt;T&gt;">
+    <Position X="72.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAQAAAACAAAAAAAIAEAAACAAAAABAEAAEAAAAAABA=</HashCode>
+      <FileName>Input.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ActionCallback&lt;T&gt;">
+    <Position X="74.75" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AABAQAAAACAAAAAAQAAEAAAAAAAAABAEAAAAAAAAAAA=</HashCode>
+      <FileName>Input.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EventHandler">
+    <Position X="58.5" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAgAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>EventHandler.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Object">
+    <Position X="35.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Object.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SceneObject">
+    <Position X="31.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAgAAECCAAMBAAABAKAEAAAAEAggAIEAAAoAAAAA=</HashCode>
+      <FileName>SceneObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeshComponent">
+    <Position X="45.5" Y="16" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAgBAAAAABAAAAAAAAA=</HashCode>
+      <FileName>MeshComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SceneComponent">
+    <Position X="45.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>SceneComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mesh">
+    <Position X="28" Y="19.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAEAAAAACAAAAAAAAAAABAAAARAAAEAAEAA=</HashCode>
+      <FileName>Mesh.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SkyDome">
+    <Position X="25.75" Y="23.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAABAAAAAABAAAAA=</HashCode>
+      <FileName>SkyDome.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SkyDomeShader">
+    <Position X="17.75" Y="6.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAACAgCIAkQABAAAAABAAAAAAAAAAAAAw=</HashCode>
+      <FileName>SkyDomeShader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plane">
+    <Position X="28" Y="23.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAEAAAAAAAIgAAAAIAA=</HashCode>
+      <FileName>Plane.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Orbit">
+    <Position X="30.5" Y="23.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAABAEAAAAAAACAAAAAAAAAAAACABAAAAAAAAA=</HashCode>
+      <FileName>Orbit.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WaterPlane">
+    <Position X="28" Y="26" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WaterPlane.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Camera">
+    <Position X="37.5" Y="19.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ABACBQAAAAAACAAAQABAAAAAAAEEAAAAQAgAIAAAAAA=</HashCode>
+      <FileName>Camera.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controller">
+    <Position X="41.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAgACAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controller.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EngineController">
+    <Position X="42.5" Y="16" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAECCQAiAAEQAAAAAAAAAICAAAAAAAABEAAAA=</HashCode>
+      <FileName>EngineController.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DemoController">
+    <Position X="40" Y="16" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAQCAAABAAAAAAAAAAAAAAQEAAAAEAAAI=</HashCode>
+      <FileName>DemoController.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Light">
+    <Position X="33.75" Y="19.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AACAgAAAAAAAAACAAAAAAgAAAIAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Light.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DirectionalLight">
+    <Position X="32.75" Y="22.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>QACAAQAAAAABAAgAgAAQAAAAAAgQAAIAAEAUAAAAAAA=</HashCode>
+      <FileName>DirectionalLight.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PointLight">
+    <Position X="35.25" Y="22.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PointLight.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BaseShader">
+    <Position X="22" Y="0.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAUCAJCIAAISAAEIAFAEAAQAABAAACABAgAAAEAAA=</HashCode>
+      <FileName>BaseShader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LitShader">
+    <Position X="21" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAEAEAIABAAQQAAFJAEAAAAQAAAAAEAAAAAMAAAAAA=</HashCode>
+      <FileName>LitShader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TexturedShader">
+    <Position X="23.75" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAIABAAAAAAEJAEAgACQAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>TexturedShader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PostProcessorShader">
+    <Position X="26.25" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAgBAAAAAAAAAEAAAAAAAAAEAAAAAAEAAAAAA=</HashCode>
+      <FileName>PostProcessorShader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ImGuiManager">
+    <Position X="23" Y="13.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAIIAAAAAAGoAAAIAABAAAAAAAAA=</HashCode>
+      <FileName>ImGuiManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UI">
+    <Position X="19.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAQAAAAAIAAAAAAAAQBAAAAAAEAA=</HashCode>
+      <FileName>UI.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LogUi">
+    <Position X="18.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAABAAAAAAEABAIAAAAAIAABAEAAAAAEA=</HashCode>
+      <FileName>LogUi.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PropertyManagerUi">
+    <Position X="20.5" Y="16.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AgAAEAAAAAAAAAAAAABAAAAAAggABAJAABAAAAAAAAA=</HashCode>
+      <FileName>PropertyManagerUi.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="ShaderBuffers::ModelConstBuffer">
+    <Position X="50.5" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>GraphicsCore.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ShaderBuffers::DirectionalLightConstBuffer">
+    <Position X="50.5" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAQAIAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>GraphicsCore.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ShaderBuffers::LightingConstBuffer">
+    <Position X="48.25" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAAAAABAAAAAAEAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GraphicsCore.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ShaderBuffers::MaterialConstBuffer">
+    <Position X="48.25" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAACBAAAAAAAAAAAAAAAAgAAABAAAAAAAAAA=</HashCode>
+      <FileName>GraphicsCore.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="GraphicsCore::MeshData">
+    <Position X="45" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>GraphicsCore.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="GraphicsCore::SimpleVertex">
+    <Position X="40.5" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIgAAAAAAAAAAAIgAAAAAAA=</HashCode>
+      <FileName>GraphicsCore.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="BufferBindFlag">
+    <Position X="50.5" Y="5.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Buffer.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="FileType">
+    <Position X="62" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>BQAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>FileImporter.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="CursorFocus">
+    <Position X="70.25" Y="6" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>DirectInput.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DirectKeyState">
+    <Position X="70.25" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAIAAAQAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>DirectInput.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DirectMouseButton">
+    <Position X="70.25" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAABAACBAAAAAAQAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>DirectInput.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

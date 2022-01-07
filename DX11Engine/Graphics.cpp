@@ -41,7 +41,7 @@ Graphics::~Graphics()
 
     delete skyDome;
     delete plane;
-    delete mesh;
+    delete sphere;
     delete orbit;
     delete aircraft;
 
@@ -71,21 +71,17 @@ void Graphics::Initialize(int nCmdShow)
     deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
     deviceContext->OMSetRenderTargets(1, &renderTargetView, depthStencilView);
 
-    //debug
+    //postProcShader = new PostProcessorShader();
 
-    postProcShader = new PostProcessorShader();
-
-    std::string localFilePath = "";
-    FileImporter::OpenExplorerDialogue(localFilePath);
-    mesh = new Mesh(Transform(Vector3(0.f, 0.f, 10.f)), OBJLoader::Load(localFilePath.c_str(), false), new LitShader(L"", L"Assets/Textures/CrateSpecular.dds", L"Assets/Textures/CrateNormal.dds"));
+    //std::string localFilePath = "";
+    //FileImporter::OpenExplorerDialogue(localFilePath);
+    sphere = new Mesh(Transform(Vector3(0.f, 0.f, 10.f)), OBJLoader::Load("Assets/Models/Sphere.obj", false), new LitShader(L"", L"Assets/Textures/CrateSpecular.dds", L"Assets/Textures/CrateNormal.dds"));
     plane = new Plane(100, 100, Transform(Vector3(0.f, -5.f, 0.f)), new LitShader());
     orbit = new Orbit(Transform(Vector3(15.f, 0.f, 10.f)));
     aircraft = new Mesh(Transform(Vector3(30.f, 0.f, 10.f), Rotator(), Vector3(0.2f, 0.2f, 0.2f)), OBJLoader::Load("Assets/Models/Hercules.obj", false), new LitShader());
 	skyDome = new SkyDome();
 
     controller = new DemoController();
-
-    //Input::GetInst()->FocusCursor(true);
 
     DirectInput::BindEngineKeyboardAction(DIK_P, DirectPressed, this, &Graphics::SelectObj); // DEBUG (REMOVE)
 }
@@ -253,7 +249,7 @@ void Graphics::Render()
 
     UINT offset = 0;
 
-    mesh->Render(deviceContext, offset);
+    sphere->Render(deviceContext, offset);
     plane->Render(deviceContext, offset);
     skyDome->Render(deviceContext, offset);
 

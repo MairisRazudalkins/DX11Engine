@@ -59,13 +59,9 @@ void PropertyManagerUi::RenderLightingProperty()
 {
 	float* dir = DirectionalLight::GetInst()->GetLightDirection().ToArray();
 	float* color = DirectionalLight::GetInst()->GetDiffuseColor().ToArray();
-	float dayToNightVal = 0.f;
 
 	ImGui::InputFloat3("Light Dir", dir, "%.3f");
 	ImGui::ColorEdit3("Light Color", color);
-	ImGui::SliderFloat("Day night", &dayToNightVal, 0.f, 100.f, "%.f", 1.f);
-
-	Logger::ENGINE_LOG(Logger::Info, dayToNightVal);
 
 	DirectionalLight::GetInst()->SetLightDirection(Vector3(dir[0], dir[1], dir[2]));
 	DirectionalLight::GetInst()->SetDiffuseColor(Color(color[0], color[1], color[2], color[3]));

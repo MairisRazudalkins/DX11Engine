@@ -1,8 +1,360 @@
-﻿  SkyDomeShader.cpp
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\GraphicsCore.h(24,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\GraphicsCore.h(33,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\SkyDomeShader.h(12,33): warning C4324: 'SkyDomeShader': structure was padded due to alignment specifier
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\SceneObject.h(34,38): warning C4458: declaration of 'parent' hides class member
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\SceneObject.h(7,15): message : see declaration of 'SceneObject::parent'
-C:\Users\r013858k\Documents\GitHub\DX11Engine\DX11Engine\Buffer.h(40,4): warning C4002: too many arguments for function-like macro invocation 'Quit'
-  DX11Engine.vcxproj -> C:\Users\r013858k\Documents\GitHub\DX11Engine\x64\Debug\DX11Engine.exe
+﻿  CoreMinimal.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Ui.h(15,38): warning C4458: declaration of 'bIsVisible' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Ui.h(7,7): message : see declaration of 'UI::bIsVisible'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Math.h(12,59): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Vector3.h(38,32): warning C4100: 'vec': unreferenced formal parameter
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Vector3.h(40,33): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Application.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(34,38): warning C4458: declaration of 'parent' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(7,15): message : see declaration of 'SceneObject::parent'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Application.cpp(27,42): warning C4458: declaration of 'hInstance' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Application.h(7,26): message : see declaration of 'Application::hInstance'
+  BaseShader.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(24,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(33,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Buffer.h(40,4): warning C4002: too many arguments for function-like macro invocation 'Quit'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(34,38): warning C4458: declaration of 'parent' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(7,15): message : see declaration of 'SceneObject::parent'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\BaseShader.cpp(26,35): warning C4458: declaration of 'mesh' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\BaseShader.h(20,8): message : see declaration of 'BaseShader::mesh'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\BaseShader.cpp(129): warning C4238: nonstandard extension used: class rvalue used as lvalue
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\BaseShader.cpp(129,122): warning C4238: nonstandard extension used: class rvalue used as lvalue
+  Camera.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(34,38): warning C4458: declaration of 'parent' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(7,15): message : see declaration of 'SceneObject::parent'
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(165,66): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(165,51): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(166,48): warning C4244: 'return': conversion from 'LONG' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(24,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(33,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(120,44): warning C4458: declaration of 'bIsGameFocused' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(101,7): message : see declaration of 'Input::bIsGameFocused'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(128,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(128,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Controller.cpp
+  DemoController.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(34,38): warning C4458: declaration of 'parent' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(7,15): message : see declaration of 'SceneObject::parent'
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(165,66): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(165,51): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(166,48): warning C4244: 'return': conversion from 'LONG' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(68,18): warning C4100: 'value': unreferenced formal parameter
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(68): message : while compiling class template member function 'void DirectActionCallback<T>::Call(float)'
+          with
+          [
+              T=DemoController
+          ]
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(143): message : see reference to class template instantiation 'DirectActionCallback<T>' being compiled
+          with
+          [
+              T=DemoController
+          ]
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DemoController.cpp(39): message : see reference to function template instantiation 'void DirectInput::BindKeyboardAction<DemoController>(unsigned char,DirectKeyState,T *,void (__cdecl DemoController::* )(void))' being compiled
+          with
+          [
+              T=DemoController
+          ]
+  DirectInput.cpp
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(165,66): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(165,51): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(166,48): warning C4244: 'return': conversion from 'LONG' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.cpp(33,3): warning C5205: delete of an abstract class 'DirectCallback' that has a non-virtual destructor results in undefined behavior
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(35): message : see declaration of 'DirectCallback'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.cpp(36,3): warning C5205: delete of an abstract class 'DirectCallback' that has a non-virtual destructor results in undefined behavior
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(35): message : see declaration of 'DirectCallback'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.cpp(39,3): warning C5205: delete of an abstract class 'DirectCallback' that has a non-virtual destructor results in undefined behavior
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(35): message : see declaration of 'DirectCallback'
+  DirectionalLight.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(24,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(33,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Buffer.h(40,4): warning C4002: too many arguments for function-like macro invocation 'Quit'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(34,38): warning C4458: declaration of 'parent' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(7,15): message : see declaration of 'SceneObject::parent'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectionalLight.h(30,43): warning C4458: declaration of 'lightDir' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectionalLight.h(15,10): message : see declaration of 'DirectionalLight::lightDir'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectionalLight.h(33,43): warning C4458: declaration of 'diffuseColor' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Light.h(8,8): message : see declaration of 'Light::diffuseColor'
+  EngineController.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(24,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(33,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(165,66): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(165,51): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(166,48): warning C4244: 'return': conversion from 'LONG' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(34,38): warning C4458: declaration of 'parent' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(7,15): message : see declaration of 'SceneObject::parent'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(138,184): warning C4244: 'argument': conversion from 'DirectMouseButton' to 'unsigned char', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\EngineController.cpp(16): message : see reference to function template instantiation 'void DirectInput::BindEngineMouseAction<EngineController>(DirectMouseButton,DirectKeyState,T *,void (__cdecl EngineController::* )(void))' being compiled
+          with
+          [
+              T=EngineController
+          ]
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(68,18): warning C4100: 'value': unreferenced formal parameter
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(68): message : while compiling class template member function 'void DirectActionCallback<T>::Call(float)'
+          with
+          [
+              T=EngineController
+          ]
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(135): message : see reference to class template instantiation 'DirectActionCallback<T>' being compiled
+          with
+          [
+              T=EngineController
+          ]
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\EngineController.cpp(11): message : see reference to function template instantiation 'void DirectInput::BindEngineKeyboardAction<EngineController>(unsigned char,DirectKeyState,T *,void (__cdecl EngineController::* )(void))' being compiled
+          with
+          [
+              T=EngineController
+          ]
+  EngineLoop.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(34,38): warning C4458: declaration of 'parent' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(7,15): message : see declaration of 'SceneObject::parent'
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(165,66): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(165,51): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(166,48): warning C4244: 'return': conversion from 'LONG' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(24,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(33,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\EngineLoop.cpp(12,42): warning C4458: declaration of 'app' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\EngineLoop.h(17,15): message : see declaration of 'EngineLoop::app'
+  Entry.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Entry.cpp(6,73): warning C4100: 'pCmdLine': unreferenced formal parameter
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Entry.cpp(6,52): warning C4100: 'hPrevInstance': unreferenced formal parameter
+  FileImporter.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(24,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(33,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xstring(2575,23): warning C4244: 'argument': conversion from 'wchar_t' to 'const _Elem', possible loss of data
+          with
+          [
+              _Elem=char
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xstring(2586): message : see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(_Iter,const _Iter,std::input_iterator_tag)' being compiled
+          with
+          [
+              _Iter=wchar_t *
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xstring(2586): message : see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(_Iter,const _Iter,std::input_iterator_tag)' being compiled
+          with
+          [
+              _Iter=wchar_t *
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xstring(2566): message : see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(const _Iter,const _Iter,std::forward_iterator_tag)' being compiled
+          with
+          [
+              _Iter=wchar_t *
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xstring(2566): message : see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(const _Iter,const _Iter,std::forward_iterator_tag)' being compiled
+          with
+          [
+              _Iter=wchar_t *
+          ]
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\FileImporter.cpp(29): message : see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\FileImporter.cpp(29): message : see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+  Graphics.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(24,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(33,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(34,38): warning C4458: declaration of 'parent' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(7,15): message : see declaration of 'SceneObject::parent'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Buffer.h(40,4): warning C4002: too many arguments for function-like macro invocation 'Quit'
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(165,66): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(165,51): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(166,48): warning C4244: 'return': conversion from 'LONG' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\LitShader.h(12,32): warning C4324: 'LitShader': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Graphics.cpp(111,9): warning C4002: too many arguments for function-like macro invocation 'Quit'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Graphics.cpp(127,9): warning C4002: too many arguments for function-like macro invocation 'Quit'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Graphics.cpp(149,9): warning C4002: too many arguments for function-like macro invocation 'Quit'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Graphics.cpp(152,9): warning C4002: too many arguments for function-like macro invocation 'Quit'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(68,18): warning C4100: 'value': unreferenced formal parameter
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(68): message : while compiling class template member function 'void DirectActionCallback<T>::Call(float)'
+          with
+          [
+              T=Graphics
+          ]
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.h(135): message : see reference to class template instantiation 'DirectActionCallback<T>' being compiled
+          with
+          [
+              T=Graphics
+          ]
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Graphics.cpp(86): message : see reference to function template instantiation 'void DirectInput::BindEngineKeyboardAction<Graphics>(unsigned char,DirectKeyState,T *,void (__cdecl Graphics::* )(void))' being compiled
+          with
+          [
+              T=Graphics
+          ]
+  ImGuiManager.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(24,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(33,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Buffer.h(40,4): warning C4002: too many arguments for function-like macro invocation 'Quit'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(34,38): warning C4458: declaration of 'parent' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(7,15): message : see declaration of 'SceneObject::parent'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectionalLight.h(30,43): warning C4458: declaration of 'lightDir' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectionalLight.h(15,10): message : see declaration of 'DirectionalLight::lightDir'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectionalLight.h(33,43): warning C4458: declaration of 'diffuseColor' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Light.h(8,8): message : see declaration of 'Light::diffuseColor'
+  Input.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(120,44): warning C4458: declaration of 'bIsGameFocused' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(101,7): message : see declaration of 'Input::bIsGameFocused'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(128,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(128,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(24,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(33,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.cpp(12,3): warning C5205: delete of an abstract class 'Callback' that has a non-virtual destructor results in undefined behavior
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(15): message : see declaration of 'Callback'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.cpp(15,3): warning C5205: delete of an abstract class 'Callback' that has a non-virtual destructor results in undefined behavior
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(15): message : see declaration of 'Callback'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.cpp(18,3): warning C5205: delete of an abstract class 'Callback' that has a non-virtual destructor results in undefined behavior
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(15): message : see declaration of 'Callback'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.cpp(57,38): warning C4458: declaration of 'x' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(103,6): message : see declaration of 'Input::x'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.cpp(57,45): warning C4458: declaration of 'y' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.h(103,13): message : see declaration of 'Input::y'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.cpp(67,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.cpp(69,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.cpp(74,29): warning C4100: 'bShouldTrap': unreferenced formal parameter
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Input.cpp(89,30): warning C4100: 'bShouldTrap': unreferenced formal parameter
+  Light.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(34,38): warning C4458: declaration of 'parent' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(7,15): message : see declaration of 'SceneObject::parent'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Light.cpp(9,59): warning C4100: 'color': unreferenced formal parameter
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Light.cpp(9,41): warning C4100: 'brightness': unreferenced formal parameter
+  LitShader.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(24,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(33,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\LitShader.h(12,32): warning C4324: 'LitShader': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(34,38): warning C4458: declaration of 'parent' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(7,15): message : see declaration of 'SceneObject::parent'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Buffer.h(40,4): warning C4002: too many arguments for function-like macro invocation 'Quit'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectionalLight.h(30,43): warning C4458: declaration of 'lightDir' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectionalLight.h(15,10): message : see declaration of 'DirectionalLight::lightDir'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectionalLight.h(33,43): warning C4458: declaration of 'diffuseColor' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Light.h(8,8): message : see declaration of 'Light::diffuseColor'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\LitShader.cpp(81,34): warning C4458: declaration of 'mesh' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\BaseShader.h(20,8): message : see declaration of 'BaseShader::mesh'
+  LogUi.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(24,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(33,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\LogUi.cpp(16,34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Mesh.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(24,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(33,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(34,38): warning C4458: declaration of 'parent' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(7,15): message : see declaration of 'SceneObject::parent'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Buffer.h(40,4): warning C4002: too many arguments for function-like macro invocation 'Quit'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Mesh.cpp(44,26): warning C4458: declaration of 'vBuffer' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Mesh.h(11,10): message : see declaration of 'Mesh::vBuffer'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Mesh.cpp(44,65): warning C4458: declaration of 'iBuffer' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Mesh.h(12,10): message : see declaration of 'Mesh::iBuffer'
+  MeshComponent.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(34,38): warning C4458: declaration of 'parent' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(7,15): message : see declaration of 'SceneObject::parent'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(24,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(33,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Buffer.h(40,4): warning C4002: too many arguments for function-like macro invocation 'Quit'
+  Orbit.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(34,38): warning C4458: declaration of 'parent' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(7,15): message : see declaration of 'SceneObject::parent'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(24,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(33,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Buffer.h(40,4): warning C4002: too many arguments for function-like macro invocation 'Quit'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\LitShader.h(12,32): warning C4324: 'LitShader': structure was padded due to alignment specifier
+  Generating Code...
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectInput.cpp(182): warning C4715: 'DirectInput::GetKeyState': not all control paths return a value
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Application.cpp(52): warning C4706: assignment within conditional expression
+  Compiling...
+  Plane.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(34,38): warning C4458: declaration of 'parent' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(7,15): message : see declaration of 'SceneObject::parent'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(24,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(33,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Buffer.h(40,4): warning C4002: too many arguments for function-like macro invocation 'Quit'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\LitShader.h(12,32): warning C4324: 'LitShader': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Plane.cpp(28,202): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Plane.cpp(28,188): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Plane.cpp(72,21): warning C4018: '<': signed/unsigned mismatch
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Plane.cpp(80,27): warning C4244: '=': conversion from 'int' to 'WORD', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Plane.cpp(81,31): warning C4244: '=': conversion from 'int' to 'WORD', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Plane.cpp(82,31): warning C4244: '=': conversion from 'int' to 'WORD', possible loss of data
+  PointLight.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(34,38): warning C4458: declaration of 'parent' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(7,15): message : see declaration of 'SceneObject::parent'
+  PostProcessorShader.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(24,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(33,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+  PropertyManagerUi.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(24,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(33,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(34,38): warning C4458: declaration of 'parent' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(7,15): message : see declaration of 'SceneObject::parent'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Buffer.h(40,4): warning C4002: too many arguments for function-like macro invocation 'Quit'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectionalLight.h(30,43): warning C4458: declaration of 'lightDir' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectionalLight.h(15,10): message : see declaration of 'DirectionalLight::lightDir'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\DirectionalLight.h(33,43): warning C4458: declaration of 'diffuseColor' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Light.h(8,8): message : see declaration of 'Light::diffuseColor'
+  SceneComponent.cpp
+  SceneObject.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(34,38): warning C4458: declaration of 'parent' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(7,15): message : see declaration of 'SceneObject::parent'
+  SkyDome.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(34,38): warning C4458: declaration of 'parent' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(7,15): message : see declaration of 'SceneObject::parent'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(24,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(33,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Buffer.h(40,4): warning C4002: too many arguments for function-like macro invocation 'Quit'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SkyDomeShader.h(12,33): warning C4324: 'SkyDomeShader': structure was padded due to alignment specifier
+  SkyDomeShader.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(24,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(33,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SkyDomeShader.h(12,33): warning C4324: 'SkyDomeShader': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(34,38): warning C4458: declaration of 'parent' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(7,15): message : see declaration of 'SceneObject::parent'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Buffer.h(40,4): warning C4002: too many arguments for function-like macro invocation 'Quit'
+  TexturedShader.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(24,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(33,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+  Time.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(24,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(33,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+  WaterPlane.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(34,38): warning C4458: declaration of 'parent' hides class member
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\SceneObject.h(7,15): message : see declaration of 'SceneObject::parent'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(24,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(33,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\Buffer.h(40,4): warning C4002: too many arguments for function-like macro invocation 'Quit'
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\LitShader.h(12,32): warning C4324: 'LitShader': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\WaterPlane.cpp(5,66): warning C4100: 'transfrom': unreferenced formal parameter
+  Generating Code...
+  DDSTextureLoader.cpp
+  EventHandler.cpp
+  imgui.cpp
+  imgui_draw.cpp
+  imgui_impl_dx11.cpp
+  imgui_impl_win32.cpp
+  imgui_tables.cpp
+  imgui_widgets.cpp
+  Object.cpp
+  OBJLoader.cpp
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(24,2): warning C4324: 'ShaderBuffers::DirectionalLightConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\GraphicsCore.h(33,2): warning C4324: 'ShaderBuffers::LightingConstBuffer': structure was padded due to alignment specifier
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\OBJLoader.cpp(34,37): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\OBJLoader.cpp(149,34): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\OBJLoader.cpp(150,51): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\OBJLoader.cpp(178,48): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\OBJLoader.cpp(202,54): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\OBJLoader.cpp(233,52): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\DX11Engine\OBJLoader.cpp(72,16): warning C4189: '_pd3dDevice': local variable is initialized but not referenced
+  Generating Code...
+  DX11Engine.vcxproj -> E:\A_UniWork\Yr2\FGGC\DX11 Engine\DX11Engine\x64\Debug\DX11Engine.exe

@@ -65,7 +65,7 @@ public:
 
 	void SelectObj();
 
-	Mesh* mesh;
+	Mesh* sphere;
 	SkyDome* skyDome;
 	Plane* plane;
 	Orbit* orbit;

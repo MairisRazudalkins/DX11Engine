@@ -441,6 +441,7 @@
     <None Include="TexturedShader.fx">
       <Filter>Source\Shaders</Filter>
     </None>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DX11 Framework.rc">

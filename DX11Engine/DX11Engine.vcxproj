@@ -361,6 +361,7 @@
     <ClInclude Include="WaterPlane.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="DX11 Framework.fx">
       <FileType>Document</FileType>
     </None>
